@@ -45,8 +45,8 @@ session_start(); // Start the session
                         if (isset($_SESSION['client_id'])) {
                             ?>
                             <div class="dropdown-menu" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="/ecommerce/views/customer/login_form.php">Settings</a>
-                                <a class="dropdown-item" href="/ecommerce/controllers/customer/logout_process.php">Logout</a>
+                                <a class="dropdown-item" href="/blut_medical/views/customer/customer_login_form.php">Settings</a>
+                                <a class="dropdown-item" href="/blut_medical/controllers/customer/customer_logout_process.php">Logout</a>
                             </div>
                         <li><a class="nav-link" href="#"><img src="/ecommerce/assets/images/cart.svg"></a></li>
                         <?php
