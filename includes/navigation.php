@@ -53,8 +53,8 @@ session_start(); // Start the session
                         } else {
                             ?>
                         <div class="dropdown-menu" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="/ecommerce/views/customer/login_form.php">Login</a>
-                            <a class="dropdown-item" href="/ecommerce/views/customer/registration_form.php">Register</a>
+                            <a class="dropdown-item" href="/blut_medical/views/customer/customer_login_form.php">Login</a>
+                            <a class="dropdown-item" href="/blut_medical/views/customer/customer_registration_form.php">Register</a>
                         </div>
                         <?php
                         }
