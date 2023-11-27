@@ -2,6 +2,12 @@
 
 include "../../connection/connect.php";
 include "../../controllers/customer/customer_registration_process.php";
+include '../../controllers/customer/customer_login_process.php';
+
+if (isset($_SESSION['client_id'])) {
+    header("Location: /blut_medical/views/customer/customer_login_success.php");
+    exit();
+}
 
 ?>
 
@@ -130,6 +136,7 @@ include "../../controllers/customer/customer_registration_process.php";
                     <div>
                         <a href="/blut_medical/views/customer/customer_login_form.php"> Already have an account? Login
                             here </a>
+                        <a href="/blut_medical/index.php" style="float: right;">Back to Home</a>
                     </div>
                 </div>
             </div>

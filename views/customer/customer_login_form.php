@@ -34,6 +34,7 @@ if (isset($_SESSION['client_id'])) {
     <link href="./../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="./../../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="./../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
     <!-- Template Main CSS File -->
     <link href="./../../assets/css/style.css" rel="stylesheet">
 
@@ -43,6 +44,7 @@ if (isset($_SESSION['client_id'])) {
 </head>
 
 <body>
+
     <div id="incorrectPasswordToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
         data-delay="100">
         <div class="toast-body">
@@ -55,6 +57,7 @@ if (isset($_SESSION['client_id'])) {
             User not found. Please check your username or email.
         </div>
     </div>
+
     <form method="post" class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
         <div class="container">
             <div class="row justify-content-center">
@@ -82,8 +85,11 @@ if (isset($_SESSION['client_id'])) {
                         <button type="submit" class="btn btn-primary" name="login_button">Login</button>
                     </div>
                     <div>
-                        <a href="/blut_medical/views/customer/customer_registration_form.php"> Create an account </a>
+                        <a href="/blut_medical/views/customer/customer_registration_form.php">Create an account</a>
+                        <a href="/blut_medical/index.php"
+                            style="float: right;">Back to Home</a>
                     </div>
+
                 </div>
             </div>
         </div>

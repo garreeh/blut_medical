@@ -9,7 +9,6 @@ session_start(); // Start the session
 //     echo "User is not logged in";
 // }
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,51 +18,73 @@ session_start(); // Start the session
 </head>
 
 <body>
-    <nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Your navigation bar">
-        <div class="container">
-            <a class="navbar-brand" href="/ecommerce/index.php">Pendragon</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsYourSite"
-                aria-controls="navbarsYourSite" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarsYourSite">
-                <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/ecommerce/index.php">Home</a>
-                    </li>
-                    <li><a class="nav-link" href="#">Shop</a></li>
-                    <li><a class="nav-link" href="#">About us</a></li>
-                    <li><a class="nav-link" href="/ecommerce/views/customer/contact_us.php">Contact Us</a></li>
-                </ul>
-                <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            <img src="/ecommerce/assets/images/user.svg" alt="User Account">
-                        </a>
+    <div class="container d-flex align-items-center">
+        <h1 class="logo me-auto"><a href="/blut_medical/index.php">BLüT Medical</a></h1>
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link" href="/blut_medical/index.php">Home</a></li>
+                <li class="dropdown"><a href="#"><span>Veterinary</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="/blut_medical/views/veterinary/lab_equipment.php">Lab Equipment</a></li>
+                        <li><a href="#">Medical Equipment</a></li>
+                        <li><a href="/blut_medical/views/veterinary/surgical.php">Surgery</a></li>
+                        <li><a href="#">Medical Supplies</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#"><span>Human</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="./coming_soon/comingsoon.html">Surgery</a></li>
+                        <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                                <ul>
+                                    <li><a href="#">Deep Drop Down 1</a></li>
+                                    <li><a href="#">Deep Drop Down 2</a></li>
+                                    <li><a href="#">Deep Drop Down 3</a></li>
+                                    <li><a href="#">Deep Drop Down 4</a></li>
+                                    <li><a href="#">Deep Drop Down 5</a></li>
+                                </ul>
+                            </li> -->
+                        <li><a href="#">Dental</a></li>
+                        <li><a href="#">Surgery</a></li>
+                        <li><a href="#">Medical Supplies</a></li>
+                    </ul>
+                </li>
+                <li><a class="nav-link scrollto" href="index.php#about">About Us</a></li>
+                <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+
+
+
+                <li class="dropdown"><a href="#">
+                        <h3 class="bi bi-person"></h3>
+                    </a>
+                    <ul>
                         <?php
                         if (isset($_SESSION['client_id'])) {
                             ?>
-                            <div class="dropdown-menu" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="/blut_medical/views/customer/customer_login_form.php">Settings</a>
-                                <a class="dropdown-item" href="/blut_medical/controllers/customer/customer_logout_process.php">Logout</a>
-                            </div>
-                        <li><a class="nav-link" href="#"><img src="/ecommerce/assets/images/cart.svg"></a></li>
-                        <?php
+                            <li><a class="nav-link scrollto"
+                                    href="/blut_medical/views/customer/customer_login_form.php">Settings</a></li>
+                            <li><a href="/blut_medical/controllers/customer/customer_logout_process.php">Logout</a></li>
+                            <!-- <li><a class="nav-link" href="#"><img src="/ecommerce/assets/images/cart.svg"></a></li> -->
+                            <?php
                         } else {
                             ?>
-                        <div class="dropdown-menu" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="/blut_medical/views/customer/customer_login_form.php">Login</a>
-                            <a class="dropdown-item" href="/blut_medical/views/customer/customer_registration_form.php">Register</a>
-                        </div>
-                        <?php
+                            <li><a class="nav-link scrollto"
+                                    href="/blut_medical/views/customer/customer_login_form.php">Login</a></li>
+                            <li><a href="/blut_medical/views/customer/customer_registration_form.php">Register</a></li>
+                            <?php
                         }
                         ?>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+                    </ul>
+                </li>
+                <li><a href="#"></a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+
+        </nav>
+
+
+    </div>
+
+
     <!-- Include Bootstrap JS (if not already included) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
@@ -71,4 +92,3 @@ session_start(); // Start the session
 </body>
 
 </html>
-

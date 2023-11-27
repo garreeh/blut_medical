@@ -1,3 +1,10 @@
+<?php
+
+include "../../connection/connect.php";
+include './../../controllers/admin/admin_add_products_process.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,19 +37,7 @@
   <!-- Template Main CSS File -->
   <link href="./../../assets/css/style.css" rel="stylesheet">
 
-
-  <!-- Product Slider Main CSS File -->
-
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-  <!-- =======================================================
-  * Template Name: Arsha - v4.9.1
-  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-</head>
 
 <body>
 
@@ -73,12 +68,9 @@
 
         <div class="section-title">
           <h2>Laboratory Equipment</h2>
-          <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi
-            quidem hic quas.</p> -->
         </div>
 
         <div class="row">
-
           <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
             <div class="box featured">
               <h3>Hematology Machine</h3>
@@ -87,81 +79,45 @@
 
               <ul>
                 <li>Throughout: 60T/H</li>
-                <li>8-inch touch screen</li>
-                <li>20 parameters + 3 histogram</li>
-                <li>3 counting modes</li>
-                <li>100, 000 sample results</li>
-                <li>Support LIS and external printer</li>
-                <li>Net weight: 21kg</li>
-                <li>CE marked</li>
               </ul>
-
             </div>
           </div>
+        </div>
 
+        <div class="row">
+          <?php
+          // Use a while loop to iterate through the fetched data
+          while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+            <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
+              <div class="box featured">
+                <h3>
+                  <?php echo $row['product_name']; ?>
+                </h3>
+                <div class="pic">
+                  <img src="<?php echo $row['product_image_path']; ?>" class="img-fluid" alt="">
+                </div>
 
-
-          <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
-            <div class="box featured">
-              <h3>Electro Analyzer</h3>
-              <div class="pic"><img src="./../../assets/img/lab_equipments/electronicanalyzer.png" class="img-fluid"
-                  alt="">
+                <ul>
+                  <li>Description:
+                    <?php echo $row['product_description']; ?>
+                  </li>
+                  <li>Price:
+                    <?php echo $row['product_price']; ?>
+                  </li>
+                </ul>
               </div>
-
-              <ul>
-                <li>ISE (Ion Selectivity Electrode)</li>
-                <li>Low reagent consumption</li>
-                <li>Maintenance-free electrodes</li>
-                <li> Automatic reagent replacement warning</li>
-                <li>Reliable fluid tubing system and electrodes</li>
-                <li>Sample: Serum/Plasma/Whole blood/Urine/CSF</li>
-                <li>Sample volume: 80-150μL</li>
-              </ul>
-
             </div>
-          </div>
-
-          <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
-            <div class="box featured">
-              <h3>Dry Serum Chem</h3>
-              <div class="pic"><img src="./../../assets/img/lab_equipments/dryserumchem.png" class="img-fluid" alt="">
-              </div>
-
-              <ul>
-                <li>Touch screen with friendly interface</li>
-                <li>0.1cc sample type whole blood, serum or plasma</li>
-                <li>Barcoded Pre-fabricated calibration information</li>
-                <li>Results printed directly</li>
-                <li>LIS compatible</li>
-              </ul>
-
-            </div>
-          </div>
-
-          <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
-            <div class="box featured">
-              <h3>Serum Chemistry Machine</h3>
-              <div class="pic"><img src="./../../assets/img/lab_equipments/serumchem.png" class="img-fluid" alt="">
-              </div>
-
-              <ul>
-                <li>Semi-automatic</li>
-                <li>3ul to 50ul serum sample</li>
-                <li>500ul reagent sample</li>
-                <li>result as short as 3 minutes</li>
-              </ul>
-
-            </div>
-          </div>
-
-
+            <?php
+          }
+          ?>
         </div>
 
       </div>
+
+
     </section>
     <!-- End Pricing Section -->
-
-
 
     <!-- ======= Portfolio Details Section ======= -->
     <section id="portfolio-details" style="background-color:aliceblue;" class="portfolio-details">
