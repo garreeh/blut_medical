@@ -13,7 +13,6 @@ include "../../controllers/admin/admin_add_products_process.php";
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
-
 <body>
 
   <div class="container mt-5">
@@ -59,7 +58,7 @@ include "../../controllers/admin/admin_add_products_process.php";
                 <label for="itemImage">Product Image:</label>
                 <div class="custom-file">
                   <input type="file" class="custom-file-input" id="fileToUpload" name="fileToUpload" accept="image/*" required>
-                  <label class="custom-file-label" for="itemImage">Choose file</label>
+                  <label class="custom-file-label" for="itemImage">Choose File</label>
                 </div>
               </div>
 

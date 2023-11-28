@@ -28,10 +28,6 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-
-
-
-
   <!-- SLIDER NEW JS AND CSS -->
   <link href="assets/css/slider.css" rel="stylesheet">
 

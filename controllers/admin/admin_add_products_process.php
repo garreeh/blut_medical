@@ -4,12 +4,6 @@ include "../../connection/connect.php";
 
 // Insert new product
 if (isset($_POST['add_product_button'])) {
-  // $product_code = $con->real_escape_string($_POST['product_code']);
-  // $product_name = $con->real_escape_string($_POST['product_name']);
-  // $product_description = $con->real_escape_string($_POST['product_description']);
-  // $product_price = $_POST['product_price'];
-  // $product_image = $con->real_escape_string($_POST['product_image']);
-
 
   $product_code = $con->real_escape_string($_POST['product_code']);
   // RANDOM NAME
@@ -27,13 +21,12 @@ if (isset($_POST['add_product_button'])) {
   }
 
   // LIMIT FILE SIZE
-// if ($_FILES["fileToUpload"]["size"] > 500000) {
-//   echo "Sorry, your file is too large.";
-//   $uploadOk = 0;
-// }
+  // if ($_FILES["fileToUpload"]["size"] > 500000) {
+  //   echo "Sorry, your file is too large.";
+  //   $uploadOk = 0;
+  // }
 
   // Allow certain file formats
-
   if (
     $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
     && $imageFileType != "gif" && $imageFileType != "JPG" && $imageFileType != "PDF" && $imageFileType != "pdf"
@@ -59,8 +52,6 @@ if (isset($_POST['add_product_button'])) {
   $product_description = $con->real_escape_string($_POST['product_description']);
   $product_price = $_POST['product_price'];
   // $product_image_path = $con->real_escape_string($_POST['product_image_path']);
-
-
 
   $sql = "INSERT INTO `products`
    (product_code, product_name, product_description, product_price, product_image_path)

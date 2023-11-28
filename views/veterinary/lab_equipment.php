@@ -169,74 +169,17 @@ include './../../controllers/admin/admin_add_products_process.php';
                         <li>Support LIS and external printer</li>
                         <li>Net weight: 21kg</li>
                         <li>CE marked</li>
-
                       </ul>
                     </div>
-
-
                   </div>
                 </div>
-
               </div>
             </div>
-
-
-            <!-- <div class="col-md-6">
-              <div class="row gy-4" style="background-color:aliceblue">
-
-                <div class="col-lg-6">
-                  <div class="portfolio-details-slider swiper">
-                    <div class="swiper-wrapper align-items-center">
-
-                      <div class="swiper-slide">
-                        <img src="assets/img/lab_equipments/electronicanalyzer.png" alt="">
-                      </div>
-
-                      <div class="swiper-slide">
-                        <img src="assets/img/lab_equipments/electronicanalyzer.png" alt="">
-                      </div>
-
-
-
-                    </div>
-                    <div class="swiper-pagination"></div>
-                  </div>
-                </div>
-
-                <div class="col-lg-6">
-                  <div class="portfolio-description">
-                    <h2>Electro Analyzer</h2>
-                    <p>
-                      Description goes here
-                    </p>
-                    <div class="portfolio-info">
-                      <h3>Product Information</h3>
-                      <ul>
-                        <li>ISE (Ion Selectivity Electrode)</li>
-                        <li>Low reagent consumption</li>
-                        <li>Maintenance-free electrodes</li>
-                        <li> Automatic reagent replacement warning</li>
-                        <li>Reliable fluid tubing system and electrodes</li>
-                        <li>Sample: Serum/Plasma/Whole blood/Urine/CSF</li>
-                        <li>Sample volume: 80-150μL</li>
-                      </ul>
-                    </div>
-
-
-                  </div>
-                </div>
-
-              </div>
-            </div> -->
           </div>
-
-
         </div>
       </div>
     </section>
     <!-- End Portfolio Details Section -->
-
-
 
     <!-- ======= Team Section ======= -->
     <section id="team" class="team section-bg">
@@ -298,7 +241,6 @@ include './../../controllers/admin/admin_add_products_process.php';
               </div>
             </div>
           </div>
-
         </div>
 
       </div>

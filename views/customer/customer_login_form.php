@@ -15,104 +15,101 @@ if (isset($_SESSION['client_id'])) {
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <title>Blut Medical</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+    <title>SB Admin 2 - Login</title>
 
-    <!-- Vendor CSS Files -->
-    <link href="./../../assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="./../../assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="./../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="./../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="./../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="./../../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="./../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="../../assets/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
-    <!-- Template Main CSS File -->
-    <link href="./../../assets/css/style.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="../../assets/admin/css/sb-admin-2.min.css" rel="stylesheet">
 
-    <!-- Product Slider Main CSS File -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <title> Blut Medical </title>
 </head>
 
-<body>
+<body class="bg-gradient-primary">
 
-    <div id="incorrectPasswordToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
-        data-delay="100">
-        <div class="toast-body">
-            Incorrect password. Please try again.
-        </div>
-    </div>
+    <div class="container">
 
-    <div id="userNotFoundToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="100">
-        <div class="toast-body">
-            User not found. Please check your username or email.
-        </div>
-    </div>
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
 
-    <form method="post" class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6 custom-form-container">
-                    <h2 class="text-center mb-4">Customer Login</h2>
+            <div class="col-xl-10 col-lg-12 col-md-9">
 
-                    <div class="mb-3">
-                        <label class="form-label">Username / Email</label>
-                        <input type="text" class="form-control" placeholder="Username / Email" name="username_or_email"
-                            value="" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Password</label>
-                        <div class="input-group">
-                            <input type="password" class="form-control" placeholder="Password" name="password"
-                                id="password" required>
-                            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
-                                <i class="far fa-eye" id="eye-icon"></i>
-                            </button>
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                    </div>
+                                    <form class="user" method="post">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-user"
+                                                placeholder="Enter Email | Username" name="username_or_email"
+                                                id="username_or_email" value="" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user"
+                                                placeholder="Password" name="password" id="password" value="" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <label class="custom-control-label" for="customCheck">Remember
+                                                    Me</label>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-user btn-block"
+                                            name="login_button">Login</button>
+                                        <hr>
+                                    </form>
+                                    <div class="text-center">
+                                        <a class="small"
+                                            href="/blut_medical/views/customer/customer_forgot_password.php">Forgot
+                                            Password?</a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a class="small"
+                                            href="/blut_medical/views/customer/customer_registration_form.php">Create an
+                                            Account!</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary" name="login_button">Login</button>
-                    </div>
-                    <div>
-                        <a href="/blut_medical/views/customer/customer_registration_form.php">Create an account</a>
-                        <a href="/blut_medical/index.php"
-                            style="float: right;">Back to Home</a>
-                    </div>
-
                 </div>
-            </div>
-        </div>
-    </form>
 
-    <div id="preloader"></div>
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
-        <i class="bi bi-arrow-up-short"></i></a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="../../assets/admin/vendor/jquery/jquery.min.js"></script>
+    <script src="../../assets/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../../assets/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../../assets/admin/js/sb-admin-2.min.js"></script>
+
 </body>
 
 </html>
-
-<!-- Vendor JS Files -->
-<script src="./../../assets/vendor/aos/aos.js"></script>
-<script src="./../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="./../../assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="./../../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="./../../assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="./../../assets/vendor/waypoints/noframework.waypoints.js"></script>
-<script src="./../../assets/vendor/php-email-form/validate.js"></script>
-
-<!-- Template Main JS File -->
-<script src="./../../assets/js/main.js"></script>
 
 <script>
     // document.addEventListener('DOMContentLoaded', function () {

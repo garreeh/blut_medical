@@ -57,7 +57,7 @@
                     <h2>We are a provider of innovative premium quality products that will elevate any medical practice
                         be it for veterinarians or human doctors.</h2>
                     <div class="d-flex justify-content-center justify-content-lg-start">
-                        <a href="#about" class="btn-get-started scrollto">About Us</a>
+                        <a href="#about" class="btn-get-started scrollto">SHOP NOW</a>
                         <!-- <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> -->
                     </div>
                 </div>
