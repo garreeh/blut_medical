@@ -51,12 +51,13 @@ if (isset($_POST['add_product_button'])) {
   $product_name = $con->real_escape_string($_POST['product_name']);
   $product_description = $con->real_escape_string($_POST['product_description']);
   $product_price = $_POST['product_price'];
+  $product_qty = $_POST['product_qty'];
   // $product_image_path = $con->real_escape_string($_POST['product_image_path']);
 
   $sql = "INSERT INTO `products`
-   (product_code, product_name, product_description, product_price, product_image_path)
+   (product_code, product_name, product_description, product_price, product_qty, product_image_path)
     VALUES 
-  ('$product_code', '$product_name', '$product_description', '$product_price', '$target_file')";
+  ('$product_code', '$product_name', '$product_description', '$product_price', '$product_qty', '$target_file')";
 
   mysqli_query($con, $sql);
 }

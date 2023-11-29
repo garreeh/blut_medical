@@ -1,9 +1,18 @@
-<?php
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top header-inner-pages">
+  <?php
+  include "./../../includes/navigation.php";
+  include './../../controllers/admin/admin_add_products_process.php';
+  include "../../controllers/admin/admin_orders_process.php";
+  include "../../connection/connect.php";
 
-include "../../connection/connect.php";
-include './../../controllers/admin/admin_add_products_process.php';
 
-?>
+  if (!isset($_SESSION['client_id'])) {
+    header("Location: /blut_medical/views/customer/customer_login_form.php");
+    exit();
+  }
+  ?>
+</header><!-- End Header -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,21 +42,45 @@ include './../../controllers/admin/admin_add_products_process.php';
   <link href="./../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="./../../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="./../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
   <!-- Template Main CSS File -->
   <link href="./../../assets/css/style.css" rel="stylesheet">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+
 <body>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top header-inner-pages">
-    <?php include "./../../includes/navigation.php" ?>
-  </header><!-- End Header -->
-
-
   <main id="main">
+    <!-- This is the modal for the specific product -->
+    <div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="addItemModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addItemModalLabel">Product Solo Display</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div>
+              <h3 id="modalProductName"></h3>
+              <div class="pic">
+                <img id="modalProductImage" class="img-fluid" alt="">
+              </div>
+              <ul>
+                <li><span id="modalProductDescription"></span></li>
+                <li><span id="modalProductPrice"></span></li>
+                <button type="submit" class="btn btn-primary btn-user btn-block" name="order_button">Add To
+                  Cart</button>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Bootstrap Static Header -->
     <div class="p-5 text-center bg-image" style="
@@ -59,9 +92,6 @@ include './../../controllers/admin/admin_add_products_process.php';
     ">
     </div>
 
-
-    <!-- PRODUCTS -->
-
     <!-- ======= Pricing Section ======= -->
     <section id="pricing" class="pricing">
       <div class="container" data-aos="fade-up">
@@ -69,44 +99,40 @@ include './../../controllers/admin/admin_add_products_process.php';
         <div class="section-title">
           <h2>Laboratory Equipment</h2>
         </div>
-
-        <div class="row">
-          <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
-            <div class="box featured">
-              <h3>Hematology Machine</h3>
-              <div class="pic"><img src="./../../assets/img/lab_equipments/hematology-2.png" class="img-fluid" alt="">
-              </div>
-
-              <ul>
-                <li>Throughout: 60T/H</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
         <div class="row">
           <?php
           // Use a while loop to iterate through the fetched data
           while ($row = mysqli_fetch_assoc($result)) {
             ?>
             <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
-              <div class="box featured">
-                <h3>
-                  <?php echo $row['product_name']; ?>
-                </h3>
-                <div class="pic">
-                  <img src="<?php echo $row['product_image_path']; ?>" class="img-fluid" alt="">
+              <a href="#" onclick="openModal(
+                '<?php echo $row['product_name']; ?>',
+                '<?php echo $row['product_description']; ?>',
+                '<?php echo $row['product_price']; ?>',
+                '<?php echo $row['product_image_path']; ?>'
+              )" data-target="#addItemModal">
+                <div>
+                  <h3>
+                    <?php echo $row['product_name']; ?>
+                  </h3>
+                  <div class="pic">
+                    <img src="<?php echo $row['product_image_path']; ?>" class="img-fluid" alt="">
+                  </div>
+
+                  <ul>
+                    <li>Description:
+                      <?php echo $row['product_description']; ?>
+                    </li>
+                    <li>Price:
+                      <?php echo $row['product_price']; ?>
+                    </li>
+                    <!-- You can remove the button if you want the entire box to be clickable -->
+                    <button type="submit" class="btn btn-primary btn-user btn-block" name="order_button">Add To
+                      Cart</button>
+                  </ul>
                 </div>
 
-                <ul>
-                  <li>Description:
-                    <?php echo $row['product_description']; ?>
-                  </li>
-                  <li>Price:
-                    <?php echo $row['product_price']; ?>
-                  </li>
-                </ul>
-              </div>
+              </a>
             </div>
             <?php
           }
@@ -114,8 +140,6 @@ include './../../controllers/admin/admin_add_products_process.php';
         </div>
 
       </div>
-
-
     </section>
     <!-- End Pricing Section -->
 
@@ -184,15 +208,7 @@ include './../../controllers/admin/admin_add_products_process.php';
     <!-- ======= Team Section ======= -->
     <section id="team" class="team section-bg">
       <div class="container" data-aos="fade-up">
-
-        <!-- <div class="section-title">
-          <h2>LABORATORY EQUIPMENT</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi
-            quidem hic quas.</p>
-        </div> -->
-
         <div class="row">
-
           <div class="col-lg-6">
             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
               <div class="pic"><img src="./../../assets/img/lab_equipments/pcr analyzer.png" class="img-fluid" alt="">
@@ -242,7 +258,6 @@ include './../../controllers/admin/admin_add_products_process.php';
             </div>
           </div>
         </div>
-
       </div>
     </section>
     <!-- End Team Section -->
@@ -264,9 +279,36 @@ include './../../controllers/admin/admin_add_products_process.php';
   <script src="./../../assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="./../../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="./../../assets/vendor/php-email-form/validate.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="./../../assets/js/main.js"></script>
 </body>
 
 </html>
+
+<script>
+  var selectedItem = {};
+
+  function openModal(productName, productDescription, productPrice, productImagePath) {
+    selectedItem = {
+      'product_name': productName,
+      'product_description': productDescription,
+      'product_price': productPrice,
+      'product_image_path': productImagePath
+    };
+
+    // Update modal content
+    document.getElementById('modalProductName').innerHTML = selectedItem.product_name;
+    document.getElementById('modalProductDescription').innerHTML = 'Description: ' + selectedItem.product_description;
+    document.getElementById('modalProductPrice').innerHTML = 'Price: ' + selectedItem.product_price;
+    document.getElementById('modalProductImage').src = selectedItem.product_image_path;
+
+    // Display the modal
+    $('#addItemModal').modal('show');
+
+  }
+</script>

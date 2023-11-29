@@ -55,10 +55,8 @@
                     data-aos="fade-up" data-aos-delay="200">
                     <h1>Welcome to BLüT Medical</h1>
                     <h2>We are a provider of innovative premium quality products that will elevate any medical practice
-                        be it for veterinarians or human doctors.</h2>
                     <div class="d-flex justify-content-center justify-content-lg-start">
-                        <a href="#about" class="btn-get-started scrollto">SHOP NOW</a>
-                        <!-- <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> -->
+                        <a href="/blut_medical/views/veterinary/lab_equipment.php" class="btn-get-started scrollto">SHOP NOW</a>
                     </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">

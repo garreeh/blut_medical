@@ -74,6 +74,17 @@ session_start(); // Start the session
                         }
                         ?>
                     </ul>
+                    <?php
+                    if (isset($_SESSION['client_id'])) {
+                        ?>
+                    <li><a class="nav-link" href="#"><h3 class="bi bi-cart-plus"></h3></a></li>
+                    <?php
+                    } else {
+
+                        ?>
+                    <?php
+                    }
+                    ?>
                 </li>
                 <li><a href="#"></a></li>
             </ul>

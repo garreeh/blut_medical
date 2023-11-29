@@ -26,7 +26,7 @@
         <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
+        <li class="nav-item">
             <a class="nav-link" href="/blut_medical/views/admin/admin_login_success.php">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
@@ -61,16 +61,16 @@
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                 aria-expanded="true" aria-controls="collapseUtilities">
                 <i class="fas fa-fw fa-wrench"></i>
-                <span>Utilities</span>
+                <span>Manage Orders</span>
             </a>
             <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                 data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Custom Utilities:</h6>
-                    <a class="collapse-item" href="utilities-color.html">Colors</a>
-                    <a class="collapse-item" href="utilities-border.html">Borders</a>
-                    <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                    <a class="collapse-item" href="utilities-other.html">Other</a>
+                    <h6 class="collapse-header">Orders:</h6>
+                    <a class="collapse-item" href="/blut_medical/views/admin/admin_orders_table.php">Orders</a>
+                    <a class="collapse-item" href="utilities-border.html">Deliveries</a>
+                    <a class="collapse-item" href="utilities-animation.html">Etc 1</a>
+                    <a class="collapse-item" href="utilities-other.html">Etc 2</a>
                 </div>
             </div>
         </li>
