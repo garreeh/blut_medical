@@ -1,7 +1,5 @@
 <?php
-// ob_start();
-// error_reporting(0);
-// mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
 include "../../connection/connect.php";
 
 if (isset($_POST['update_button'])) {
@@ -19,11 +17,10 @@ if (isset($_POST['update_button'])) {
         `product_name` = '$product_name',
         `product_description` = '$product_description',
         `product_price` = '$product_price',
-        `product_qty` = '$product_qty'
+        `product_qty` = '$product_qty',
+        `product_image_path` = '$product_image_path'
         WHERE product_id = '$product_id'");
-
   // Your success message and any additional logic
 }
-
 
 ?>

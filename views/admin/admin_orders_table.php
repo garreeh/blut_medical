@@ -314,44 +314,9 @@
   <!-- Custom scripts for all pages-->
   <script src="./../../assets/admin/js/sb-admin-2.min.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="./../../assets/admin/vendor/chart.js/Chart.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="./../../assets/admin/js/demo/chart-area-demo.js"></script>
-  <script src="./../../assets/admin/js/demo/chart-pie-demo.js"></script>
-
 </body>
 
 </html>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"
   integrity="sha256-oP6HI/tZ1aZItpi9f3k3G5vl0lMzR7+lSD1P6X8K/9U=" crossorigin="anonymous"></script>
-
-<script>
-  $(document).ready(function () {
-    // Event listener for when the modal is about to be shown
-    $('#addItemModal').on('show.bs.modal', function (event) {
-      // Extract data from the link that triggered the modal
-      var link = $(event.relatedTarget);
-      var productId = link.data('product-id');
-      var productCode = link.data('product-code');
-      var productName = link.data('product-name');
-      var productDescription = link.data('product-description');
-      var productPrice = link.data('product-price');
-      var productQty = link.data('product-qty');
-
-      // Update the modal form fields with the extracted data
-      $('#product_code').val(productCode);
-      $('#product_name').val(productName);
-      $('#product_description').val(productDescription);
-      $('#product_price').val(productPrice);
-      $('#product_qty').val(productQty);
-
-      // Add a hidden input field to store the product ID
-      $('#modalProductId').val(productId);
-    });
-
-    // Add any additional logic you need for form submission and processing
-  });
-</script>
