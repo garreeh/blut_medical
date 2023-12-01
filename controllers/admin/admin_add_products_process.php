@@ -35,7 +35,6 @@ if (isset($_POST['add_product_button'])) {
     $uploadOk = 0;
   }
 
-
   // Check if $uploadOk is set to 0 by an error
   if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
@@ -52,7 +51,6 @@ if (isset($_POST['add_product_button'])) {
   $product_description = $con->real_escape_string($_POST['product_description']);
   $product_price = $_POST['product_price'];
   $product_qty = $_POST['product_qty'];
-  // $product_image_path = $con->real_escape_string($_POST['product_image_path']);
 
   $sql = "INSERT INTO `products`
    (product_code, product_name, product_description, product_price, product_qty, product_image_path)

@@ -1,7 +1,6 @@
 <?php
 include "../../connection/connect.php";
 include "../../controllers/admin/admin_add_products_process.php";
-include "./admin_update_products.php";
 
 ?>
 
@@ -9,9 +8,15 @@ include "./admin_update_products.php";
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pendragon</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Blüt Medical | Admin</title>
+
+  <!-- Custom fonts for this template-->
   <link href="./../../assets/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -19,6 +24,8 @@ include "./admin_update_products.php";
 
   <!-- Custom styles for this template-->
   <link href="./../../assets/admin/css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="./../../assets/css/style.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -72,7 +79,7 @@ include "./admin_update_products.php";
                   <div class="input-group-prepend">
                     <button type="button" class="btn btn-outline-secondary" onclick="decrementQuantity()">-</button>
                   </div>
-                  <input type="number" class="form-control" id="product_qty" name="product_qty"
+                  <input type="number" class="form-control" id="add_product_qty" name="product_qty"
                     placeholder="Enter Product Quantity" required>
                   <div class="input-group-append">
                     <button type="button" class="btn btn-outline-secondary" onclick="incrementQuantity()">+</button>
@@ -101,6 +108,11 @@ include "./admin_update_products.php";
         </div>
       </div>
     </div>
+
+    <a href="#" data-toggle="modal" data-target="#updateModal_<?php echo $product_id; ?>">
+    </a>
+
+
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
       <!-- Main Content -->
@@ -125,7 +137,6 @@ include "./admin_update_products.php";
               </div>
             </div>
           </form>
-
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
@@ -297,6 +308,7 @@ include "./admin_update_products.php";
             </li>
 
           </ul>
+
         </nav>
         <!-- End of Topbar -->
 
@@ -307,7 +319,7 @@ include "./admin_update_products.php";
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Products</h1>
             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal"
-              data-target="#addItemModal"><i class="fas fa-download fa-sm text-white-50"></i>Add Product</a>
+              data-target="#addItemModal"></i>Add Product</a>
           </div>
 
           <div class="row">
@@ -330,7 +342,7 @@ include "./admin_update_products.php";
                     </thead>
                     <tbody>
                       <?php
-                      include './../../controllers/admin/admin_product_display_process.php';
+                      include './admin_update_products.php';
                       ?>
                     </tbody>
                   </table>
@@ -378,33 +390,63 @@ include "./admin_update_products.php";
     </div>
   </div>
 
+  <!-- Bootstrap core JavaScript-->
+  <script src="./../../assets/admin/vendor/jquery/jquery.min.js"></script>
+  <script src="./../../assets/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="./../../assets/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="./../../assets/admin/js/sb-admin-2.min.js"></script>
+
 </body>
+
 </html>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-
-  <script>
-    $(document).ready(function () {
-      // Show the selected file name in the custom file input
-      $("#fileToUpload").change(function () {
-        var fileName = $(this).val().split("\\").pop();
-        $(this).next(".custom-file-label").html(fileName);
-      });
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script>
+  $(document).ready(function () {
+    // Show the selected file name in the custom file input
+    $("#fileToUpload").change(function () {
+      var fileName = $(this).val().split("\\").pop();
+      $(this).next(".custom-file-label").html(fileName);
     });
+  });
 
-    function incrementQuantity() {
-      var quantityInput = document.getElementById('product_qty');
-      var currentQuantity = parseInt(quantityInput.value) || 0;
-      quantityInput.value = currentQuantity + 1;
-    }
+  function incrementQuantity() {
+    var quantityInput = document.getElementById('add_product_qty');
+    var currentQuantity = parseInt(quantityInput.value) || 0;
+    quantityInput.value = currentQuantity + 1;
+  }
 
-    function decrementQuantity() {
-      var quantityInput = document.getElementById('product_qty');
-      var currentQuantity = parseInt(quantityInput.value) || 0;
-      // Ensure the quantity doesn't go below zero
-      quantityInput.value = Math.max(0, currentQuantity - 1);
-    }
-  </script>
+  function decrementQuantity() {
+    var quantityInput = document.getElementById('add_product_qty');
+    var currentQuantity = parseInt(quantityInput.value) || 0;
+    // Ensure the quantity doesn't go below zero
+    quantityInput.value = Math.max(0, currentQuantity - 1);
+  }
+</script>
+
+<style>
+  #add_product_qty {
+    /* For Firefox */
+    -moz-appearance: textfield;
+
+    /* For other browsers */
+    appearance: textfield;
+
+    /* For Webkit browsers like Chrome and Safari */
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  #add_product_qty::-webkit-inner-spin-button,
+  #add_product_qty::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+</style>
