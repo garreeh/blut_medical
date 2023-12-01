@@ -31,9 +31,11 @@ while ($row = mysqli_fetch_assoc($result)) {
     <td> <a href="#" data-toggle="modal" data-target="#updateModal_<?php echo $product_id; ?>">
         <?php echo $product_description; ?>
       </a></td>
+
     <td> <a href="#" data-toggle="modal" data-target="#updateModal_<?php echo $product_id; ?>">
-        <?php echo $product_price; ?>
+        <?php echo "₱ " . $product_price; ?>
       </a></td>
+
     <td> <a href="#" data-toggle="modal" data-target="#updateModal_<?php echo $product_id; ?>">
         <?php echo $product_qty; ?>
       </a></td>
@@ -97,17 +99,17 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <?php if (!empty($product_image_path)): ?>
                   <img src="<?php echo $product_image_path; ?>" alt="Current Image" style="max-width: 100px;">
                   <input type="hidden" name="current_image_path" value="<?php echo $product_image_path; ?>">
-
                 <?php else: ?>
                   <p>No image available</p>
                 <?php endif; ?>
               </div>
 
-              <!-- Always allow the user to upload a new image -->
+              <!-- Allow the user to upload a new image -->
               <div class="form-group">
                 <label>Upload a new image:</label>
                 <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="fileToUpdate" name="fileToUpload" accept="image/*">
+                  <input type="file" class="custom-file-input" id="fileToUpdate<?php echo $product_id; ?>"
+                    name="fileToUpload" accept="image/*">
                   <label class="custom-file-label">Choose new file</label>
                 </div>
               </div>
@@ -120,7 +122,6 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </form>
-
           </div>
         </div>
       </div>
@@ -149,9 +150,9 @@ while ($row = mysqli_fetch_assoc($result)) {
 
       $(document).ready(function () {
         // Show the selected file name in the custom file input
-        $("#fileToUpdate").change(function () {
-          var fileName = $(this).val().split("\\").pop();
-          $(this).next(".custom-file-label").html(fileName);
+        $("[id^='fileToUpdate']").change(function () {
+          var fileNameUpdate = $(this).val().split("\\").pop();
+          $(this).next(".custom-file-label").html(fileNameUpdate);
         });
       });
 

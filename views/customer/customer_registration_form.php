@@ -27,6 +27,9 @@ if (isset($_SESSION['client_id'])) {
 
   <!-- Packages for Toast-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha384-3Ih3/Apz5Pa4MMk8AXzcvvRzMz9Qs0F9Vox6PsrMz9AT+aEKW3DR00MlO2GgHg3h" crossorigin="anonymous">
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <!-- Custom fonts for this template-->
@@ -96,14 +99,30 @@ if (isset($_SESSION['client_id'])) {
                   <input type="text" class="form-control form-control-user" placeholder="Address" name="address"
                     value="" required>
                 </div>
+
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password" class="form-control form-control-user" placeholder="Password" name="password"
-                      id="password" required>
+                    <div class="input-group">
+                      <input type="password" class="form-control form-control-user" placeholder="Password"
+                        name="password" id="password" required>
+                      <div class="input-group-append">
+                        <span class="input-group-text" id="togglePassword">
+                          <i class="fa fa-eye" aria-hidden="true"></i>
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" placeholder="Confirm Password"
-                      name="confirm_password" id="confirmPassword" required>
+
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <div class="input-group">
+                      <input type="password" class="form-control form-control-user" placeholder="Confirm Password"
+                        name="confirm_password" id="confirmPassword" required>
+                      <div class="input-group-append">
+                        <span class="input-group-text" id="toggleConfirmPassword">
+                          <i class="fa fa-eye" aria-hidden="true"></i>
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -152,11 +171,36 @@ if (isset($_SESSION['client_id'])) {
         event.preventDefault();
       }
     });
+
+    // This is for the password toggle eye
+    document.getElementById('togglePassword').addEventListener('click', function () {
+      var passwordInput = document.getElementById('password');
+      var type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+      var icon = document.querySelector('#togglePassword i');
+      icon.classList.toggle('fa-eye-slash');
+    });
+
+    document.getElementById('toggleConfirmPassword').addEventListener('click', function () {
+      var confirmPasswordInput = document.getElementById('confirmPassword');
+      var type = confirmPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      confirmPasswordInput.setAttribute('type', type);
+      var icon = document.querySelector('#toggleConfirmPassword i');
+      icon.classList.toggle('fa-eye-slash');
+    });
+
+    // Add here
   });
 
 </script>
 
 <style>
+  /* This is for the Password */
+  #togglePassword,
+  #toggleConfirmPassword {
+    cursor: pointer;
+  }
+
   /* Custom style to make the toast red */
   #passwordMismatchToast {
     position: fixed;

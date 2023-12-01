@@ -37,7 +37,7 @@ if (isset($_POST['update_button'])) {
       echo "Sorry, your file was not uploaded.";
     } else {
       if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
+        echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded for update.";
         // Update the product with the new image path
         $con->query("UPDATE `products` 
           SET
