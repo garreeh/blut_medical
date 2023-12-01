@@ -153,39 +153,41 @@ if (isset($_SESSION['client_id'])) {
 
   });
 
-  $(document).ready(function () {
-    // Assuming your form has an ID of 'loginForm'
-    $('#loginForm').submit(function (e) {
-      e.preventDefault();
+  // KABOBOHAN SA TOAST
 
-      // Your logic to submit the form asynchronously using AJAX
-      $.ajax({
-        type: 'POST',
-        url: '/blut_medical/controllers/customer/customer_login_process.php', // Replace with the actual path
-        data: $(this).serialize(),
-        success: function (response) {
-          // Check the response from the server
-          if (response === 'success') {
-            // If the login is successful, redirect the user or perform other actions
-            window.location.href = '/blut_medical/views/customer/customer_login_success.php';
-          } else if (response === 'wrongPassword') {
-            // Show wrong password toast
-            $('#wrongPassword').toast('show');
-          } else if (response === 'userNotFound') {
-            // Show user not found toast
-            $('#userNotFound').toast('show');
-          } else {
-            // Handle other response cases if needed
-            console.log('Unexpected response:', response);
-          }
-        },
-        error: function (xhr, status, error) {
-          // Handle AJAX errors if needed
-          console.error('AJAX Error:', status, error);
-        }
-      });
-    });
-  });
+  // $(document).ready(function () {
+  //   // Assuming your form has an ID of 'loginForm'
+  //   $('#loginForm').submit(function (e) {
+  //     e.preventDefault();
+
+  //     // Your logic to submit the form asynchronously using AJAX
+  //     $.ajax({
+  //       type: 'POST',
+  //       url: '/blut_medical/controllers/customer/customer_login_process.php', // Replace with the actual path
+  //       data: $(this).serialize(),
+  //       success: function (response) {
+  //         // Check the response from the server
+  //         if (response === 'success') {
+  //           // If the login is successful, redirect the user or perform other actions
+  //           window.location.href = '/blut_medical/views/customer/customer_login_success.php';
+  //         } else if (response === 'wrongPassword') {
+  //           // Show wrong password toast
+  //           $('#wrongPassword').toast('show');
+  //         } else if (response === 'userNotFound') {
+  //           // Show user not found toast
+  //           $('#userNotFound').toast('show');
+  //         } else {
+  //           // Handle other response cases if needed
+  //           console.log('Unexpected response:', response);
+  //         }
+  //       },
+  //       error: function (xhr, status, error) {
+  //         // Handle AJAX errors if needed
+  //         console.error('AJAX Error:', status, error);
+  //       }
+  //     });
+  //   });
+  // });
 
 
 
