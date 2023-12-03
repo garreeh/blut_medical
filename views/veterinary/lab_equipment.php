@@ -28,30 +28,43 @@
   <!-- Favicons -->
   <link href="./../../assets/img/favicon.ico" rel="icon">
   <link href="./../../assets/img/favicon.ico" rel="icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <!-- Include jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+  <!-- Include Toastr CSS and JS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+</head>
 
-  <!-- Vendor CSS Files -->
-  <link href="./../../assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="./../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="./../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="./../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="./../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="./../../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="./../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+  rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="./../../assets/css/style.css" rel="stylesheet">
+<!-- Vendor CSS Files -->
+<link href="./../../assets/vendor/aos/aos.css" rel="stylesheet">
+<link href="./../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="./../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="./../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link href="./../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="./../../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+<link href="./../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+<!-- Template Main CSS File -->
+<link href="./../../assets/css/style.css" rel="stylesheet">
 
 <body>
-
+  <div class="toast" id="orderToast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false"
+    data-delay="5000">
+    <div class="toast-header">
+      <strong class="me-auto">Success Message</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Successfuly Added to Cart!
+    </div>
+  </div>
   <main id="main">
     <!-- This is the modal for the specific product -->
     <div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="addItemModalLabel"
@@ -65,7 +78,8 @@
             </button>
           </div>
           <div class="modal-body">
-            <div>
+            <form method="post">
+              <input type="hidden" name="product_id" value="">
               <h3 id="modalProductName"></h3>
               <div class="pic">
                 <img id="modalProductImage" class="img-fluid" alt="">
@@ -76,8 +90,9 @@
                 <button type="submit" class="btn btn-primary btn-user btn-block" name="order_button">Add To
                   Cart</button>
               </ul>
-            </div>
+            </form>
           </div>
+
         </div>
       </div>
     </div>
@@ -97,47 +112,57 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Laboratory Equipment</h2>
+          <h2>Buy Laboratory Equipment</h2>
         </div>
+
         <div class="row">
           <?php
-          // Use a while loop to iterate through the fetched data
           while ($row = mysqli_fetch_assoc($result)) {
             ?>
             <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
-              <a href="#" onclick="openModal(
-                '<?php echo $row['product_name']; ?>',
-                '<?php echo $row['product_description']; ?>',
-                '<?php echo $row['product_price']; ?>',
-                '<?php echo $row['product_image_path']; ?>'
-              )" data-target="#addItemModal">
-                <div>
-                  <h3>
-                    <?php echo $row['product_name']; ?>
-                  </h3>
-                  <div class="pic">
-                    <img src="<?php echo $row['product_image_path']; ?>" class="img-fluid" alt="">
-                  </div>
+              <div class="box featured">
+                <form method="post">
+                  <a href="#" onclick="openModal(
+                        '<?php echo $row['product_id']; ?>',
+                        '<?php echo $row['product_name']; ?>',
+                        '<?php echo $row['product_description']; ?>',
+                        '<?php echo $row['product_price']; ?>',
+                        '<?php echo $row['product_image_path']; ?>'
+                    )" data-target="#addItemModal">
 
-                  <ul>
-                    <li>Description:
-                      <?php echo $row['product_description']; ?>
-                    </li>
-                    <li>Price:
-                      <?php echo $row['product_price']; ?>
-                    </li>
-                    <!-- You can remove the button if you want the entire box to be clickable -->
-                    <button type="submit" class="btn btn-primary btn-user btn-block" name="order_button">Add To
-                      Cart</button>
-                  </ul>
-                </div>
+                    <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
 
-              </a>
+                    <div>
+                      <h3>
+                        <?php echo $row['product_name']; ?>
+                      </h3>
+                      <div class="pic">
+                        <img src="<?php echo $row['product_image_path']; ?>" class="img-fluid" alt="">
+                      </div>
+
+                      <ul>
+                        <li>Description:
+                          <?php echo $row['product_description']; ?>
+                        </li>
+                        <li>Price:
+                          <?php echo $row['product_price']; ?>
+                        </li>
+                      </ul>
+
+                      <!-- "Add To Cart" button -->
+                      <button type="submit" class="btn btn-primary btn-user btn-block" name="order_button">
+                        Add To Cart
+                      </button>
+                    </div>
+                  </a>
+                </form>
+              </div>
             </div>
             <?php
           }
           ?>
         </div>
+
 
       </div>
     </section>
@@ -151,7 +176,6 @@
           <h2>FEATURED EQUIPMENT</h2>
           <!-- <p>Short write up here. Lorem ipsum Dolor sit amet</p> -->
         </div>
-
         <div class="col-md-12">
           <div class="row">
             <div class="col-md-12">
@@ -162,15 +186,12 @@
                     <div class="swiper-wrapper align-items-center">
 
                       <div class="swiper-slide">
-                        <img src="./../../assets/img/lab_equipments//hematology.png" alt="">
+                        <img src="./../../assets/img/featured//hematology-first.png" alt="">
                       </div>
 
                       <div class="swiper-slide">
-                        <img src="./../../assets/img/lab_equipments/hematology-2.png" alt="">
+                        <img src="./../../assets/img/featured/hematology-second.png" alt="">
                       </div>
-
-
-
                     </div>
                     <div class="swiper-pagination"></div>
                   </div>
@@ -204,63 +225,6 @@
       </div>
     </section>
     <!-- End Portfolio Details Section -->
-
-    <!-- ======= Team Section ======= -->
-    <section id="team" class="team section-bg">
-      <div class="container" data-aos="fade-up">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
-              <div class="pic"><img src="./../../assets/img/lab_equipments/pcr analyzer.png" class="img-fluid" alt="">
-              </div>
-              <div class="member-info">
-                <h4>Realtime Fluorescence Quantitative PCR</h4>
-                <!-- <span>Short Description</span> -->
-                <p>Lorem Ipsum Dolor Sit Amet</p>
-                <div class="social">
-                  <ul>
-                    <li>Reagent volume: 0.3mL</li>
-                    <li>Throughput: 80 samples/hr</li>
-                    <li>Calibration: Automatic or on-demand</li>
-                    <li>Up to 2000 test storage</li>
-                    <li>RS-232 interface</li>
-                    <li>Temperature: 15-30oC</li>
-                    <li>Humidity: 20%-80%</li>
-                    <li>Power requirement: 110-240AV+10%,</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
-              <div class="pic"><img src="./../../assets/img/lab_equipments/immunofluorecence.png" class="img-fluid"
-                  alt="">
-              </div>
-              <div class="member-info">
-                <h4>Dry Immunofluorescence quantitative analyzer</h4>
-                <!-- <span>Short Description</span> -->
-                <p>Lorem Ipsum Dolor Sit Amet</p>
-                <div class="social">
-                  <ul>
-                    <li>-Throughout: 60T/H</li>
-                    <li>-8-inch touch screen</li>
-                    <li>-20 parameters + 3 histogram</li>
-                    <li>-3 counting modes</li>
-                    <li>-100, 000 sample results</li>
-                    <li>-Support LIS and external printer</li>
-                    <li>-Net weight: 21kg</li>
-                    <li>-CE marked</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End Team Section -->
   </main>
   <!-- End #main -->
 
@@ -279,22 +243,20 @@
   <script src="./../../assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="./../../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="./../../assets/vendor/php-email-form/validate.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="./../../assets/js/main.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
-  <!-- Template Main JS File -->
-  <script src="./../../assets/js/main.js"></script>
 </body>
 
 </html>
 
 <script>
+
   var selectedItem = {};
 
-  function openModal(productName, productDescription, productPrice, productImagePath) {
+  function openModal(productID, productName, productDescription, productPrice, productImagePath) {
     selectedItem = {
+      'product_id': productID,
       'product_name': productName,
       'product_description': productDescription,
       'product_price': productPrice,
@@ -307,8 +269,11 @@
     document.getElementById('modalProductPrice').innerHTML = 'Price: ' + selectedItem.product_price;
     document.getElementById('modalProductImage').src = selectedItem.product_image_path;
 
+    // Set the product_id in the hidden input of the form
+    document.querySelector('#addItemModal form [name="product_id"]').value = selectedItem.product_id;
+
     // Display the modal
     $('#addItemModal').modal('show');
-
   }
+
 </script>

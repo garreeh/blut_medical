@@ -33,16 +33,7 @@ session_start(); // Start the session
                 </li>
                 <li class="dropdown"><a href="#"><span>Human</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="./coming_soon/comingsoon.html">Surgery</a></li>
-                        <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                                <ul>
-                                    <li><a href="#">Deep Drop Down 1</a></li>
-                                    <li><a href="#">Deep Drop Down 2</a></li>
-                                    <li><a href="#">Deep Drop Down 3</a></li>
-                                    <li><a href="#">Deep Drop Down 4</a></li>
-                                    <li><a href="#">Deep Drop Down 5</a></li>
-                                </ul>
-                            </li> -->
+                        <li><a href="#">Surgery</a></li>
                         <li><a href="#">Dental</a></li>
                         <li><a href="#">Surgery</a></li>
                         <li><a href="#">Medical Supplies</a></li>
@@ -77,7 +68,7 @@ session_start(); // Start the session
                     <?php
                     if (isset($_SESSION['client_id'])) {
                         ?>
-                    <li><a class="nav-link" href="#"><h3 class="bi bi-cart-plus"></h3></a></li>
+                    <li><a class="nav-link" href="/blut_medical/views/customer/customer_add_to_cart.php"><h3 class="bi bi-cart"></h3></a></li>
                     <?php
                     } else {
 
