@@ -130,6 +130,7 @@ while ($row = mysqli_fetch_assoc($result)) {
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
   <script>
     $(document).ready(function () {
@@ -157,9 +158,8 @@ while ($row = mysqli_fetch_assoc($result)) {
     // }
 
     // IT HAS BUG THE CODE BELOW, IT THROWS CONSOLE LOG 4 TIMES
-
     $(document).ready(function () {
-      $(document).on("click", ".increment-btn, .decrement-btn", function () {
+      $(".increment-btn, .decrement-btn").off().on("click", function () {
         updateQuantity($(this));
       });
     });
@@ -168,7 +168,6 @@ while ($row = mysqli_fetch_assoc($result)) {
       var targetInputClass = button.data("target");
       var quantityInput = button.closest(".input-group").find('.' + targetInputClass);
       var currentQuantity = parseInt(quantityInput.val()) || 0;
-      quantityInput.value = currentQuantity + 1;
 
       if (button.hasClass("increment-btn")) {
         quantityInput.val(currentQuantity + 1);
@@ -180,7 +179,7 @@ while ($row = mysqli_fetch_assoc($result)) {
       console.log("Before update:", currentQuantity);
       console.log("After update:", quantityInput.val());
     }
-    
+
   </script>
 
   <style>
