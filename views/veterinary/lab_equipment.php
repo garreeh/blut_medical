@@ -6,7 +6,6 @@
   include "../../controllers/admin/admin_orders_process.php";
   include "../../connection/connect.php";
 
-
   if (!isset($_SESSION['client_id'])) {
     header("Location: /blut_medical/views/customer/customer_login_form.php");
     exit();
@@ -53,6 +52,7 @@
 
 <!-- Template Main CSS File -->
 <link href="./../../assets/css/style.css" rel="stylesheet">
+<link href="./../../assets/css/product_designs.css" rel="stylesheet">
 
 <body>
   <div class="toast" id="orderToast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false"
@@ -108,7 +108,7 @@
     </div>
 
     <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
+    <section id="pricing" class="pricing product-section">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
@@ -116,57 +116,50 @@
         </div>
 
         <div class="row">
+
           <?php
           while ($row = mysqli_fetch_assoc($result)) {
             ?>
-            <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
+            <div style="margin-bottom: 80px;" class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
               <div class="box featured">
-                <form method="post">
-                  <a href="#" onclick="openModal(
-                        '<?php echo $row['product_id']; ?>',
-                        '<?php echo $row['product_name']; ?>',
-                        '<?php echo $row['product_description']; ?>',
-                        '<?php echo $row['product_price']; ?>',
-                        '<?php echo $row['product_image_path']; ?>'
-                    )" data-target="#addItemModal">
+
+                <form method="post" id="addToCartForm<?php echo $row['product_id']; ?>">
+                  <a href="#" class="product-item" onclick="openModal(
+                    '<?php echo $row['product_id']; ?>',
+                    '<?php echo $row['product_name']; ?>',
+                    '<?php echo $row['product_description']; ?>',
+                    '<?php echo $row['product_price']; ?>',
+                    '<?php echo $row['product_image_path']; ?>'
+                )" data-target="#addItemModal">
 
                     <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
-
                     <div>
                       <h3>
                         <?php echo $row['product_name']; ?>
                       </h3>
                       <div class="pic">
-                        <img src="<?php echo $row['product_image_path']; ?>" class="img-fluid" alt="">
+                        <img src="<?php echo $row['product_image_path']; ?>" class="img-fluid product-thumbnail" alt="">
                       </div>
-
-                      <ul>
-                        <li>Description:
-                          <?php echo $row['product_description']; ?>
-                        </li>
-                        <li>Price:
-                          <?php echo $row['product_price']; ?>
-                        </li>
-                      </ul>
-
-                      <!-- "Add To Cart" button -->
-                      <button type="submit" class="btn btn-primary btn-user btn-block" name="order_button">
-                        Add To Cart
-                      </button>
                     </div>
                   </a>
+                  <?php echo $row['product_name']; ?>
+
+                  <button type="button" class="btn btn-primary btn-user btn-block addToCartButton"
+                    data-productid="<?php echo $row['product_id']; ?>">
+                    Add To Cart
+                  </button>
                 </form>
               </div>
             </div>
             <?php
           }
           ?>
+
         </div>
 
 
       </div>
     </section>
-    <!-- End Pricing Section -->
 
     <!-- ======= Portfolio Details Section ======= -->
     <section id="portfolio-details" style="background-color:aliceblue;" class="portfolio-details">
@@ -244,7 +237,11 @@
   <script src="./../../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="./../../assets/vendor/php-email-form/validate.js"></script>
   <script src="./../../assets/js/main.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+  <!-- Include Toastify.js from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
 
 </body>
 
@@ -275,5 +272,69 @@
     // Display the modal
     $('#addItemModal').modal('show');
   }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".addToCartButton").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var form = this.closest('form');
+        var formData = new FormData(form);
+
+        formData.append('order_button', 'true');
+
+        fetch("./../../controllers/admin/admin_orders_process.php", {
+          method: "POST",
+          body: formData,
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            // Check if the response body is empty
+            if (!response.headers.get('content-length')) {
+              throw new Error('Empty response');
+            }
+            return response.json();
+          })
+          .then(data => {
+            if (data) {
+              if (data.success) {
+                // Show success toast notification
+                Toastify({
+                  text: data.message,
+                  duration: 3000,  // Duration in milliseconds
+                  close: true,
+                  gravity: "top",  // Set to "bottom" for a toast at the bottom
+                  position: "right",  // Set to "left" for a toast on the left
+                  backgroundColor: "green",  // Set your desired background color
+                }).showToast();
+              } else {
+                // Show error toast notification
+                Toastify({
+                  text: "Error: " + data.message,
+                  duration: 3000,
+                  close: true,
+                  gravity: "top",
+                  position: "right",
+                  backgroundColor: "red",
+                }).showToast();
+              }
+            } else {
+              throw new Error('Empty response or invalid JSON');
+            }
+          })
+          .catch(error => {
+            // Show error toast notification for fetch failure
+            Toastify({
+              text: "Fetch request failed: " + error.message,
+              duration: 3000,
+              close: true,
+              gravity: "top",
+              position: "right",
+              backgroundColor: "red",
+            }).showToast();
+          });
+      });
+    });
+  });
 
 </script>
