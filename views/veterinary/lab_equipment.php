@@ -142,7 +142,9 @@
                       </div>
                     </div>
                   </a>
-                  <?php echo $row['product_name']; ?>
+                  <h3>
+                    <?php echo $row['product_price']; ?>
+                  </h3>
 
                   <button type="button" class="btn btn-primary btn-user btn-block addToCartButton"
                     data-productid="<?php echo $row['product_id']; ?>">
@@ -154,10 +156,7 @@
             <?php
           }
           ?>
-
         </div>
-
-
       </div>
     </section>
 
