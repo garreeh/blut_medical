@@ -98,8 +98,7 @@
                         </p>
                       </td>
                       <td>
-                        ₱
-                        <?php echo $item['product_price']; ?>
+                        <?php echo "₱ " . number_format($item['product_price'], 2); ?>
                       </td>
                       <td>
                         <div class="input-group mb-3 d-flex align-items-center quantity-container"
@@ -120,8 +119,9 @@
                       </td>
                       <td id="price-<?php echo $item['product_id']; ?>">
                         ₱
-                        <?php echo $item['product_price'] * $item['quantity']; ?>
+                        <?php echo number_format($item['product_price'] * $item['quantity'], 2, '.', ','); ?>
                       </td>
+
                       <td>
                         <form class="productsForm" method="post">
                           <input type="hidden" name="product_id" value="<?php echo $item['product_id']; ?>">

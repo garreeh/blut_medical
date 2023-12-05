@@ -33,7 +33,7 @@ while ($row = mysqli_fetch_assoc($result)) {
       </a></td>
 
     <td> <a href="#" data-toggle="modal" data-target="#updateModal_<?php echo $product_id; ?>">
-        <?php echo "₱ " . $product_price; ?>
+        <?php echo "₱ " . number_format($product_price, 2); ?>
       </a></td>
 
     <td> <a href="#" data-toggle="modal" data-target="#updateModal_<?php echo $product_id; ?>">

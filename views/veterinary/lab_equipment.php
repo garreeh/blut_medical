@@ -114,9 +114,7 @@
         <div class="section-title">
           <h2>Buy Laboratory Equipment</h2>
         </div>
-
         <div class="row">
-
           <?php
           while ($row = mysqli_fetch_assoc($result)) {
             ?>
@@ -142,9 +140,12 @@
                       </div>
                     </div>
                   </a>
-                  <h3>
-                    <?php echo $row['product_price']; ?>
+                  <h3>₱
+                    <?php echo number_format($row['product_price'], 2); ?>
                   </h3>
+                  <p>
+                    <?php echo $row['product_description']; ?>
+                  </p>
 
                   <button type="button" class="btn btn-primary btn-user btn-block addToCartButton"
                     data-productid="<?php echo $row['product_id']; ?>">
@@ -192,9 +193,6 @@
                 <div class="col-lg-6">
                   <div class="portfolio-description">
                     <h2>Hematology Machine</h2>
-                    <p>
-                      Description
-                    </p>
                     <div class="portfolio-info">
                       <h3>Product Information</h3>
                       <ul>
