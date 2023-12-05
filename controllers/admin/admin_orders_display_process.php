@@ -1,30 +1,30 @@
 <?php
-
 include "../../connection/connect.php";
 
 // Assuming you have a query to select data from your database
-$select_query = "SELECT order_id, client_id, product_id, created_at, status FROM orders";
+$select_query = "SELECT o.order_id, c.first_name, c.last_name, p.product_name, o.quantity, o.status, o.created_at
+                 FROM orders o
+                 JOIN client_registration c ON o.client_id = c.client_id
+                 JOIN products p ON o.product_id = p.product_id";
+
 $result = mysqli_query($con, $select_query);
 
 while ($row = mysqli_fetch_assoc($result)) {
-  $order_id = $row['order_id'];
-  $client_id = $row['client_id'];
-  $product_id = $row['product_id'];
-  $status = $row['status'];
-  $created_at = $row['created_at'];
+    $order_id = $row['order_id'];
+    $first_name = $row['first_name'];
+    $last_name = $row['last_name'];
+    $product_name = $row['product_name'];
+    $quantity = $row['quantity'];
+    $status = $row['status'];
+    $created_at = $row['created_at'];
+    ?>
 
-  ?>
-
-  <tr>
-    <td> <?php echo $client_id; ?> </td>
-    <td> <?php echo $product_id; ?> </td>
-    <td> <?php echo $status; ?> </td>
-    <td> <?php echo $created_at; ?> </td>
-
-
-    <!-- This is an example of clickable data with id on it -->
-    <!-- <td> <a href="views/viewUser.php?id=</?php echo $order_id; ?>"></?php echo $status; ?> </a></td> -->
-
-  </tr>
+    <tr>
+        <td> <?php echo $first_name . ' ' . $last_name; ?> </td>
+        <td> <?php echo $product_name; ?> </td>
+        <td> <?php echo $quantity; ?> </td>
+        <td> <?php echo $status; ?> </td>
+        <td> <?php echo $created_at; ?> </td>
+    </tr>
 
 <?php } ?>

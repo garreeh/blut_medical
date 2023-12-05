@@ -1,6 +1,9 @@
 <?php
 
-session_start(); // Start the session
+// Check if a session is not already started
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 // For testing the session if working
 // if (isset($_SESSION['client_id'])) {

@@ -247,8 +247,9 @@
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                       <tr>
-                        <th>Client ID</th>
                         <th>Client Name</th>
+                        <th>Product Name</th>
+                        <th>Order Quantity</th>
                         <th>Order Status</th>
                         <th>Order Date Created</th>
 

@@ -1,17 +1,19 @@
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top header-inner-pages">
   <?php
-  include "./../../includes/navigation.php";
   include "../../controllers/admin/admin_orders_process.php";
   include "../../controllers/customer/customer_add_to_cart_process.php";
   include "../../connection/connect.php";
+  include "./../../includes/navigation.php";
+
 
   if (!isset($_SESSION['client_id'])) {
     header("Location: /blut_medical/views/customer/customer_login_form.php");
     exit();
   }
   ?>
-</header><!-- End Header -->
+</header>
+<!-- End Header -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +35,6 @@
 
   <!-- Include Toastr CSS and JS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </head>
 
 <!-- Google Fonts -->
@@ -52,67 +53,146 @@
 
 <!-- Template Main CSS File -->
 <link href="./../../assets/css/style.css" rel="stylesheet">
+<link href="./../../assets/css/product_designs.css" rel="stylesheet">
 
 <body>
   <main id="main">
-    <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
-      <div class="container" data-aos="fade-up">
+
+    <div class="blut_medical-section before-footer-section">
+      <div class="container">
+        <div class="row mb-5">
+          <form class="col-md-12" method="post">
+            <div class="site-blocks-table">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="product-select-all">
+                      <input type="checkbox" id="selectAllCheckbox" onclick="toggleSelectAll()">
+                      <label for="selectAllCheckbox"></label>
+                    </th>
+                    <th class="product-thumbnail">Product Photo</th>
+                    <th class="product-name">Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <?php foreach ($_SESSION['cartItems'] as $item) { ?>
+                    <tr>
+                      <td class="product-select-all">
+                        <input type="checkbox" class="product-checkbox" name="selectedProducts[]"
+                          value="<?php echo $item['product_id']; ?>">
+                      </td>
+                      <td class="product-thumbnail">
+                        <img src="<?php echo $item['product_image_path']; ?>" alt="Product Image" class="img-fluid" />
+                      </td>
+                      <td class="product-name">
+                        <h2 class="h5 text-black">
+                          <?php echo $item['product_name']; ?>
+                        </h2>
+                        <p>Description:
+                          <?php echo $item['product_description']; ?>
+                        </p>
+                      </td>
+                      <td>
+                        ₱
+                        <?php echo $item['product_price']; ?>
+                      </td>
+                      <td>
+                        <div class="input-group mb-3 d-flex align-items-center quantity-container"
+                          style="max-width: 120px">
+                          <div class="input-group-prepend">
+                            <button class="btn btn-outline-black decrease" type="button" id="cartDecrease"
+                              onclick="decrementQuantityCart(<?php echo $item['product_id']; ?>, document.getElementById('quantity-<?php echo $item['product_id']; ?>'), document.getElementById('price-<?php echo $item['product_id']; ?>'))">−</button>
+                          </div>
+                          <input type="text" class="form-control text-center quantity-amount"
+                            id="quantity-<?php echo $item['product_id']; ?>" value="<?php echo $item['quantity']; ?>"
+                            placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"
+                            disabled />
+                          <div class="input-group-append">
+                            <button class="btn btn-outline-black increase" type="button" id="cartIncrease"
+                              onclick="incrementQuantityCart(<?php echo $item['product_id']; ?>, document.getElementById('quantity-<?php echo $item['product_id']; ?>'), document.getElementById('price-<?php echo $item['product_id']; ?>'))">+</button>
+                          </div>
+                        </div>
+                      </td>
+                      <td id="price-<?php echo $item['product_id']; ?>">
+                        ₱
+                        <?php echo $item['product_price'] * $item['quantity']; ?>
+                      </td>
+                      <td>
+                        <form class="productsForm" method="post">
+                          <input type="hidden" name="product_id" value="<?php echo $item['product_id']; ?>">
+                          <input type="hidden" name="quantity" value="<?php echo $item['quantity']; ?>">
+
+                          <a href="./../../controllers/customer/customer_delete_cart_process.php?order_id=<?php echo $item['order_id']; ?>"
+                            type="submit" class="btn btn-sm btn-danger shadow-sm">Remove Product</a>
+                        </form>
+                      </td>
+                    </tr>
+                  <?php } ?>
+
+                </tbody>
+              </table>
+            </div>
+          </form>
+        </div>
 
         <div class="row">
-          <?php
-          foreach ($_SESSION['cartItems'] as $item) {
-            ?>
-            <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
-              <div class="box featured">
-                <form class="productsForm" method="post">
-                  <input type="hidden" name="product_id" value="<?php echo $item['product_id']; ?>">
-                  <div>
-                    <h3>
-                      <?php echo $item['product_name']; ?>
-                    </h3>
-                    <div class="pic">
-                      <img src="<?php echo $item['product_image_path']; ?>" class="img-fluid" alt="">
-                    </div>
-                    <ul>
-                      <li>Description:
-                        <?php echo $item['product_description']; ?>
-                      </li>
-                      <li>Price:
-                        <?php echo $item['product_price']; ?>
-                      </li>
-                    </ul>
-                  </div>
-                  <!-- You can add additional features for cart items, such as quantity, remove button, etc. -->
-                </form>
+          <div class="col-md-6">
+            <div class="row mb-5">
+              <div class="col-md-6 mb-3 mb-md-0">
+                <a class="btn btn-dark btn-sm btn-block">
+                  Show Ordered Products
+                </a>
+              </div>
+              <div class="col-md-6">
+                <a href="/blut_medical/views/veterinary/lab_equipment.php" class="btn btn-dark btn-sm btn-block">
+                  Continue Shopping
+                </a>
               </div>
             </div>
-            <?php
-          }
-          ?>
+          </div>
+          <div class="col-md-6 pl-5">
+            <div class="row justify-content-end">
+              <div class="col-md-7">
+                <div class="row">
+                  <div class="col-md-12 text-right border-bottom mb-5">
+                    <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+                  </div>
+                </div>
+                <div class="row mb-3" id="subtotalRow">
+                  <div class="col-md-6">
+                    <span class="text-black">Subtotal:</span>
+                  </div>
+                  <div class="col-md-6 text-right">
+                    <strong class="text-black" id="subtotalAmount">₱0.00</strong>
+                  </div>
+                </div>
+                <div class="row mb-5">
+                  <div class="col-md-6">
+                    <span class="text-black">Total:</span>
+                  </div>
+                  <div class="col-md-6 text-right">
+                    <strong class="text-black" id="totalAmount">₱0.00</strong>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <button class="btn btn-dark btn-lg py-3 btn-block" onclick="window.location='checkout.html'">
+                      Proceed To Checkout
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
       </div>
-
-      <div class="col-lg-12" id="order-summary" data-aos="fade-up" data-aos-delay="100">
-        <h2>Order Summary</h2>
-        <div id="order-items">
-          <!-- Order items will be dynamically added here -->
-        </div>
-        <hr>
-        <div class="order-total">
-          <p><strong>Subtotal:</strong> <span id="subtotal">0.00</span></p>
-          <p><strong>Shipping Fee:</strong> <span id="shipping-fee">0.00</span></p>
-          <p><strong>Total:</strong> <span id="total">0.00</span></p>
-        </div>
-        <button id="proceed-to-checkout" class="btn btn-success btn-user btn-block">Proceed to Checkout</button>
-      </div>
-
-      </div>
-
-
-    </section>
-    <!-- End Pricing Section -->
+    </div>
   </main>
   <!-- End #main -->
 
@@ -131,7 +211,6 @@
   <script src="./../../assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="./../../assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="./../../assets/vendor/php-email-form/validate.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="./../../assets/js/main.js"></script>
@@ -140,35 +219,51 @@
 </html>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const orderItemsContainer = document.getElementById('order-items');
-    const subtotalSpan = document.getElementById('subtotal');
-    const shippingFeeSpan = document.getElementById('shipping-fee');
-    const totalSpan = document.getElementById('total');
-    const proceedToCheckoutBtn = document.getElementById('proceed-to-checkout');
-
-    const selectAllCheckbox = document.createElement('input');
-    selectAllCheckbox.type = 'checkbox';
-    selectAllCheckbox.id = 'select-all';
-    selectAllCheckbox.addEventListener('change', function () {
-      const checkboxes = document.querySelectorAll('.select-item');
-      checkboxes.forEach(checkbox => checkbox.checked = selectAllCheckbox.checked);
-      updateOrderSummary();
-    });
-
-    const selectAllLabel = document.createElement('label');
-    selectAllLabel.htmlFor = 'select-all';
-    selectAllLabel.textContent = 'Select All';
-
-    document.getElementById('order-summary').insertBefore(selectAllLabel, document.getElementById('order-items'));
-    document.getElementById('order-summary').insertBefore(selectAllCheckbox, document.getElementById('order-items'));
-
-    const updateOrderSummary = () => {
-      // Logic to update order summary based on selected items
-    };
-
-    // Implement logic to dynamically add/remove items to/from order summary and update totals
+  $('#selectAllCheckbox').click(function (event) {
+    $('.product-checkbox').prop('checked', this.checked);
   });
+
+  function updateCart(productId, quantityInput, priceCell) {
+    var newQuantity = parseInt(quantityInput.value, 10);
+
+    fetch('./../../controllers/customer/customer_add_to_cart_process.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        productId: productId,
+        newQuantity: newQuantity,
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.newTotal !== undefined) {
+          // Update both quantity and price in the UI
+          quantityInput.value = newQuantity;
+          priceCell.textContent = '₱ ' + data.newTotal;
+        } else {
+          console.error('Update failed:', data.error);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+  function incrementQuantityCart(productId, quantityInput, priceCell) {
+    quantityInput.value = parseInt(quantityInput.value, 10) + 1;
+    updateCart(productId, quantityInput, priceCell);
+  }
+
+  function decrementQuantityCart(productId, quantityInput, priceCell) {
+    var currentQuantity = parseInt(quantityInput.value, 10);
+
+    if (currentQuantity > 1) {
+      quantityInput.value = currentQuantity - 1;
+      updateCart(productId, quantityInput, priceCell);
+    }
+  }
+
 </script>
 
 <style>

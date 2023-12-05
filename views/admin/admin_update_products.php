@@ -39,6 +39,14 @@ while ($row = mysqli_fetch_assoc($result)) {
     <td> <a href="#" data-toggle="modal" data-target="#updateModal_<?php echo $product_id; ?>">
         <?php echo $product_qty; ?>
       </a></td>
+
+    <td>
+      <a href="#" id="operations" class="btn btn-sm btn-info shadow-sm" data-toggle="modal"
+        data-target="#updateModal_<?php echo $product_id; ?>">Edit</a>
+      <a href="./../../controllers/admin/admin_delete_product_process.php?product_id=<?php echo $product_id; ?>"
+        id="operations" class="btn btn-sm btn-danger shadow-sm">Delete</a>
+    </td>
+
   </tr>
 
   <div class="modal fade" id="updateModal_<?php echo $product_id; ?>" tabindex="-1" role="dialog"
@@ -74,7 +82,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
             <div class="form-group">
               <label>Product Price:</label>
-              <input type="number" class="form-control" id="product_price" name="product_price"
+              <input type="number" class="form-control" id="update_product_price" name="product_price"
                 placeholder="Enter Product Price" value="<?php echo $product_price; ?>" required>
             </div>
 
@@ -86,7 +94,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                   <button type="button" class="btn btn-outline-secondary decrement-btn"
                     data-target="update_product_qty">-</button>
                 </div>
-                <input type="number" class="form-control update_product_qty" name="product_qty"
+                <input type="number" class="form-control update_product_qty" id="update_product_qty" name="product_qty"
                   placeholder="Enter Product Quantity" value="<?php echo $product_qty; ?>" required>
                 <div class="input-group-append">
                   <button type="button" class="btn btn-outline-secondary increment-btn"
@@ -141,23 +149,7 @@ while ($row = mysqli_fetch_assoc($result)) {
       });
     });
 
-    // function incrementQuantityUpdate() {
-    //   var quantityInput = document.getElementById('update_product_qty');
-    //   var currentQuantity = parseInt(quantityInput.value) || 0;
-    //   quantityInput.value = currentQuantity + 1;
-
-    //   console.log("Before increment:", currentQuantity);
-    //   console.log("After increment:", quantityInput);
-    // }
-
-    // function decrementQuantityUpdate(button) {
-    //   var quantityInput = button.closest(".input-group").find('.update_product_qty');
-    //   var currentQuantity = parseInt(quantityInput.value) || 0;
-    //   // Ensure the quantity doesn't go below zero
-    //   quantityInput.val(Math.max(0, currentQuantity - 1));
-    // }
-
-    // IT HAS BUG THE CODE BELOW, IT THROWS CONSOLE LOG 4 TIMES
+    // ITS WORKING!
     $(document).ready(function () {
       $(".increment-btn, .decrement-btn").off().on("click", function () {
         updateQuantity($(this));
@@ -184,7 +176,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
   <style>
     #update_product_qty,
-    #product_price {
+    #update_product_price {
       /* For Firefox */
       -moz-appearance: textfield;
 
@@ -198,10 +190,17 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     #update_product_qty::-webkit-inner-spin-button,
     #update_product_qty::-webkit-outer-spin-button,
-    #product_price::-webkit-inner-spin-button,
-    #product_price::-webkit-outer-spin-button {
+    #update_product_price::-webkit-inner-spin-button,
+    #update_product_price::-webkit-outer-spin-button {
       -webkit-appearance: none;
       margin: 0;
+    }
+
+    #operations {
+      width: 60px;
+      display: none;
+      display: inline-block;
+
     }
   </style>
 

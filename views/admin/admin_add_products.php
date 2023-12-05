@@ -16,13 +16,8 @@ include "../../controllers/admin/admin_add_products_process.php";
 
   <title>Blüt Medical | Admin</title>
 
-  <!-- Custom fonts for this template-->
   <link href="./../../assets/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-    rel="stylesheet">
-
-  <!-- Custom styles for this template-->
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   <link href="./../../assets/admin/css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 
@@ -67,7 +62,7 @@ include "../../controllers/admin/admin_add_products_process.php";
 
               <div class="form-group">
                 <label>Product Price:</label>
-                <input type="number" class="form-control" id="product_price" name="product_price"
+                <input type="number" class="form-control" id="add_product_price" name="product_price"
                   placeholder="Enter Product Price" required>
               </div>
 
@@ -276,7 +271,7 @@ include "../../controllers/admin/admin_add_products_process.php";
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Test Data</span>
                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
               </a>
               <!-- Dropdown - User Information -->
@@ -312,7 +307,7 @@ include "../../controllers/admin/admin_add_products_process.php";
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Products</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal"
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" data-toggle="modal"
               data-target="#addItemModal"></i>Add Product</a>
           </div>
 
@@ -384,14 +379,9 @@ include "../../controllers/admin/admin_add_products_process.php";
     </div>
   </div>
 
-  <!-- Bootstrap core JavaScript-->
   <script src="./../../assets/admin/vendor/jquery/jquery.min.js"></script>
   <script src="./../../assets/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
   <script src="./../../assets/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
   <script src="./../../assets/admin/js/sb-admin-2.min.js"></script>
 
 </body>
@@ -423,7 +413,8 @@ include "../../controllers/admin/admin_add_products_process.php";
 </script>
 
 <style>
-  #add_product_qty {
+  #add_product_qty,
+  #add_product_price {
     /* For Firefox */
     -moz-appearance: textfield;
 
@@ -436,7 +427,9 @@ include "../../controllers/admin/admin_add_products_process.php";
   }
 
   #add_product_qty::-webkit-inner-spin-button,
-  #add_product_qty::-webkit-outer-spin-button {
+  #add_product_qty::-webkit-outer-spin-button,
+  #add_product_price::-webkit-inner-spin-button,
+  #add_product_price::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
