@@ -220,11 +220,9 @@
 
 <script>
   $(document).ready(function () {
-    // Function to update total based on selected checkboxes and quantities
     function updateTotal() {
       var totalAmount = 0;
 
-      // Iterate over each selected checkbox
       $('.product-checkbox:checked').each(function () {
         var productId = $(this).val();
         var quantity = parseInt($('#quantity-' + productId).val());
@@ -233,38 +231,30 @@
         console.log('Quantity:', quantity);
 
         var productPrice = parseFloat($('#basePrice-' + productId).text().replace('₱', '').replace(',', ''));
-
         console.log('Product Price:', productPrice);
 
         var productTotal = productPrice * quantity;
-
         console.log('Product Total:', productTotal);
 
-        // Add to the overall total
         totalAmount += productTotal;
+        console.log('Current Total:', productTotal);
       });
 
-      // Update the total amount in the frontend
       $('#totalAmount').text('₱' + totalAmount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
     }
 
-
-    // Handle checkbox change event
     $('.product-checkbox').change(function () {
       updateTotal();
     });
 
-    // Handle quantity change events
     $('.quantity-amount').change(function () {
       updateTotal();
     });
 
-    // Handle increment and decrement buttons
     $('.increase, .decrease').click(function () {
       updateTotal();
     });
 
-    // Handle "Select All" checkbox
     $('#selectAllCheckbox').click(function (event) {
       $('.product-checkbox').prop('checked', this.checked);
       updateTotal();
