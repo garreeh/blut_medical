@@ -16,7 +16,6 @@ if (isset($_POST['order_button'])) {
 
     $response = ['success' => false, 'message' => 'Invalid request.'];
 
-
     if (mysqli_num_rows($check_existing_result) > 0) {
         // Update quantity if the product is already in the cart
         $update_quantity_sql = "UPDATE orders SET quantity = quantity + 1 WHERE client_id='$client_id' AND product_id='$product_id' AND status='$status'";

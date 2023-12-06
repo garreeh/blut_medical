@@ -241,7 +241,7 @@
         if (data.newTotal !== undefined) {
           // Update both quantity and price in the UI
           quantityInput.value = newQuantity;
-          priceCell.textContent = '₱ ' + data.newTotal;
+          priceCell.textContent = '₱ ' + data.newTotal.toLocaleString('en-US', { minimumFractionDigits: 2 });
         } else {
           console.error('Update failed:', data.error);
         }

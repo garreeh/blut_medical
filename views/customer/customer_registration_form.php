@@ -25,13 +25,9 @@ if (isset($_SESSION['client_id'])) {
 
   <title>Customer Register</title>
 
-  <!-- Packages for Toast-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    integrity="sha384-3Ih3/Apz5Pa4MMk8AXzcvvRzMz9Qs0F9Vox6PsrMz9AT+aEKW3DR00MlO2GgHg3h" crossorigin="anonymous">
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
 <!-- Custom fonts for this template-->
 <link href="../../assets/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 <link
@@ -44,21 +40,7 @@ if (isset($_SESSION['client_id'])) {
 </head>
 
 <body class="bg-gradient-primary">
-
-  <!-- Toast container -->
-  <div class="toast" id="passwordMismatchToast" role="alert" aria-live="assertive" aria-atomic="true"
-    data-bs-autohide="false" data-delay="5000">
-    <div class="toast-header">
-      <strong class="me-auto">Error Message</strong>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      Passwords do not match. Please make sure your passwords match.
-    </div>
-  </div>
-
   <div class="container">
-
     <div class="card o-hidden border-0 shadow-lg my-5">
       <div class="card-body p-0">
         <!-- Nested Row within Card Body -->
@@ -151,6 +133,8 @@ if (isset($_SESSION['client_id'])) {
   <!-- Custom scripts for all pages-->
   <script src="../../assets/admin/js/sb-admin-2.min.js"></script>
 
+  <!-- Include Toastify.js from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>
 
 </html>
@@ -166,8 +150,15 @@ if (isset($_SESSION['client_id'])) {
       // Compare the values
       if (password !== confirmPassword) {
         // If passwords don't match, prevent form submission and show a toast
-        var toast = new bootstrap.Toast(document.getElementById('passwordMismatchToast'));
-        toast.show();
+        Toastify({
+          text: "Passwords do not match. Please make sure your passwords match.",
+          duration: 3000,
+          close: true,
+          gravity: "top",
+          position: "right",
+          backgroundColor: "red",
+        }).showToast();
+        console.log("Passwords do not match. Please make sure your passwords match.")
         event.preventDefault();
       }
     });
@@ -188,8 +179,6 @@ if (isset($_SESSION['client_id'])) {
       var icon = document.querySelector('#toggleConfirmPassword i');
       icon.classList.toggle('fa-eye-slash');
     });
-
-    // Add here
   });
 
 </script>
@@ -199,25 +188,5 @@ if (isset($_SESSION['client_id'])) {
   #togglePassword,
   #toggleConfirmPassword {
     cursor: pointer;
-  }
-
-  /* Custom style to make the toast red */
-  #passwordMismatchToast {
-    position: fixed;
-    background-color: #dc3545;
-    color: #fff;
-    z-index: 9999;
-    /* Set a higher z-index value */
-  }
-
-  @media (max-width: 576px) {
-    #passwordMismatchToast {
-      width: 100%;
-      right: 0;
-      margin: 0;
-      transform: none;
-      top: 70px;
-      /* Adjust as needed */
-    }
   }
 </style>

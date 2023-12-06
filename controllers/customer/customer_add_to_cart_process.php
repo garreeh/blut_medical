@@ -6,13 +6,6 @@ if (session_status() == PHP_SESSION_NONE) {
 
 include "../../connection/connect.php";
 
-// Check if client_id is set in the session
-if (!isset($_SESSION['client_id'])) {
-    // Handle the case where client_id is not set in the session
-    echo json_encode(['error' => 'client_id is not set in the session.']);
-    exit;
-}
-
 $client_id = $_SESSION['client_id'];
 
 $sqlCart = "SELECT orders.order_id, orders.*, products.product_name, products.product_description, products.product_price, products.product_image_path

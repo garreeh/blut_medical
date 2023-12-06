@@ -24,6 +24,8 @@ if (isset($_SESSION['client_id'])) {
 
   <title>Customer | Login</title>
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
   <!-- Custom fonts for this template-->
   <link href="../../assets/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link
@@ -78,7 +80,7 @@ if (isset($_SESSION['client_id'])) {
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Customer | Login</h1>
                   </div>
-                  <form class="user" method="post" id="loginForm">
+                  <form class="user" id="loginForm">
                     <div class="form-group">
                       <input type="text" class="form-control form-control-user" placeholder="Enter Email | Username"
                         name="username_or_email" id="username_or_email" value="" required>
@@ -98,12 +100,11 @@ if (isset($_SESSION['client_id'])) {
                       <div class="form-group">
                         <div class="custom-control custom-checkbox small">
                           <input type="checkbox" class="custom-control-input" id="customCheck">
-                          <label class="custom-control-label" for="customCheck">Remember
-                            Me</label>
+                          <label class="custom-control-label" for="customCheck">Remember Me</label>
                         </div>
                       </div>
-                      <button type="submit" class="btn btn-primary btn-user btn-block"
-                        name="login_button">Login</button>
+                      <button type="button" class="btn btn-primary btn-user btn-block"
+                        onclick="submitForm()">Login</button>
                       <hr>
                   </form>
                   <div class="text-center">
@@ -135,7 +136,8 @@ if (isset($_SESSION['client_id'])) {
 
   <!-- Custom scripts for all pages-->
   <script src="../../assets/admin/js/sb-admin-2.min.js"></script>
-  <!-- Jquery Library -->
+  <!-- Include Toastify.js from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 </body>
 
@@ -154,43 +156,58 @@ if (isset($_SESSION['client_id'])) {
   });
 
   // KABOBOHAN SA TOAST
+  function showToast(message) {
+    Toastify({
+      text: message,
+      duration: 3000,
+      close: true,
+      gravity: 'top',
+      position: 'right',
+      backgroundColor: 'red',
+    }).showToast();
+  }
 
-  // $(document).ready(function () {
-  //   // Assuming your form has an ID of 'loginForm'
-  //   $('#loginForm').submit(function (e) {
-  //     e.preventDefault();
+  function submitForm() {
+    // Get form data
+    var usernameOrEmail = document.getElementById('username_or_email').value;
+    var password = document.getElementById('password').value;
 
-  //     // Your logic to submit the form asynchronously using AJAX
-  //     $.ajax({
-  //       type: 'POST',
-  //       url: '/blut_medical/controllers/customer/customer_login_process.php', // Replace with the actual path
-  //       data: $(this).serialize(),
-  //       success: function (response) {
-  //         // Check the response from the server
-  //         if (response === 'success') {
-  //           // If the login is successful, redirect the user or perform other actions
-  //           window.location.href = '/blut_medical/views/customer/customer_login_success.php';
-  //         } else if (response === 'wrongPassword') {
-  //           // Show wrong password toast
-  //           $('#wrongPassword').toast('show');
-  //         } else if (response === 'userNotFound') {
-  //           // Show user not found toast
-  //           $('#userNotFound').toast('show');
-  //         } else {
-  //           // Handle other response cases if needed
-  //           console.log('Unexpected response:', response);
-  //         }
-  //       },
-  //       error: function (xhr, status, error) {
-  //         // Handle AJAX errors if needed
-  //         console.error('AJAX Error:', status, error);
-  //       }
-  //     });
-  //   });
-  // });
+    // Create a new FormData object
+    var formData = new FormData();
+    formData.append('username_or_email', usernameOrEmail);
+    formData.append('password', password);
 
+    // Create and configure an XMLHttpRequest object
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', './../../controllers/customer/customer_login_process.php', true);
 
+    // Set up the onload and onerror event handlers
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        // Successfully received the response, check the content
+        var response = JSON.parse(xhr.responseText);
 
+        if (response.success) {
+          // Redirect to the home page or any other authenticated page
+          window.location.href = "/blut_medical/views/customer/customer_login_success.php";
+        } else {
+          // Incorrect password or user not found, show toast
+          showToast(response.message);
+        }
+      } else {
+        // Error occurred, show toast
+        showToast('Error occurred while processing the request.');
+      }
+    };
+
+    xhr.onerror = function () {
+      // Network error, show toast
+      showToast('Network error occurred.');
+    };
+
+    // Send the FormData object with the POST request
+    xhr.send(formData);
+  }
 </script>
 
 <style>

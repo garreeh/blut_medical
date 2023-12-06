@@ -1,10 +1,8 @@
 <?php
-
 session_start();
-
 include "../../connection/connect.php";
 
-if (isset($_POST['login_button'])) {
+if (isset($_POST['username_or_email'], $_POST['password'])) {
   $usernameOrEmail = $con->real_escape_string($_POST['username_or_email']);
   $password = $_POST['password'];
 
@@ -29,18 +27,23 @@ if (isset($_POST['login_button'])) {
         $_SESSION['first_name'] = $row['first_name'];
         $_SESSION['last_name'] = $row['last_name'];
 
-        // Redirect to the home page or any other authenticated page
-        header("Location: /blut_medical/views/customer/customer_login_success.php");
+        // Return a success message
+        echo json_encode(['success' => true]);
         exit();
       } else {
-        echo "Incorrect password. Please try again.";
+        // Incorrect password, return an error message
+        echo json_encode(['success' => false, 'message' => 'Incorrect password. Please try again.']);
+        exit();
       }
     } else {
-      echo "User not found. Please check your username or email.";
+      // User not found, return an error message
+      echo json_encode(['success' => false, 'message' => 'User not found. Please check your username or email.']);
+      exit();
     }
   } else {
-    echo "Error executing query: " . mysqli_error($con);
+    // Error executing query, return an error message
+    echo json_encode(['success' => false, 'message' => 'Error executing query: ' . mysqli_error($con)]);
+    exit();
   }
 }
-
 ?>
