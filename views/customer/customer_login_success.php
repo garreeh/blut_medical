@@ -1,15 +1,15 @@
-<header id="header" class="fixed-top ">
-  <?php
-  include './../../connection/connect.php';
-  include './../../includes/navigation.php';
+<?php
+include './../../connection/connect.php';
 
-  if (!isset($_SESSION['client_id'])) {
-    header("Location: /blut_medical/index.php");
-    exit();
-  }
-  ?>
-</header>
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 
+if (!isset($_SESSION['client_id'])) {
+  header("Location: /blut_medical/index.php");
+  exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,6 +45,13 @@
 </head>
 
 <body>
+
+  <header id="header" class="fixed-top ">
+    <?php
+    include './../../includes/navigation.php';
+    ?>
+  </header>
+
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
 

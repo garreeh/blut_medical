@@ -1,15 +1,16 @@
-<header id="header" class="fixed-top ">
-    <?php
-    include './connection/connect.php';
-    include './includes/navigation.php';
+<?php
+include './connection/connect.php';
 
-    if (isset($_SESSION['client_id'])) {
-        header("Location: /blut_medical/views/customer/customer_login_success.php");
-        exit();
-    }
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
-    ?>
-</header>
+if (isset($_SESSION['client_id'])) {
+    header("Location: /blut_medical/views/customer/customer_login_success.php");
+    exit();
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,12 +25,14 @@
 
     <!-- Favicons -->
     <link href="assets/img/favicon.ico" rel="icon">
-    <link href="assets/img/favicon.ico" rel="icon">
 
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -39,13 +42,15 @@
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
-
 </head>
 
 <body>
+
+    <header id="header" class="fixed-top ">
+        <?php
+        include './includes/navigation.php';
+        ?>
+    </header>
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">
 
@@ -55,9 +60,10 @@
                     data-aos="fade-up" data-aos-delay="200">
                     <h1>Welcome to BLüT Medical</h1>
                     <h2>We are a provider of innovative premium quality products that will elevate any medical practice
-                    <div class="d-flex justify-content-center justify-content-lg-start">
-                        <a href="/blut_medical/views/veterinary/lab_equipment.php" class="btn-get-started scrollto">SHOP NOW</a>
-                    </div>
+                        <div class="d-flex justify-content-center justify-content-lg-start">
+                            <a href="/blut_medical/views/veterinary/lab_equipment.php"
+                                class="btn-get-started scrollto">SHOP NOW</a>
+                        </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
                     <img src="assets/img/hero-image.png" class="img-fluid animated" alt="">
@@ -74,7 +80,7 @@
         <section id="clients" class="clients section-bg">
             <div class="container">
                 <div class="row" data-aos="zoom-in">
-                    
+
                 </div>
             </div>
         </section>

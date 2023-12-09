@@ -1,17 +1,17 @@
-<!-- ======= Header ======= -->
-<header id="header" class="fixed-top header-inner-pages">
-  <?php
-  include "./../../includes/navigation.php";
-  include './../../controllers/admin/admin_add_products_process.php';
-  include "../../controllers/admin/admin_orders_process.php";
-  include "../../connection/connect.php";
+<?php
+include "../../connection/connect.php";
+include './../../controllers/admin/admin_add_products_process.php';
+include "../../controllers/admin/admin_orders_process.php";
 
-  if (!isset($_SESSION['client_id'])) {
-    header("Location: /blut_medical/views/customer/customer_login_form.php");
-    exit();
-  }
-  ?>
-</header><!-- End Header -->
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
+
+if (!isset($_SESSION['client_id'])) {
+  header("Location: /blut_medical/views/customer/customer_login_form.php");
+  exit();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,17 +52,15 @@
 <link href="./../../assets/css/product_designs.css" rel="stylesheet">
 
 <body>
-  <div class="toast" id="orderToast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false"
-    data-delay="5000">
-    <div class="toast-header">
-      <strong class="me-auto">Success Message</strong>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      Successfuly Added to Cart!
-    </div>
-  </div>
   <main id="main">
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top header-inner-pages">
+      <?php
+      include "./../../includes/navigation.php";
+      ?>
+    </header>
+    <!-- End Header -->
+
     <!-- This is the modal for the specific product -->
     <div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="addItemModalLabel"
       aria-hidden="true">

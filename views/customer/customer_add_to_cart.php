@@ -1,19 +1,17 @@
-<!-- ======= Header ======= -->
-<header id="header" class="fixed-top header-inner-pages">
-  <?php
-  include "../../controllers/admin/admin_orders_process.php";
-  include "../../controllers/customer/customer_add_to_cart_process.php";
-  include "../../connection/connect.php";
-  include "./../../includes/navigation.php";
+<?php
+include "../../connection/connect.php";
+include "../../controllers/admin/admin_orders_process.php";
+include "../../controllers/customer/customer_add_to_cart_process.php";
 
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 
-  if (!isset($_SESSION['client_id'])) {
-    header("Location: /blut_medical/views/customer/customer_login_form.php");
-    exit();
-  }
-  ?>
-</header>
-<!-- End Header -->
+if (!isset($_SESSION['client_id'])) {
+  header("Location: /blut_medical/views/customer/customer_login_form.php");
+  exit();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -57,6 +55,13 @@
 
 <body>
   <main id="main">
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top header-inner-pages">
+      <?php
+      include "./../../includes/navigation.php";
+      ?>
+    </header>
+    <!-- End Header -->
 
     <div class="blut_medical-section before-footer-section">
       <div class="container">
