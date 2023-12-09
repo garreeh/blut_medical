@@ -187,7 +187,7 @@ if (!isset($_SESSION['client_id'])) {
   <!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <?php include "./includes/footer.php" ?>
+  <?php include "./../../includes/footer.php" ?>
   <!-- End Footer -->
 
   <div id="preloader"></div>
