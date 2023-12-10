@@ -7,10 +7,6 @@ if (session_status() == PHP_SESSION_NONE) {
   session_start();
 }
 
-if (!isset($_SESSION['client_id'])) {
-  header("Location: /blut_medical/views/customer/customer_login_form.php");
-  exit();
-}
 ?>
 
 <!DOCTYPE html>
@@ -27,8 +23,9 @@ if (!isset($_SESSION['client_id'])) {
   <!-- Favicons -->
   <link href="./../../assets/img/favicon.ico" rel="icon">
   <link href="./../../assets/img/favicon.ico" rel="icon">
+
+  <!-- Include jQuery and toast -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-  <!-- Include jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 </head>
@@ -64,42 +61,28 @@ if (!isset($_SESSION['client_id'])) {
     <!-- This is the modal for the specific product -->
     <div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="addItemModalLabel"
       aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content text-center"> <!-- Added 'text-center' class for centering content -->
           <div class="modal-header">
-            <h5 class="modal-title" id="addItemModalLabel">Product Solo Display</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            <h5 class="modal-title" id="addItemModalLabel">Product Display</h5>
           </div>
           <div class="modal-body">
             <form method="post">
               <input type="hidden" name="product_id" value="">
               <h3 id="modalProductName"></h3>
               <div class="pic">
-                <img id="modalProductImage" class="img-fluid" alt="">
+                <img id="modalProductImage" class="img-fluid product-thumbnail" alt="">
               </div>
-              <ul>
-                <li><span id="modalProductDescription"></span></li>
-                <li><span id="modalProductPrice"></span></li>
-                <button type="submit" class="btn btn-primary btn-user btn-block" name="order_button">Add To
-                  Cart</button>
-              </ul>
+              <h3 id="modalProductDescription"></h3>
+              <p id="modalProductPrice"></p>
+              <button type="button" class="btn btn-primary btn-block addToCartButton"
+                data-productid="<?php echo $row['product_id']; ?>">
+                Add To Cart
+              </button>
             </form>
           </div>
-
         </div>
       </div>
-    </div>
-
-    <!-- Bootstrap Static Header -->
-    <div class="p-5 text-center bg-image" style="
-      background-image: url('./../../assets/img/jumbotron.png');
-      width: 100%;
-      background-size: cover;
-      margin-top: 58px;
-      min-height: 40vh;
-    ">
     </div>
 
     <!-- ======= Pricing Section ======= -->
@@ -110,7 +93,9 @@ if (!isset($_SESSION['client_id'])) {
           <h2>Buy Laboratory Equipment</h2>
         </div>
         <div class="row">
+
           <?php
+
           while ($row = mysqli_fetch_assoc($result)) {
             ?>
             <div style="margin-bottom: 80px;" class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
@@ -121,7 +106,7 @@ if (!isset($_SESSION['client_id'])) {
                     '<?php echo $row['product_id']; ?>',
                     '<?php echo $row['product_name']; ?>',
                     '<?php echo $row['product_description']; ?>',
-                    '<?php echo $row['product_price']; ?>',
+                    '<?php echo ($row['product_price'] == 0) ? 'Ask for Price, please!' : '₱' . number_format($row['product_price'], 2); ?>',
                     '<?php echo $row['product_image_path']; ?>'
                 )" data-target="#addItemModal">
 
@@ -135,14 +120,18 @@ if (!isset($_SESSION['client_id'])) {
                       </div>
                     </div>
                   </a>
-                  <h3>₱
-                    <?php echo number_format($row['product_price'], 2); ?>
+                  <!-- <h3>₱
+                    </?php echo number_format($row['product_price'], 2); ?>
+                  </h3> -->
+                  <h3>
+                    <?php echo ($row['product_price'] == 0) ? 'Ask for Price, please!' : '₱' . number_format($row['product_price'], 2); ?>
                   </h3>
+
                   <p>
                     <?php echo $row['product_description']; ?>
                   </p>
 
-                  <button type="button" class="btn btn-primary btn-user btn-block addToCartButton"
+                  <button type="button"" class=" btn btn-primary btn-block addToCartButton"
                     data-productid="<?php echo $row['product_id']; ?>">
                     Add To Cart
                   </button>
@@ -184,7 +173,6 @@ if (!isset($_SESSION['client_id'])) {
                     <div class="swiper-pagination"></div>
                   </div>
                 </div>
-
                 <div class="col-lg-6">
                   <div class="portfolio-description">
                     <h2>Hematology Machine</h2>
@@ -243,6 +231,10 @@ if (!isset($_SESSION['client_id'])) {
 
   var selectedItem = {};
 
+  function formatCurrency(amount) {
+    return amount.toLocaleString('en-US');
+  }
+
   function openModal(productID, productName, productDescription, productPrice, productImagePath) {
     selectedItem = {
       'product_id': productID,
@@ -254,8 +246,8 @@ if (!isset($_SESSION['client_id'])) {
 
     // Update modal content
     document.getElementById('modalProductName').innerHTML = selectedItem.product_name;
-    document.getElementById('modalProductDescription').innerHTML = 'Description: ' + selectedItem.product_description;
-    document.getElementById('modalProductPrice').innerHTML = 'Price: ' + selectedItem.product_price;
+    document.getElementById('modalProductDescription').innerHTML = selectedItem.product_description;
+    document.getElementById('modalProductPrice').innerHTML = selectedItem.product_price;
     document.getElementById('modalProductImage').src = selectedItem.product_image_path;
 
     // Set the product_id in the hidden input of the form
@@ -268,65 +260,76 @@ if (!isset($_SESSION['client_id'])) {
   document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".addToCartButton").forEach(function (button) {
       button.addEventListener("click", function () {
-        var form = this.closest('form');
-        var formData = new FormData(form);
+        <?php
+        if (!isset($_SESSION['client_id'])) {
+          ?>
+          window.location.href = '/blut_medical/views/customer/customer_login_form.php';
+          <?php
+        } else {
+          ?>
+          var form = this.closest('form');
+          var formData = new FormData(form);
 
-        formData.append('order_button', 'true');
+          formData.append('order_button', 'true');
 
-        fetch("./../../controllers/admin/admin_orders_process.php", {
-          method: "POST",
-          body: formData,
-        })
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-            // Check if the response body is empty
-            if (!response.headers.get('content-length')) {
-              throw new Error('Empty response');
-            }
-            return response.json();
+          fetch("./../../controllers/admin/admin_orders_process.php", {
+            method: "POST",
+            body: formData,
           })
-          .then(data => {
-            if (data) {
-              if (data.success) {
-                // Show success toast notification
-                Toastify({
-                  text: data.message,
-                  duration: 3000,  // Duration in milliseconds
-                  close: true,
-                  gravity: "top",  // Set to "bottom" for a toast at the bottom
-                  position: "right",  // Set to "left" for a toast on the left
-                  backgroundColor: "green",  // Set your desired background color
-                }).showToast();
-              } else {
-                // Show error toast notification
-                Toastify({
-                  text: "Error: " + data.message,
-                  duration: 3000,
-                  close: true,
-                  gravity: "top",
-                  position: "right",
-                  backgroundColor: "red",
-                }).showToast();
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
               }
-            } else {
-              throw new Error('Empty response or invalid JSON');
-            }
-          })
-          .catch(error => {
-            // Show error toast notification for fetch failure
-            Toastify({
-              text: "Fetch request failed: " + error.message,
-              duration: 3000,
-              close: true,
-              gravity: "top",
-              position: "right",
-              backgroundColor: "red",
-            }).showToast();
-          });
+              // Check if the response body is empty
+              if (!response.headers.get('content-length')) {
+                throw new Error('Empty response');
+              }
+              return response.json();
+            })
+            .then(data => {
+              if (data) {
+                if (data.success) {
+                  // Show success toast notification
+                  Toastify({
+                    text: data.message,
+                    duration: 3000,
+                    close: true,
+                    gravity: "top",
+                    position: "right",
+                    backgroundColor: "green",
+                  }).showToast();
+                } else {
+                  // Show error toast notification
+                  Toastify({
+                    text: "Error: " + data.message,
+                    duration: 3000,
+                    close: true,
+                    gravity: "top",
+                    position: "right",
+                    backgroundColor: "red",
+                  }).showToast();
+                }
+              } else {
+                throw new Error('Empty response or invalid JSON');
+              }
+            })
+            .catch(error => {
+              // Show error toast notification for fetch failure
+              Toastify({
+                text: "Fetch request failed: " + error.message,
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                backgroundColor: "red",
+              }).showToast();
+            });
+          <?php
+        }
+        ?>
       });
     });
   });
+
 
 </script>

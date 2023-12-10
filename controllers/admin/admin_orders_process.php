@@ -7,6 +7,10 @@ include "../../connection/connect.php";
 
 if (isset($_POST['order_button'])) {
     $client_id = $_SESSION['client_id'];
+    if (!isset($_SESSION['client_id'])) {
+        header("Location: /blut_medical/views/customer/customer_login_form.php");
+        exit();
+    }
     $product_id = $_POST['product_id'];
     $status = "on_cart";
 

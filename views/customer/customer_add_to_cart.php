@@ -103,7 +103,8 @@ if (!isset($_SESSION['client_id'])) {
                         </p>
                       </td>
                       <td id="basePrice-<?php echo $item['product_id']; ?>">
-                        <?php echo "₱ " . number_format($item['product_price'], 2); ?>
+                        <?php echo ($item['product_price'] == 0) ? 'Ask for Price, please!' : '₱' . number_format($item['product_price'], 2); ?>
+
                       </td>
                       <td>
                         <div class="input-group mb-3 d-flex align-items-center quantity-container"
@@ -122,9 +123,12 @@ if (!isset($_SESSION['client_id'])) {
                           </div>
                         </div>
                       </td>
+
                       <td id="price-<?php echo $item['product_id']; ?>">
-                        ₱
-                        <?php echo number_format($item['product_price'] * $item['quantity'], 2, '.', ','); ?>
+                        <?php
+                        $total_price = $item['product_price'] * $item['quantity'];
+                        echo ($item['product_price'] == 0) ? 'Ask for Price, please!' : '₱' . number_format($total_price, 2, '.', ',');
+                        ?>
                       </td>
 
                       <td>
