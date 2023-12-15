@@ -1,10 +1,10 @@
 <?php
 
+include "../../connection/connect.php";
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
-include "../../connection/connect.php";
 
 $client_id = $_SESSION['client_id'];
 
@@ -13,23 +13,6 @@ $sqlCart = "SELECT orders.order_id, orders.*, products.product_name, products.pr
             INNER JOIN products ON orders.product_id = products.product_id
             WHERE orders.client_id = '$client_id' AND orders.status = 'on_cart'
             ORDER BY orders.order_id DESC";
-
-$resultCart = mysqli_query($con, $sqlCart);
-
-if (!$resultCart) {
-    // Handle errors
-    echo json_encode(['error' => 'Error fetching cart items: ' . mysqli_error($con)]);
-    exit;
-}
-
-$cartItems = array();
-
-while ($rowCart = mysqli_fetch_assoc($resultCart)) {
-    $cartItems[$rowCart['product_id']] = $rowCart; // Use product_id as the array key
-}
-
-// Assign cart items to the session variable
-$_SESSION['cartItems'] = $cartItems;
 
 // Handle the AJAX request for updating the cart
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -65,5 +48,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         http_response_code(500); // Internal Server Error
         echo json_encode(['error' => 'Failed to update quantity in the database']);
     }
+}
+
+// Fetch and calculate the total based on the cart items
+$resultCart = mysqli_query($con, $sqlCart);
+
+if (!$resultCart) {
+    // Handle errors
+    echo json_encode(['error' => 'Error fetching cart items: ' . mysqli_error($con)]);
+    exit;
+}
+
+$cartItems = array();
+
+while ($rowCart = mysqli_fetch_assoc($resultCart)) {
+    $cartItems[$rowCart['product_id']] = $rowCart; // Use product_id as the array key
+}
+
+// Assign cart items to the session variable
+$_SESSION['cartItems'] = $cartItems;
+
+$total = 0;
+foreach ($cartItems as $item) {
+    $total += $item['product_price'] * $item['quantity'];
+}
+
+// Return the total and cart items only if it's not a POST request
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    echo json_encode(['total' => $total]);
 }
 ?>

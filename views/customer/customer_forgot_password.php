@@ -8,8 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link href="./../../assets/img/favicon.ico" rel="icon">
 
-    <title>Admin - Forgot Password</title>
+    <title>Customer - Forgot Password</title>
 
     <!-- Custom fonts for this template-->
     <link href="../../assets/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

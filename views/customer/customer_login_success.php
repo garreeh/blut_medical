@@ -20,10 +20,9 @@ if (!isset($_SESSION['client_id'])) {
   <title>Blut Medical</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
+  
+  <link href="./../../assets/img/favicon.ico" rel="icon">
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.ico" rel="icon">
-  <link href="assets/img/favicon.ico" rel="icon">
 
   <!-- Google Fonts -->
   <link

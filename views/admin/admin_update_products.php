@@ -88,14 +88,14 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 
             <div class="form-group">
-              <label>Product Quantity:</label>
+              <label>Product Stocks:</label>
               <div class="input-group">
                 <div class="input-group-prepend">
                   <button type="button" class="btn btn-outline-secondary decrement-btn"
                     data-target="update_product_qty">-</button>
                 </div>
                 <input type="number" class="form-control update_product_qty" id="update_product_qty" name="product_qty"
-                  placeholder="Enter Product Quantity" value="<?php echo $product_qty; ?>" required>
+                  placeholder="Enter Product Stocks" value="<?php echo $product_qty; ?>" required>
                 <div class="input-group-append">
                   <button type="button" class="btn btn-outline-secondary increment-btn"
                     data-target="update_product_qty">+</button>

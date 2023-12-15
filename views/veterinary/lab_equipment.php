@@ -22,7 +22,6 @@ if (session_status() == PHP_SESSION_NONE) {
 
   <!-- Favicons -->
   <link href="./../../assets/img/favicon.ico" rel="icon">
-  <link href="./../../assets/img/favicon.ico" rel="icon">
 
   <!-- Include jQuery and toast -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
@@ -95,7 +94,6 @@ if (session_status() == PHP_SESSION_NONE) {
         <div class="row">
 
           <?php
-
           while ($row = mysqli_fetch_assoc($result)) {
             ?>
             <div style="margin-bottom: 80px;" class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
@@ -120,9 +118,7 @@ if (session_status() == PHP_SESSION_NONE) {
                       </div>
                     </div>
                   </a>
-                  <!-- <h3>₱
-                    </?php echo number_format($row['product_price'], 2); ?>
-                  </h3> -->
+
                   <h3>
                     <?php echo ($row['product_price'] == 0) ? 'Ask for Price, please!' : '₱' . number_format($row['product_price'], 2); ?>
                   </h3>
@@ -131,16 +127,29 @@ if (session_status() == PHP_SESSION_NONE) {
                     <?php echo $row['product_description']; ?>
                   </p>
 
-                  <button type="button"" class=" btn btn-primary btn-block addToCartButton"
-                    data-productid="<?php echo $row['product_id']; ?>">
-                    Add To Cart
-                  </button>
+                  <?php if ($row['product_price'] == 0) { ?>
+                    <!-- Redirect to contact page button -->
+
+                    <div class="text-center">
+                    <a href="./../customer/customer_contact_us.php" class="btn btn-primary btn-block" role="button">Contact Us</a>
+                    </div>
+                  <?php } else { ?>
+                    <!-- Add to Cart button -->
+
+                    <div class="text-center">
+                    <button type="button" class="btn btn-primary btn-block addToCartButton" 
+                      data-productid="<?php echo $row['product_id']; ?>">
+                      Add To Cart
+                    </button>
+                    </div>
+                  <?php } ?>
                 </form>
               </div>
             </div>
             <?php
           }
           ?>
+
         </div>
       </div>
     </section>

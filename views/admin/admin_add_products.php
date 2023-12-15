@@ -13,6 +13,8 @@ include "../../controllers/admin/admin_add_products_process.php";
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <link href="./../../assets/img/favicon.ico" rel="icon">
+
 
   <title>Blüt Medical | Admin</title>
 
@@ -67,13 +69,13 @@ include "../../controllers/admin/admin_add_products_process.php";
               </div>
 
               <div class="form-group">
-                <label>Product Quantity:</label>
+                <label>Product Stocks:</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <button type="button" class="btn btn-outline-secondary" onclick="decrementQuantity()">-</button>
                   </div>
                   <input type="number" class="form-control" id="add_product_qty" name="product_qty"
-                    placeholder="Enter Product Quantity" required>
+                    placeholder="Enter Product Stocks" required>
                   <div class="input-group-append">
                     <button type="button" class="btn btn-outline-secondary" onclick="incrementQuantity()">+</button>
                   </div>
@@ -324,7 +326,7 @@ include "../../controllers/admin/admin_add_products_process.php";
                         <th>Product Name</th>
                         <th>Product Description</th>
                         <th>Product Price</th>
-                        <th>Product Quantity</th>
+                        <th>Product Stocks</th>
                         <th>Operators</th>
 
                       </tr>

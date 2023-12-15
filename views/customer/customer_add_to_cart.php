@@ -1,7 +1,6 @@
 <?php
 include "../../connection/connect.php";
 include "../../controllers/admin/admin_orders_process.php";
-include "../../controllers/customer/customer_add_to_cart_process.php";
 
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
@@ -25,7 +24,6 @@ if (!isset($_SESSION['client_id'])) {
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="./../../assets/img/favicon.ico" rel="icon">
   <link href="./../../assets/img/favicon.ico" rel="icon">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <!-- Include jQuery -->
@@ -71,10 +69,6 @@ if (!isset($_SESSION['client_id'])) {
               <table class="table">
                 <thead>
                   <tr>
-                    <th class="product-select-all">
-                      <input type="checkbox" id="selectAllCheckbox" onclick="toggleSelectAll()">
-                      <label for="selectAllCheckbox"></label>
-                    </th>
                     <th class="product-thumbnail">Product Photo</th>
                     <th class="product-name">Product Name</th>
                     <th>Price</th>
@@ -87,10 +81,6 @@ if (!isset($_SESSION['client_id'])) {
 
                   <?php foreach ($_SESSION['cartItems'] as $item) { ?>
                     <tr>
-                      <td class="product-select-all">
-                        <input type="checkbox" class="product-checkbox" name="selectedProducts[]"
-                          value="<?php echo $item['product_id']; ?>">
-                      </td>
                       <td class="product-thumbnail">
                         <img src="<?php echo $item['product_image_path']; ?>" alt="Product Image" class="img-fluid" />
                       </td>
@@ -172,14 +162,14 @@ if (!isset($_SESSION['client_id'])) {
                     <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
                   </div>
                 </div>
-                <div class="row mb-3" id="subtotalRow">
+                <!-- <div class="row mb-3" id="subtotalRow">
                   <div class="col-md-6">
                     <span class="text-black">Subtotal:</span>
                   </div>
                   <div class="col-md-6 text-right">
                     <strong class="text-black" id="subtotalAmount">₱0.00</strong>
                   </div>
-                </div>
+                </div> -->
                 <div class="row mb-5">
                   <div class="col-md-6">
                     <span class="text-black">Total:</span>
@@ -191,7 +181,8 @@ if (!isset($_SESSION['client_id'])) {
 
                 <div class="row">
                   <div class="col-md-12">
-                    <button class="btn btn-dark btn-lg py-3 btn-block" onclick="window.location='checkout.html'">
+                    <button class="btn btn-dark btn-lg py-3 btn-block"
+                      onclick="window.location='customer_checkout.php'">
                       Proceed To Checkout
                     </button>
                   </div>
@@ -228,47 +219,69 @@ if (!isset($_SESSION['client_id'])) {
 </html>
 
 <script>
-  $(document).ready(function () {
-    function updateTotal() {
-      var totalAmount = 0;
+  // $(document).ready(function () {
+  //   function updateTotal() {
+  //     var totalAmount = 0;
 
-      $('.product-checkbox:checked').each(function () {
-        var productId = $(this).val();
-        var quantity = parseInt($('#quantity-' + productId).val());
+  //     $('.product-checkbox:checked').each(function () {
+  //       var productId = $(this).val();
+  //       var quantity = parseInt($('#quantity-' + productId).val());
 
-        console.log('Product ID:', productId);
-        console.log('Quantity:', quantity);
+  //       console.log('Product ID:', productId);
+  //       console.log('Quantity:', quantity);
 
-        var productPrice = parseFloat($('#basePrice-' + productId).text().replace('₱', '').replace(',', ''));
-        console.log('Product Price:', productPrice);
+  //       var productPrice = parseFloat($('#basePrice-' + productId).text().replace('₱', '').replace(',', ''));
+  //       console.log('Product Price:', productPrice);
 
-        var productTotal = productPrice * quantity;
-        console.log('Product Total:', productTotal);
+  //       var productTotal = productPrice * quantity;
+  //       console.log('Product Total:', productTotal);
 
-        totalAmount += productTotal;
-        console.log('Current Total:', productTotal);
+  //       totalAmount += productTotal;
+  //       console.log('Current Total:', productTotal);
+  //     });
+
+  //     $('#totalAmount').text('₱' + totalAmount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
+  //   }
+
+  //   $('.product-checkbox').change(function () {
+  //     updateTotal();
+  //   });
+
+  //   $('.quantity-amount').change(function () {
+  //     updateTotal();
+  //   });
+
+  //   $('.increase, .decrease').click(function () {
+  //     updateTotal();
+  //   });
+
+  //   $('#selectAllCheckbox').click(function (event) {
+  //     $('.product-checkbox').prop('checked', this.checked);
+  //     updateTotal();
+  //   });
+  // });
+
+
+
+  function updateTotal() {
+    fetch('./../../controllers/customer/customer_add_to_cart_process.php')
+      .then(response => response.json())
+      .then(data => {
+        if (data.total !== undefined) {
+          // Update the total in the UI
+          document.getElementById("totalAmount").innerText = '₱' + data.total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        } else {
+          console.error('Failed to fetch total:', data.error);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
       });
+  }
+  updateTotal();
 
-      $('#totalAmount').text('₱' + totalAmount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
-    }
+  // Initial total update
 
-    $('.product-checkbox').change(function () {
-      updateTotal();
-    });
-
-    $('.quantity-amount').change(function () {
-      updateTotal();
-    });
-
-    $('.increase, .decrease').click(function () {
-      updateTotal();
-    });
-
-    $('#selectAllCheckbox').click(function (event) {
-      $('.product-checkbox').prop('checked', this.checked);
-      updateTotal();
-    });
-  });
 
   function updateCart(productId, quantityInput, priceCell) {
     var newQuantity = parseInt(quantityInput.value, 10);
@@ -289,6 +302,8 @@ if (!isset($_SESSION['client_id'])) {
           // Update both quantity and price in the UI
           quantityInput.value = newQuantity;
           priceCell.textContent = '₱ ' + data.newTotal.toLocaleString('en-US', { minimumFractionDigits: 2 });
+
+          updateTotal();
         } else {
           console.error('Update failed:', data.error);
         }
@@ -297,9 +312,15 @@ if (!isset($_SESSION['client_id'])) {
         console.error('Error:', error);
       });
   }
+
+  function updateTotalLive() {
+    updateTotal();
+  }
+
   function incrementQuantityCart(productId, quantityInput, priceCell) {
     quantityInput.value = parseInt(quantityInput.value, 10) + 1;
     updateCart(productId, quantityInput, priceCell);
+    updateTotalLive()
   }
 
   function decrementQuantityCart(productId, quantityInput, priceCell) {
@@ -309,6 +330,7 @@ if (!isset($_SESSION['client_id'])) {
       quantityInput.value = currentQuantity - 1;
       updateCart(productId, quantityInput, priceCell);
     }
+    updateTotalLive();
   }
 
 </script>
