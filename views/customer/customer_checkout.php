@@ -19,7 +19,7 @@ if (!isset($_SESSION['client_id'])) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Blut Medical</title>
+  <title>Blüt | Check-out</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 

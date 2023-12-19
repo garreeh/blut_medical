@@ -19,7 +19,7 @@ if (!isset($_SESSION['client_id'])) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Blut Medical</title>
+  <title>Blüt | Contact Us</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -64,36 +64,44 @@ if (!isset($_SESSION['client_id'])) {
 
     <div class="blut_medical-section">
       <div class="container">
-        <h1>Contact Us</h1>
-        <div>
-          <form class="col-md-12" method="post" action="process_contact_form.php">
-            <div class="site-blocks-table">
-              <!-- Add form fields here -->
-              <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" class="form-control" required>
+        <div class="row align-items-center">
+          <div class="col-8 mx-auto">
+            <div class="card shadow border">
+              <div class="card-header">
+                <h1>Contact Us</h1>
               </div>
+              <div class="card-body d-flex flex-column align-items-center">
+                <form class="col-md-12" method="post" action="process_contact_form.php">
+                  <div class="site-blocks-table">
+                    <!-- Add form fields here -->
+                    <div class="form-group">
+                      <label for="name">Name:</label>
+                      <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
 
-              <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" class="form-control" required>
-              </div>
+                    <div class="form-group">
+                      <label for="email">Email:</label>
+                      <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
 
-              <div class="form-group">
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" class="form-control" rows="7" required></textarea>
+                    <div class="form-group">
+                      <label for="message">Message:</label>
+                      <textarea id="message" name="message" class="form-control" rows="11" required></textarea>
+                    </div>
+                    <!-- End of form fields -->
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-12 text-center">
+                      <button type="submit" class="btn btn-dark btn-lg">
+                        Send
+                      </button>
+                    </div>
+                  </div>
+                </form>
               </div>
-              <!-- End of form fields -->
             </div>
-
-            <div class="row">
-              <div class="col-md-12 text-center">
-                <button type="submit" class="btn btn-dark btn-lg py-3 btn-block">
-                  Send
-                </button>
-              </div>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>

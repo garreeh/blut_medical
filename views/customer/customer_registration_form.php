@@ -24,7 +24,7 @@ if (isset($_SESSION['client_id'])) {
   <meta name="author" content="">
   <link href="./../../assets/img/favicon.ico" rel="icon">
 
-  <title>Customer Register</title>
+  <title>Customer | Register</title>
 
 </head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">

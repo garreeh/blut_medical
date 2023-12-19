@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Blüt Medical | Admin</title>
+  <title>Blüt | Dashboard</title>
 
   <!-- Custom fonts for this template-->
   <link href="./../../assets/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
