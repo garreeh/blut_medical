@@ -1,3 +1,10 @@
+<?php 
+include "../../connection/connect.php";
+include "../../controllers/customer/forgot_password_process.php";
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,14 +31,10 @@
 </head>
 
 <body class="bg-gradient-primary">
-
     <div class="container">
-
         <!-- Outer Row -->
         <div class="row justify-content-center">
-
             <div class="col-xl-10 col-lg-12 col-md-9">
-
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
@@ -44,33 +47,35 @@
                                         <p class="mb-4">We get it, stuff happens. Just enter your email address below
                                             and we'll send you a link to reset your password!</p>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" action="../../controllers/customer/forgot_password_process.php" method="post">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
+                                                placeholder="Enter Email Address..." name="email">
                                         </div>
-                                        <a href="login.html" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" class="btn btn-primary btn-user btn-block"
+                                            name="reset_button">
                                             Reset Password
-                                        </a>
+                                        </button>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="/blut_medical/views/customer/customer_registration_form.php">Create an Account!</a>
+                                        <a class="small"
+                                            href="/blut_medical/views/customer/customer_registration_form.php">Create an
+                                            Account!</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="/blut_medical/views/customer/customer_login_form.php">Already have an account? Login!</a>
+                                        <a class="small"
+                                            href="/blut_medical/views/customer/customer_login_form.php">Already have an
+                                            account? Login!</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
     </div>
 
     <!-- Bootstrap core JavaScript-->
@@ -82,7 +87,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="../../assets/admin/js/sb-admin-2.min.js"></script>
-
 </body>
 
 </html>

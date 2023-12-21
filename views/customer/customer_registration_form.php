@@ -52,22 +52,22 @@ if (isset($_SESSION['client_id'])) {
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
               </div>
-              <form class="user" method="post">
+              <form class="user" method="post" id="registrationForm">
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" placeholder="First Name" name="first_name"
-                      value="" required>
+                    <input id="first_name" type="text" class="form-control form-control-user" placeholder="First Name"
+                      name="first_name" value="" required>
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user" placeholder="Last Name" name="last_name"
-                      value="" required>
+                    <input id="last_name" type="text" class="form-control form-control-user" placeholder="Last Name"
+                      name="last_name" value="" required>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" placeholder="Username" name="username"
-                      value="" required>
+                    <input id="username" type="text" class="form-control form-control-user" placeholder="Username"
+                      name="username" value="" required>
                   </div>
                   <div class="col-sm-6">
                     <input type="text" class="form-control form-control-user" placeholder="Mobile" name="mobile"
@@ -75,18 +75,19 @@ if (isset($_SESSION['client_id'])) {
                   </div>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-user" placeholder="Email" name="email" value=""
-                    required>
+                  <input id="email" type="email" class="form-control form-control-user" placeholder="Email" name="email"
+                    value="" required>
+                  <span id="emailAvailability"></span>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-user" placeholder="Address" name="address"
-                    value="" required>
+                  <input id="address" type="text" class="form-control form-control-user" placeholder="Address"
+                    name="address" value="" required>
                 </div>
 
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <div class="input-group">
-                      <input type="password" class="form-control form-control-user" placeholder="Password"
+                      <input id="password" type="password" class="form-control form-control-user" placeholder="Password"
                         name="password" id="password" required>
                       <div class="input-group-append">
                         <span class="input-group-text" id="togglePassword">
@@ -98,8 +99,8 @@ if (isset($_SESSION['client_id'])) {
 
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <div class="input-group">
-                      <input type="password" class="form-control form-control-user" placeholder="Confirm Password"
-                        name="confirm_password" id="confirmPassword" required>
+                      <input id="confirm_password" type="password" class="form-control form-control-user"
+                        placeholder="Confirm Password" name="confirm_password" id="confirmPassword" required>
                       <div class="input-group-append">
                         <span class="input-group-text" id="toggleConfirmPassword">
                           <i class="fa fa-eye" aria-hidden="true"></i>
@@ -179,6 +180,112 @@ if (isset($_SESSION['client_id'])) {
       confirmPasswordInput.setAttribute('type', type);
       var icon = document.querySelector('#toggleConfirmPassword i');
       icon.classList.toggle('fa-eye-slash');
+    });
+  });
+
+  function showToast(message) {
+    Toastify({
+      text: message,
+      duration: 3000,
+      close: true,
+      gravity: 'top',
+      position: 'right',
+      backgroundColor: 'red',
+    }).showToast();
+  }
+
+  // $(document).ready(function () {
+  //   // Variable to track whether the email exists
+  //   var emailExists = false;
+
+  //   // Click event on the submit button
+  //   $("form#registrationForm").submit(function (e) {
+  //     // Get the email value
+  //     var email = $("#email").val();
+
+  //     // Check the email using AJAX
+  //     $.ajax({
+  //       url: '../../controllers/customer/customer_registration_process.php',
+  //       type: 'POST',
+  //       data: { email: email },
+  //       success: function (response) {
+  //         console.log(response);
+  //         if (response.trim() === "exists") { // Trim to remove whitespace
+  //           // Email exists, show error message
+  //           showToast("Email already exists!");
+  //           emailExists = true;
+  //         } else {
+  //           // Email does not exist, proceed with registration
+  //           showToast("Registration successful!"); // You can customize this message
+  //           emailExists = false;
+
+  //           // Proceed with the form submission
+  //           $("form#registrationForm").unbind('submit').submit();
+  //           window.location.href = "/blut_medical/index.php";
+
+  //         }
+  //       }
+  //     });
+
+  //     // Prevent the default form submission
+  //     e.preventDefault();
+  //   });
+  // });
+
+
+  $(document).ready(function () {
+    // Variable to track whether the email exists
+    var emailExists = false;
+
+    // Click event on the submit button
+    $("form#registrationForm").submit(function (e) {
+      // Get the email value
+      var clientID = $("#client_id").val();
+      var firstName = $("#first_name").val();
+      var lastName = $("#last_name").val();
+      var username = $("#username").val();
+      var address = $("#address").val();
+      var email = $("#email").val();
+      var mobile = $("#mobile").val();
+      var password = $("#password").val();
+      var confirmPassword = $("#confirm_password").val();
+
+      // Check the email using AJAX
+      $.ajax({
+        url: '../../controllers/customer/customer_registration_process.php',
+        type: 'POST',
+        data: {
+          client_id: clientID,
+          first_name: firstName,
+          last_name: lastName,
+          username: username,
+          address: address,
+          email: email,
+          mobile: mobile,
+          password: password,
+          confirm_password: confirmPassword
+        },
+        success: function (response) {
+          console.log(response);
+          if (response.trim() === "exists") { // Trim to remove whitespace
+            // Email exists, show error message
+            showToast("Email already exists!");
+            emailExists = true;
+          } else {
+            // Email does not exist, proceed with registration
+            showToast("Registration successful!"); // You can customize this message
+            emailExists = false;
+
+            // Proceed with the form submission
+            $("form#registrationForm").unbind('submit').submit();
+            window.location.href = "/blut_medical/index.php";
+
+          }
+        }
+      });
+
+      // Prevent the default form submission
+      e.preventDefault();
     });
   });
 
