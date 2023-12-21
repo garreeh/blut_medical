@@ -70,7 +70,7 @@ if (isset($_SESSION['client_id'])) {
                       name="username" value="" required>
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user" placeholder="Mobile" name="mobile"
+                    <input id="mobile" type="text" class="form-control form-control-user" placeholder="Mobile" name="mobile"
                       value="" required>
                   </div>
                 </div>
