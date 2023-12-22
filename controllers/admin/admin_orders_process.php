@@ -12,7 +12,7 @@ if (isset($_POST['order_button'])) {
         exit();
     }
     $product_id = $_POST['product_id'];
-    $status = "on_cart";
+    $status = "Cart";
 
     // Check if the product is already in the cart
     $check_existing_sql = "SELECT * FROM orders WHERE client_id='$client_id' AND product_id='$product_id' AND status='$status'";

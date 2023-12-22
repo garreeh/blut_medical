@@ -92,8 +92,8 @@ if (!isset($_SESSION['client_id'])) {
                   </div>
                   <br>
                   <div class="row">
-                    <div class="col-md-12 text-center">
-                      <button type="submit" class="btn btn-dark btn-lg">
+                    <div class="col-md-12 text-center" >
+                      <button type="submit" class="btn btn-dark btn-lg" style="width: 10rem;">
                         Send
                       </button>
                     </div>

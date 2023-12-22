@@ -45,6 +45,8 @@ if (session_status() == PHP_SESSION_NONE) {
           <?php
           if (isset($_SESSION['client_id'])) {
             ?>
+            <li><a class="nav-link scrollto" href="/blut_medical/views/customer/#">My Orders</a>
+
             <li><a class="nav-link scrollto" href="/blut_medical/views/customer/customer_login_form.php">Settings</a>
             </li>
             <li><a href="/blut_medical/controllers/customer/customer_logout_process.php">Logout</a></li>

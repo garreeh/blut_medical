@@ -11,7 +11,7 @@ $client_id = $_SESSION['client_id'];
 $sqlCart = "SELECT orders.order_id, orders.*, products.product_name, products.product_description, products.product_price, products.product_image_path
             FROM orders
             INNER JOIN products ON orders.product_id = products.product_id
-            WHERE orders.client_id = '$client_id' AND orders.status = 'on_cart'
+            WHERE orders.client_id = '$client_id' AND orders.status = 'Cart'
             ORDER BY orders.order_id DESC";
 
 // Handle the AJAX request for updating the cart
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validate and sanitize input if necessary
 
     // Update the cart in the database
-    $updateQuery = "UPDATE orders SET quantity = $newQuantity WHERE product_id = $productId AND client_id = '$client_id' AND status = 'on_cart'";
+    $updateQuery = "UPDATE orders SET quantity = $newQuantity WHERE product_id = $productId AND client_id = '$client_id' AND status = 'Cart'";
 
     $updateResult = mysqli_query($con, $updateQuery);
 

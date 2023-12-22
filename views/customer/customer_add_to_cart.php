@@ -1,6 +1,6 @@
 <?php
 include "../../connection/connect.php";
-include "../../controllers/admin/admin_orders_process.php";
+include "../../controllers/customer/customer_add_to_cart_process.php";
 
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
@@ -260,8 +260,6 @@ if (!isset($_SESSION['client_id'])) {
   //     updateTotal();
   //   });
   // });
-
-
 
   function updateTotal() {
     fetch('./../../controllers/customer/customer_add_to_cart_process.php')
