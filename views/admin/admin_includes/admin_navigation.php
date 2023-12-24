@@ -51,7 +51,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Manage Products:</h6>
                     <a class="collapse-item" href="/blut_medical/views/admin/admin_add_products.php">Add Products</a>
-                    <a class="collapse-item" href="cards.html">Add Quantity</a>
+                    <!-- <a class="collapse-item" href="cards.html">Add Quantity</a> -->
                 </div>
             </div>
         </li>
@@ -68,8 +68,8 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Orders:</h6>
                     <a class="collapse-item" href="/blut_medical/views/admin/admin_orders_table.php">Orders</a>
+                    <a class="collapse-item" href="/blut_medical/views/admin/admin_transactions.php">Transactions</a>
                     <a class="collapse-item" href="utilities-border.html">Deliveries</a>
-                    <a class="collapse-item" href="utilities-animation.html">Etc 1</a>
                     <a class="collapse-item" href="utilities-other.html">Etc 2</a>
                 </div>
             </div>

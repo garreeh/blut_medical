@@ -1,0 +1,891 @@
+2023-12-24 11:43:14 - IPN Request:
+Array
+(
+    [mc_gross] => 154000.00
+    [settle_amount] => 2769.06
+    [protection_eligibility] => Ineligible
+    [address_status] => confirmed
+    [item_number1] => 
+    [item_number2] => 
+    [payer_id] => ZX3VYU72AS23A
+    [item_number3] => 
+    [address_street] => 1 Main St
+    [payment_date] => 02:43:07 Dec 24, 2023 PST
+    [payment_status] => Pending
+    [charset] => UTF-8
+    [address_zip] => 95131
+    [first_name] => Garry
+    [mc_fee] => 5399.60
+    [address_country_code] => US
+    [exchange_rate] => 0.0186342
+    [address_name] => Garry Gajultos
+    [notify_version] => 3.9
+    [settle_currency] => USD
+    [custom] => 15
+    [payer_status] => verified
+    [business] => sb-to8dm28879899@business.example.com
+    [address_country] => United States
+    [num_cart_items] => 3
+    [address_city] => San Jose
+    [verify_sign] => ACgbUQ4KUcPxYpf1pbKiPAU-6IkvAMUTMu.afiDHMCX.Q8rQpgXdVl3Q
+    [payer_email] => sb-h8enp28879896@personal.example.com
+    [txn_id] => 54T977451W5397839
+    [payment_type] => instant
+    [last_name] => Gajultos
+    [address_state] => CA
+    [item_name1] => Electronic Analyzer
+    [receiver_email] => sb-to8dm28879899@business.example.com
+    [item_name2] => Serum Chem
+    [payment_fee] => 
+    [item_name3] => Dry Serum Chem
+    [shipping_discount] => 0.00
+    [quantity1] => 1
+    [insurance_amount] => 0.00
+    [quantity2] => 2
+    [receiver_id] => HFYGQH8C2YETU
+    [pending_reason] => paymentreview
+    [quantity3] => 2
+    [txn_type] => cart
+    [discount] => 0.00
+    [mc_gross_1] => 60000.00
+    [mc_currency] => PHP
+    [mc_gross_2] => 14000.00
+    [mc_gross_3] => 80000.00
+    [residence_country] => US
+    [test_ipn] => 1
+    [shipping_method] => Default
+    [transaction_subject] => 
+    [payment_gross] => 
+    [ipn_track_id] => f746777f3acd7
+)
+
+
+2023-12-24 11:43:14 - IPN Response: cmd=_notify-validate&mc_gross=154000.00&settle_amount=2769.06&protection_eligibility=Ineligible&address_status=confirmed&item_number1=&item_number2=&payer_id=ZX3VYU72AS23A&item_number3=&address_street=1+Main+St&payment_date=02%3A43%3A07+Dec+24%2C+2023+PST&payment_status=Pending&charset=UTF-8&address_zip=95131&first_name=Garry&mc_fee=5399.60&address_country_code=US&exchange_rate=0.0186342&address_name=Garry+Gajultos&notify_version=3.9&settle_currency=USD&custom=15&payer_status=verified&business=sb-to8dm28879899%40business.example.com&address_country=United+States&num_cart_items=3&address_city=San+Jose&verify_sign=ACgbUQ4KUcPxYpf1pbKiPAU-6IkvAMUTMu.afiDHMCX.Q8rQpgXdVl3Q&payer_email=sb-h8enp28879896%40personal.example.com&txn_id=54T977451W5397839&payment_type=instant&last_name=Gajultos&address_state=CA&item_name1=Electronic+Analyzer&receiver_email=sb-to8dm28879899%40business.example.com&item_name2=Serum+Chem&payment_fee=&item_name3=Dry+Serum+Chem&shipping_discount=0.00&quantity1=1&insurance_amount=0.00&quantity2=2&receiver_id=HFYGQH8C2YETU&pending_reason=paymentreview&quantity3=2&txn_type=cart&discount=0.00&mc_gross_1=60000.00&mc_currency=PHP&mc_gross_2=14000.00&mc_gross_3=80000.00&residence_country=US&test_ipn=1&shipping_method=Default&transaction_subject=&payment_gross=&ipn_track_id=f746777f3acd7
+
+2023-12-24 11:43:15 - Client ID - 15
+
+2023-12-24 11:43:15 - Product ID not set in POST data
+
+2023-12-24 11:47:47 - IPN Request:
+Array
+(
+    [mc_gross] => 154000.00
+    [settle_amount] => 2769.06
+    [protection_eligibility] => Ineligible
+    [address_status] => confirmed
+    [item_number1] => 
+    [item_number2] => 
+    [payer_id] => ZX3VYU72AS23A
+    [item_number3] => 
+    [address_street] => 1 Main St
+    [payment_date] => 02:47:40 Dec 24, 2023 PST
+    [payment_status] => Pending
+    [charset] => UTF-8
+    [address_zip] => 95131
+    [first_name] => Garry
+    [mc_fee] => 5399.60
+    [address_country_code] => US
+    [exchange_rate] => 0.0186342
+    [address_name] => Garry Gajultos
+    [notify_version] => 3.9
+    [settle_currency] => USD
+    [custom] => 15
+    [payer_status] => verified
+    [business] => sb-to8dm28879899@business.example.com
+    [address_country] => United States
+    [num_cart_items] => 3
+    [address_city] => San Jose
+    [verify_sign] => A8ITlkneaeMmJ.WMmKm.6DCpJjooAshj3Qk3ROX2TgW6Fc.lO6x.Fu-F
+    [payer_email] => sb-h8enp28879896@personal.example.com
+    [txn_id] => 25R48970H8092335E
+    [payment_type] => instant
+    [last_name] => Gajultos
+    [address_state] => CA
+    [item_name1] => Electronic Analyzer
+    [receiver_email] => sb-to8dm28879899@business.example.com
+    [item_name2] => Serum Chem
+    [payment_fee] => 
+    [item_name3] => Dry Serum Chem
+    [shipping_discount] => 0.00
+    [quantity1] => 1
+    [insurance_amount] => 0.00
+    [quantity2] => 2
+    [receiver_id] => HFYGQH8C2YETU
+    [pending_reason] => paymentreview
+    [quantity3] => 2
+    [txn_type] => cart
+    [discount] => 0.00
+    [mc_gross_1] => 60000.00
+    [mc_currency] => PHP
+    [mc_gross_2] => 14000.00
+    [mc_gross_3] => 80000.00
+    [residence_country] => US
+    [test_ipn] => 1
+    [shipping_method] => Default
+    [transaction_subject] => 
+    [payment_gross] => 
+    [ipn_track_id] => f684764d871a9
+)
+
+
+2023-12-24 11:47:47 - IPN Response: cmd=_notify-validate&mc_gross=154000.00&settle_amount=2769.06&protection_eligibility=Ineligible&address_status=confirmed&item_number1=&item_number2=&payer_id=ZX3VYU72AS23A&item_number3=&address_street=1+Main+St&payment_date=02%3A47%3A40+Dec+24%2C+2023+PST&payment_status=Pending&charset=UTF-8&address_zip=95131&first_name=Garry&mc_fee=5399.60&address_country_code=US&exchange_rate=0.0186342&address_name=Garry+Gajultos&notify_version=3.9&settle_currency=USD&custom=15&payer_status=verified&business=sb-to8dm28879899%40business.example.com&address_country=United+States&num_cart_items=3&address_city=San+Jose&verify_sign=A8ITlkneaeMmJ.WMmKm.6DCpJjooAshj3Qk3ROX2TgW6Fc.lO6x.Fu-F&payer_email=sb-h8enp28879896%40personal.example.com&txn_id=25R48970H8092335E&payment_type=instant&last_name=Gajultos&address_state=CA&item_name1=Electronic+Analyzer&receiver_email=sb-to8dm28879899%40business.example.com&item_name2=Serum+Chem&payment_fee=&item_name3=Dry+Serum+Chem&shipping_discount=0.00&quantity1=1&insurance_amount=0.00&quantity2=2&receiver_id=HFYGQH8C2YETU&pending_reason=paymentreview&quantity3=2&txn_type=cart&discount=0.00&mc_gross_1=60000.00&mc_currency=PHP&mc_gross_2=14000.00&mc_gross_3=80000.00&residence_country=US&test_ipn=1&shipping_method=Default&transaction_subject=&payment_gross=&ipn_track_id=f684764d871a9
+
+2023-12-24 11:47:48 - Client ID - 15
+
+2023-12-24 11:49:59 - IPN Request:
+Array
+(
+    [mc_gross] => 154000.00
+    [settle_amount] => 2769.06
+    [protection_eligibility] => Ineligible
+    [address_status] => confirmed
+    [item_number1] => 
+    [item_number2] => 
+    [payer_id] => ZX3VYU72AS23A
+    [item_number3] => 
+    [address_street] => 1 Main St
+    [payment_date] => 02:49:53 Dec 24, 2023 PST
+    [payment_status] => Pending
+    [charset] => UTF-8
+    [address_zip] => 95131
+    [first_name] => Garry
+    [mc_fee] => 5399.60
+    [address_country_code] => US
+    [exchange_rate] => 0.0186342
+    [address_name] => Garry Gajultos
+    [notify_version] => 3.9
+    [settle_currency] => USD
+    [custom] => 15
+    [payer_status] => verified
+    [business] => sb-to8dm28879899@business.example.com
+    [address_country] => United States
+    [num_cart_items] => 3
+    [address_city] => San Jose
+    [verify_sign] => ADwX3D7wkVQzqaWbYh0USKdsOs5IAxYbUYXqpgGcdSeZnNhF8G4YhtCs
+    [payer_email] => sb-h8enp28879896@personal.example.com
+    [txn_id] => 01N503436W1240156
+    [payment_type] => instant
+    [last_name] => Gajultos
+    [address_state] => CA
+    [item_name1] => Electronic Analyzer
+    [receiver_email] => sb-to8dm28879899@business.example.com
+    [item_name2] => Serum Chem
+    [payment_fee] => 
+    [item_name3] => Dry Serum Chem
+    [shipping_discount] => 0.00
+    [quantity1] => 1
+    [insurance_amount] => 0.00
+    [quantity2] => 2
+    [receiver_id] => HFYGQH8C2YETU
+    [pending_reason] => paymentreview
+    [quantity3] => 2
+    [txn_type] => cart
+    [discount] => 0.00
+    [mc_gross_1] => 60000.00
+    [mc_currency] => PHP
+    [mc_gross_2] => 14000.00
+    [mc_gross_3] => 80000.00
+    [residence_country] => US
+    [test_ipn] => 1
+    [shipping_method] => Default
+    [transaction_subject] => 
+    [payment_gross] => 
+    [ipn_track_id] => f258837abdee6
+)
+
+
+2023-12-24 11:49:59 - IPN Response: cmd=_notify-validate&mc_gross=154000.00&settle_amount=2769.06&protection_eligibility=Ineligible&address_status=confirmed&item_number1=&item_number2=&payer_id=ZX3VYU72AS23A&item_number3=&address_street=1+Main+St&payment_date=02%3A49%3A53+Dec+24%2C+2023+PST&payment_status=Pending&charset=UTF-8&address_zip=95131&first_name=Garry&mc_fee=5399.60&address_country_code=US&exchange_rate=0.0186342&address_name=Garry+Gajultos&notify_version=3.9&settle_currency=USD&custom=15&payer_status=verified&business=sb-to8dm28879899%40business.example.com&address_country=United+States&num_cart_items=3&address_city=San+Jose&verify_sign=ADwX3D7wkVQzqaWbYh0USKdsOs5IAxYbUYXqpgGcdSeZnNhF8G4YhtCs&payer_email=sb-h8enp28879896%40personal.example.com&txn_id=01N503436W1240156&payment_type=instant&last_name=Gajultos&address_state=CA&item_name1=Electronic+Analyzer&receiver_email=sb-to8dm28879899%40business.example.com&item_name2=Serum+Chem&payment_fee=&item_name3=Dry+Serum+Chem&shipping_discount=0.00&quantity1=1&insurance_amount=0.00&quantity2=2&receiver_id=HFYGQH8C2YETU&pending_reason=paymentreview&quantity3=2&txn_type=cart&discount=0.00&mc_gross_1=60000.00&mc_currency=PHP&mc_gross_2=14000.00&mc_gross_3=80000.00&residence_country=US&test_ipn=1&shipping_method=Default&transaction_subject=&payment_gross=&ipn_track_id=f258837abdee6
+
+2023-12-24 11:49:59 - Client ID - 15
+
+2023-12-24 11:49:59 - Product ID not set in POST data
+
+2023-12-24 11:50:51 - IPN Request:
+Array
+(
+    [mc_gross] => 154000.00
+    [settle_amount] => 2769.06
+    [protection_eligibility] => Ineligible
+    [address_status] => confirmed
+    [item_number1] => 
+    [item_number2] => 
+    [payer_id] => ZX3VYU72AS23A
+    [item_number3] => 
+    [address_street] => 1 Main St
+    [payment_date] => 02:50:42 Dec 24, 2023 PST
+    [payment_status] => Pending
+    [charset] => UTF-8
+    [address_zip] => 95131
+    [first_name] => Garry
+    [mc_fee] => 5399.60
+    [address_country_code] => US
+    [exchange_rate] => 0.0186342
+    [address_name] => Garry Gajultos
+    [notify_version] => 3.9
+    [settle_currency] => USD
+    [custom] => 15
+    [payer_status] => verified
+    [business] => sb-to8dm28879899@business.example.com
+    [address_country] => United States
+    [num_cart_items] => 3
+    [address_city] => San Jose
+    [verify_sign] => Ab-.KlWjdwB0HSrOm7P7zUQUAA0kAKXVasSpnBakxYgJzWa0c56qvHUv
+    [payer_email] => sb-h8enp28879896@personal.example.com
+    [txn_id] => 81186089F41719703
+    [payment_type] => instant
+    [last_name] => Gajultos
+    [address_state] => CA
+    [item_name1] => Electronic Analyzer
+    [receiver_email] => sb-to8dm28879899@business.example.com
+    [item_name2] => Serum Chem
+    [payment_fee] => 
+    [item_name3] => Dry Serum Chem
+    [shipping_discount] => 0.00
+    [quantity1] => 1
+    [insurance_amount] => 0.00
+    [quantity2] => 2
+    [receiver_id] => HFYGQH8C2YETU
+    [pending_reason] => paymentreview
+    [quantity3] => 2
+    [txn_type] => cart
+    [discount] => 0.00
+    [mc_gross_1] => 60000.00
+    [mc_currency] => PHP
+    [mc_gross_2] => 14000.00
+    [mc_gross_3] => 80000.00
+    [residence_country] => US
+    [test_ipn] => 1
+    [shipping_method] => Default
+    [transaction_subject] => 
+    [payment_gross] => 
+    [ipn_track_id] => f82662344ed81
+)
+
+
+2023-12-24 11:50:51 - IPN Response: cmd=_notify-validate&mc_gross=154000.00&settle_amount=2769.06&protection_eligibility=Ineligible&address_status=confirmed&item_number1=&item_number2=&payer_id=ZX3VYU72AS23A&item_number3=&address_street=1+Main+St&payment_date=02%3A50%3A42+Dec+24%2C+2023+PST&payment_status=Pending&charset=UTF-8&address_zip=95131&first_name=Garry&mc_fee=5399.60&address_country_code=US&exchange_rate=0.0186342&address_name=Garry+Gajultos&notify_version=3.9&settle_currency=USD&custom=15&payer_status=verified&business=sb-to8dm28879899%40business.example.com&address_country=United+States&num_cart_items=3&address_city=San+Jose&verify_sign=Ab-.KlWjdwB0HSrOm7P7zUQUAA0kAKXVasSpnBakxYgJzWa0c56qvHUv&payer_email=sb-h8enp28879896%40personal.example.com&txn_id=81186089F41719703&payment_type=instant&last_name=Gajultos&address_state=CA&item_name1=Electronic+Analyzer&receiver_email=sb-to8dm28879899%40business.example.com&item_name2=Serum+Chem&payment_fee=&item_name3=Dry+Serum+Chem&shipping_discount=0.00&quantity1=1&insurance_amount=0.00&quantity2=2&receiver_id=HFYGQH8C2YETU&pending_reason=paymentreview&quantity3=2&txn_type=cart&discount=0.00&mc_gross_1=60000.00&mc_currency=PHP&mc_gross_2=14000.00&mc_gross_3=80000.00&residence_country=US&test_ipn=1&shipping_method=Default&transaction_subject=&payment_gross=&ipn_track_id=f82662344ed81
+
+2023-12-24 11:50:51 - Client ID - 15
+
+2023-12-24 11:50:51 - Client ID - 
+
+2023-12-24 11:51:43 - IPN Request:
+Array
+(
+    [mc_gross] => 154000.00
+    [settle_amount] => 2769.06
+    [protection_eligibility] => Ineligible
+    [address_status] => confirmed
+    [item_number1] => 
+    [item_number2] => 
+    [payer_id] => ZX3VYU72AS23A
+    [item_number3] => 
+    [address_street] => 1 Main St
+    [payment_date] => 02:51:37 Dec 24, 2023 PST
+    [payment_status] => Pending
+    [charset] => UTF-8
+    [address_zip] => 95131
+    [first_name] => Garry
+    [mc_fee] => 5399.60
+    [address_country_code] => US
+    [exchange_rate] => 0.0186342
+    [address_name] => Garry Gajultos
+    [notify_version] => 3.9
+    [settle_currency] => USD
+    [custom] => 15
+    [payer_status] => verified
+    [business] => sb-to8dm28879899@business.example.com
+    [address_country] => United States
+    [num_cart_items] => 3
+    [address_city] => San Jose
+    [verify_sign] => ALFiv1FWqJJt4TzHaCFVB4Iwp9n2Ayg5hbanlIFPcRjuBs8IBixjSzXe
+    [payer_email] => sb-h8enp28879896@personal.example.com
+    [txn_id] => 30U48407PK8670340
+    [payment_type] => instant
+    [last_name] => Gajultos
+    [address_state] => CA
+    [item_name1] => Electronic Analyzer
+    [receiver_email] => sb-to8dm28879899@business.example.com
+    [item_name2] => Serum Chem
+    [payment_fee] => 
+    [item_name3] => Dry Serum Chem
+    [shipping_discount] => 0.00
+    [quantity1] => 1
+    [insurance_amount] => 0.00
+    [quantity2] => 2
+    [receiver_id] => HFYGQH8C2YETU
+    [pending_reason] => paymentreview
+    [quantity3] => 2
+    [txn_type] => cart
+    [discount] => 0.00
+    [mc_gross_1] => 60000.00
+    [mc_currency] => PHP
+    [mc_gross_2] => 14000.00
+    [mc_gross_3] => 80000.00
+    [residence_country] => US
+    [test_ipn] => 1
+    [shipping_method] => Default
+    [transaction_subject] => 
+    [payment_gross] => 
+    [ipn_track_id] => f681501a267b1
+)
+
+
+2023-12-24 11:51:43 - IPN Response: cmd=_notify-validate&mc_gross=154000.00&settle_amount=2769.06&protection_eligibility=Ineligible&address_status=confirmed&item_number1=&item_number2=&payer_id=ZX3VYU72AS23A&item_number3=&address_street=1+Main+St&payment_date=02%3A51%3A37+Dec+24%2C+2023+PST&payment_status=Pending&charset=UTF-8&address_zip=95131&first_name=Garry&mc_fee=5399.60&address_country_code=US&exchange_rate=0.0186342&address_name=Garry+Gajultos&notify_version=3.9&settle_currency=USD&custom=15&payer_status=verified&business=sb-to8dm28879899%40business.example.com&address_country=United+States&num_cart_items=3&address_city=San+Jose&verify_sign=ALFiv1FWqJJt4TzHaCFVB4Iwp9n2Ayg5hbanlIFPcRjuBs8IBixjSzXe&payer_email=sb-h8enp28879896%40personal.example.com&txn_id=30U48407PK8670340&payment_type=instant&last_name=Gajultos&address_state=CA&item_name1=Electronic+Analyzer&receiver_email=sb-to8dm28879899%40business.example.com&item_name2=Serum+Chem&payment_fee=&item_name3=Dry+Serum+Chem&shipping_discount=0.00&quantity1=1&insurance_amount=0.00&quantity2=2&receiver_id=HFYGQH8C2YETU&pending_reason=paymentreview&quantity3=2&txn_type=cart&discount=0.00&mc_gross_1=60000.00&mc_currency=PHP&mc_gross_2=14000.00&mc_gross_3=80000.00&residence_country=US&test_ipn=1&shipping_method=Default&transaction_subject=&payment_gross=&ipn_track_id=f681501a267b1
+
+2023-12-24 11:51:44 - Client ID - 15
+
+2023-12-24 11:51:44 - Product ID - 
+
+2023-12-24 11:53:54 - IPN Request:
+Array
+(
+    [mc_gross] => 154000.00
+    [settle_amount] => 2769.06
+    [protection_eligibility] => Ineligible
+    [address_status] => confirmed
+    [item_number1] => 
+    [item_number2] => 
+    [payer_id] => ZX3VYU72AS23A
+    [item_number3] => 
+    [address_street] => 1 Main St
+    [payment_date] => 02:53:45 Dec 24, 2023 PST
+    [payment_status] => Pending
+    [charset] => UTF-8
+    [address_zip] => 95131
+    [first_name] => Garry
+    [mc_fee] => 5399.60
+    [address_country_code] => US
+    [exchange_rate] => 0.0186342
+    [address_name] => Garry Gajultos
+    [notify_version] => 3.9
+    [settle_currency] => USD
+    [custom] => 15
+    [payer_status] => verified
+    [business] => sb-to8dm28879899@business.example.com
+    [address_country] => United States
+    [num_cart_items] => 3
+    [address_city] => San Jose
+    [verify_sign] => A-8sxAsepLwVCTE9rkoV7Fc5m-kFAIFl3HNMOn3iMebNfWGYGXft4H8o
+    [payer_email] => sb-h8enp28879896@personal.example.com
+    [txn_id] => 171347996E547515X
+    [payment_type] => instant
+    [last_name] => Gajultos
+    [address_state] => CA
+    [item_name1] => Electronic Analyzer
+    [receiver_email] => sb-to8dm28879899@business.example.com
+    [item_name2] => Serum Chem
+    [payment_fee] => 
+    [item_name3] => Dry Serum Chem
+    [shipping_discount] => 0.00
+    [quantity1] => 1
+    [insurance_amount] => 0.00
+    [quantity2] => 2
+    [receiver_id] => HFYGQH8C2YETU
+    [pending_reason] => paymentreview
+    [quantity3] => 2
+    [txn_type] => cart
+    [discount] => 0.00
+    [mc_gross_1] => 60000.00
+    [mc_currency] => PHP
+    [mc_gross_2] => 14000.00
+    [mc_gross_3] => 80000.00
+    [residence_country] => US
+    [test_ipn] => 1
+    [shipping_method] => Default
+    [transaction_subject] => 
+    [payment_gross] => 
+    [ipn_track_id] => f68833213f17a
+)
+
+
+2023-12-24 11:53:54 - IPN Response: cmd=_notify-validate&mc_gross=154000.00&settle_amount=2769.06&protection_eligibility=Ineligible&address_status=confirmed&item_number1=&item_number2=&payer_id=ZX3VYU72AS23A&item_number3=&address_street=1+Main+St&payment_date=02%3A53%3A45+Dec+24%2C+2023+PST&payment_status=Pending&charset=UTF-8&address_zip=95131&first_name=Garry&mc_fee=5399.60&address_country_code=US&exchange_rate=0.0186342&address_name=Garry+Gajultos&notify_version=3.9&settle_currency=USD&custom=15&payer_status=verified&business=sb-to8dm28879899%40business.example.com&address_country=United+States&num_cart_items=3&address_city=San+Jose&verify_sign=A-8sxAsepLwVCTE9rkoV7Fc5m-kFAIFl3HNMOn3iMebNfWGYGXft4H8o&payer_email=sb-h8enp28879896%40personal.example.com&txn_id=171347996E547515X&payment_type=instant&last_name=Gajultos&address_state=CA&item_name1=Electronic+Analyzer&receiver_email=sb-to8dm28879899%40business.example.com&item_name2=Serum+Chem&payment_fee=&item_name3=Dry+Serum+Chem&shipping_discount=0.00&quantity1=1&insurance_amount=0.00&quantity2=2&receiver_id=HFYGQH8C2YETU&pending_reason=paymentreview&quantity3=2&txn_type=cart&discount=0.00&mc_gross_1=60000.00&mc_currency=PHP&mc_gross_2=14000.00&mc_gross_3=80000.00&residence_country=US&test_ipn=1&shipping_method=Default&transaction_subject=&payment_gross=&ipn_track_id=f68833213f17a
+
+2023-12-24 11:53:55 - Client ID - 15
+
+2023-12-24 11:53:55 - Product ID not set in POST data
+
+2023-12-24 11:58:14 - IPN Request:
+Array
+(
+    [mc_gross] => 154000.00
+    [settle_amount] => 2769.06
+    [protection_eligibility] => Ineligible
+    [address_status] => confirmed
+    [item_number1] => 
+    [item_number2] => 
+    [payer_id] => ZX3VYU72AS23A
+    [item_number3] => 
+    [address_street] => 1 Main St
+    [payment_date] => 02:58:03 Dec 24, 2023 PST
+    [payment_status] => Pending
+    [charset] => UTF-8
+    [address_zip] => 95131
+    [first_name] => Garry
+    [mc_fee] => 5399.60
+    [address_country_code] => US
+    [exchange_rate] => 0.0186342
+    [address_name] => Garry Gajultos
+    [notify_version] => 3.9
+    [settle_currency] => USD
+    [custom] => 15
+    [payer_status] => verified
+    [business] => sb-to8dm28879899@business.example.com
+    [address_country] => United States
+    [num_cart_items] => 3
+    [address_city] => San Jose
+    [verify_sign] => AqXNIqzqBR27l0ldrZvY-kyX2bMKASuK8WTDtYocpJU31HxoK55dF9.-
+    [payer_email] => sb-h8enp28879896@personal.example.com
+    [txn_id] => 44107165BC997002E
+    [payment_type] => instant
+    [last_name] => Gajultos
+    [address_state] => CA
+    [item_name1] => Electronic Analyzer
+    [receiver_email] => sb-to8dm28879899@business.example.com
+    [item_name2] => Serum Chem
+    [payment_fee] => 
+    [item_name3] => Dry Serum Chem
+    [shipping_discount] => 0.00
+    [quantity1] => 1
+    [insurance_amount] => 0.00
+    [quantity2] => 2
+    [receiver_id] => HFYGQH8C2YETU
+    [pending_reason] => paymentreview
+    [quantity3] => 2
+    [txn_type] => cart
+    [discount] => 0.00
+    [mc_gross_1] => 60000.00
+    [mc_currency] => PHP
+    [mc_gross_2] => 14000.00
+    [mc_gross_3] => 80000.00
+    [residence_country] => US
+    [test_ipn] => 1
+    [shipping_method] => Default
+    [transaction_subject] => 
+    [payment_gross] => 
+    [ipn_track_id] => f367234e9fbfa
+)
+
+
+2023-12-24 11:58:14 - IPN Response: cmd=_notify-validate&mc_gross=154000.00&settle_amount=2769.06&protection_eligibility=Ineligible&address_status=confirmed&item_number1=&item_number2=&payer_id=ZX3VYU72AS23A&item_number3=&address_street=1+Main+St&payment_date=02%3A58%3A03+Dec+24%2C+2023+PST&payment_status=Pending&charset=UTF-8&address_zip=95131&first_name=Garry&mc_fee=5399.60&address_country_code=US&exchange_rate=0.0186342&address_name=Garry+Gajultos&notify_version=3.9&settle_currency=USD&custom=15&payer_status=verified&business=sb-to8dm28879899%40business.example.com&address_country=United+States&num_cart_items=3&address_city=San+Jose&verify_sign=AqXNIqzqBR27l0ldrZvY-kyX2bMKASuK8WTDtYocpJU31HxoK55dF9.-&payer_email=sb-h8enp28879896%40personal.example.com&txn_id=44107165BC997002E&payment_type=instant&last_name=Gajultos&address_state=CA&item_name1=Electronic+Analyzer&receiver_email=sb-to8dm28879899%40business.example.com&item_name2=Serum+Chem&payment_fee=&item_name3=Dry+Serum+Chem&shipping_discount=0.00&quantity1=1&insurance_amount=0.00&quantity2=2&receiver_id=HFYGQH8C2YETU&pending_reason=paymentreview&quantity3=2&txn_type=cart&discount=0.00&mc_gross_1=60000.00&mc_currency=PHP&mc_gross_2=14000.00&mc_gross_3=80000.00&residence_country=US&test_ipn=1&shipping_method=Default&transaction_subject=&payment_gross=&ipn_track_id=f367234e9fbfa
+
+2023-12-24 11:58:15 - Client ID - 15
+
+2023-12-24 11:58:15 - Product ID not set in POST data
+
+2023-12-24 12:00:01 - IPN Request:
+Array
+(
+    [mc_gross] => 154000.00
+    [settle_amount] => 2769.06
+    [protection_eligibility] => Ineligible
+    [address_status] => confirmed
+    [item_number1] => 
+    [item_number2] => 
+    [payer_id] => ZX3VYU72AS23A
+    [item_number3] => 
+    [address_street] => 1 Main St
+    [payment_date] => 02:59:54 Dec 24, 2023 PST
+    [payment_status] => Pending
+    [charset] => UTF-8
+    [address_zip] => 95131
+    [first_name] => Garry
+    [mc_fee] => 5399.60
+    [address_country_code] => US
+    [exchange_rate] => 0.0186342
+    [address_name] => Garry Gajultos
+    [notify_version] => 3.9
+    [settle_currency] => USD
+    [custom] => 15
+    [payer_status] => verified
+    [business] => sb-to8dm28879899@business.example.com
+    [address_country] => United States
+    [num_cart_items] => 3
+    [address_city] => San Jose
+    [verify_sign] => AL4hk7vyXnGMsDvyT7mXmlFiJwnlAQXPsffKlQ55b7q33CbGzYvLp88w
+    [payer_email] => sb-h8enp28879896@personal.example.com
+    [txn_id] => 861447461B100191V
+    [payment_type] => instant
+    [last_name] => Gajultos
+    [address_state] => CA
+    [item_name1] => Electronic Analyzer
+    [receiver_email] => sb-to8dm28879899@business.example.com
+    [item_name2] => Serum Chem
+    [payment_fee] => 
+    [item_name3] => Dry Serum Chem
+    [shipping_discount] => 0.00
+    [quantity1] => 1
+    [insurance_amount] => 0.00
+    [quantity2] => 2
+    [receiver_id] => HFYGQH8C2YETU
+    [pending_reason] => paymentreview
+    [quantity3] => 2
+    [txn_type] => cart
+    [discount] => 0.00
+    [mc_gross_1] => 60000.00
+    [mc_currency] => PHP
+    [mc_gross_2] => 14000.00
+    [mc_gross_3] => 80000.00
+    [residence_country] => US
+    [test_ipn] => 1
+    [shipping_method] => Default
+    [transaction_subject] => 
+    [payment_gross] => 
+    [ipn_track_id] => f492058fa268e
+)
+
+
+2023-12-24 12:00:01 - IPN Response: cmd=_notify-validate&mc_gross=154000.00&settle_amount=2769.06&protection_eligibility=Ineligible&address_status=confirmed&item_number1=&item_number2=&payer_id=ZX3VYU72AS23A&item_number3=&address_street=1+Main+St&payment_date=02%3A59%3A54+Dec+24%2C+2023+PST&payment_status=Pending&charset=UTF-8&address_zip=95131&first_name=Garry&mc_fee=5399.60&address_country_code=US&exchange_rate=0.0186342&address_name=Garry+Gajultos&notify_version=3.9&settle_currency=USD&custom=15&payer_status=verified&business=sb-to8dm28879899%40business.example.com&address_country=United+States&num_cart_items=3&address_city=San+Jose&verify_sign=AL4hk7vyXnGMsDvyT7mXmlFiJwnlAQXPsffKlQ55b7q33CbGzYvLp88w&payer_email=sb-h8enp28879896%40personal.example.com&txn_id=861447461B100191V&payment_type=instant&last_name=Gajultos&address_state=CA&item_name1=Electronic+Analyzer&receiver_email=sb-to8dm28879899%40business.example.com&item_name2=Serum+Chem&payment_fee=&item_name3=Dry+Serum+Chem&shipping_discount=0.00&quantity1=1&insurance_amount=0.00&quantity2=2&receiver_id=HFYGQH8C2YETU&pending_reason=paymentreview&quantity3=2&txn_type=cart&discount=0.00&mc_gross_1=60000.00&mc_currency=PHP&mc_gross_2=14000.00&mc_gross_3=80000.00&residence_country=US&test_ipn=1&shipping_method=Default&transaction_subject=&payment_gross=&ipn_track_id=f492058fa268e
+
+2023-12-24 12:00:02 - Client ID - 15
+
+2023-12-24 12:00:02 - POST Data: Array
+(
+    [mc_gross] => 154000.00
+    [settle_amount] => 2769.06
+    [protection_eligibility] => Ineligible
+    [address_status] => confirmed
+    [item_number1] => 
+    [item_number2] => 
+    [payer_id] => ZX3VYU72AS23A
+    [item_number3] => 
+    [address_street] => 1 Main St
+    [payment_date] => 02:59:54 Dec 24, 2023 PST
+    [payment_status] => Pending
+    [charset] => UTF-8
+    [address_zip] => 95131
+    [first_name] => Garry
+    [mc_fee] => 5399.60
+    [address_country_code] => US
+    [exchange_rate] => 0.0186342
+    [address_name] => Garry Gajultos
+    [notify_version] => 3.9
+    [settle_currency] => USD
+    [custom] => 15
+    [payer_status] => verified
+    [business] => sb-to8dm28879899@business.example.com
+    [address_country] => United States
+    [num_cart_items] => 3
+    [address_city] => San Jose
+    [verify_sign] => AL4hk7vyXnGMsDvyT7mXmlFiJwnlAQXPsffKlQ55b7q33CbGzYvLp88w
+    [payer_email] => sb-h8enp28879896@personal.example.com
+    [txn_id] => 861447461B100191V
+    [payment_type] => instant
+    [last_name] => Gajultos
+    [address_state] => CA
+    [item_name1] => Electronic Analyzer
+    [receiver_email] => sb-to8dm28879899@business.example.com
+    [item_name2] => Serum Chem
+    [payment_fee] => 
+    [item_name3] => Dry Serum Chem
+    [shipping_discount] => 0.00
+    [quantity1] => 1
+    [insurance_amount] => 0.00
+    [quantity2] => 2
+    [receiver_id] => HFYGQH8C2YETU
+    [pending_reason] => paymentreview
+    [quantity3] => 2
+    [txn_type] => cart
+    [discount] => 0.00
+    [mc_gross_1] => 60000.00
+    [mc_currency] => PHP
+    [mc_gross_2] => 14000.00
+    [mc_gross_3] => 80000.00
+    [residence_country] => US
+    [test_ipn] => 1
+    [shipping_method] => Default
+    [transaction_subject] => 
+    [payment_gross] => 
+    [ipn_track_id] => f492058fa268e
+)
+
+
+2023-12-24 12:00:02 - Product ID not set in POST data
+
+2023-12-24 12:02:55 - IPN Request:
+Array
+(
+    [mc_gross] => 154000.00
+    [settle_amount] => 2769.06
+    [protection_eligibility] => Ineligible
+    [address_status] => confirmed
+    [item_number1] => 
+    [item_number2] => 
+    [payer_id] => ZX3VYU72AS23A
+    [item_number3] => 
+    [address_street] => 1 Main St
+    [payment_date] => 03:02:48 Dec 24, 2023 PST
+    [payment_status] => Pending
+    [charset] => UTF-8
+    [address_zip] => 95131
+    [first_name] => Garry
+    [mc_fee] => 5399.60
+    [address_country_code] => US
+    [exchange_rate] => 0.0186342
+    [address_name] => Garry Gajultos
+    [notify_version] => 3.9
+    [settle_currency] => USD
+    [custom] => 15
+    [payer_status] => verified
+    [business] => sb-to8dm28879899@business.example.com
+    [address_country] => United States
+    [num_cart_items] => 3
+    [address_city] => San Jose
+    [verify_sign] => Ay37p6RlXZMJyxIduwSXIFqiS.5OAErac9E40KX34lf8MSi0Jit3fmeW
+    [payer_email] => sb-h8enp28879896@personal.example.com
+    [txn_id] => 8GC98176G0506824P
+    [payment_type] => instant
+    [last_name] => Gajultos
+    [address_state] => CA
+    [item_name1] => Electronic Analyzer
+    [receiver_email] => sb-to8dm28879899@business.example.com
+    [item_name2] => Serum Chem
+    [payment_fee] => 
+    [item_name3] => Dry Serum Chem
+    [shipping_discount] => 0.00
+    [quantity1] => 1
+    [insurance_amount] => 0.00
+    [quantity2] => 2
+    [receiver_id] => HFYGQH8C2YETU
+    [pending_reason] => paymentreview
+    [quantity3] => 2
+    [txn_type] => cart
+    [discount] => 0.00
+    [mc_gross_1] => 60000.00
+    [mc_currency] => PHP
+    [mc_gross_2] => 14000.00
+    [mc_gross_3] => 80000.00
+    [residence_country] => US
+    [test_ipn] => 1
+    [shipping_method] => Default
+    [transaction_subject] => 
+    [payment_gross] => 
+    [ipn_track_id] => f831518c96c3a
+)
+
+
+2023-12-24 12:02:55 - IPN Response: cmd=_notify-validate&mc_gross=154000.00&settle_amount=2769.06&protection_eligibility=Ineligible&address_status=confirmed&item_number1=&item_number2=&payer_id=ZX3VYU72AS23A&item_number3=&address_street=1+Main+St&payment_date=03%3A02%3A48+Dec+24%2C+2023+PST&payment_status=Pending&charset=UTF-8&address_zip=95131&first_name=Garry&mc_fee=5399.60&address_country_code=US&exchange_rate=0.0186342&address_name=Garry+Gajultos&notify_version=3.9&settle_currency=USD&custom=15&payer_status=verified&business=sb-to8dm28879899%40business.example.com&address_country=United+States&num_cart_items=3&address_city=San+Jose&verify_sign=Ay37p6RlXZMJyxIduwSXIFqiS.5OAErac9E40KX34lf8MSi0Jit3fmeW&payer_email=sb-h8enp28879896%40personal.example.com&txn_id=8GC98176G0506824P&payment_type=instant&last_name=Gajultos&address_state=CA&item_name1=Electronic+Analyzer&receiver_email=sb-to8dm28879899%40business.example.com&item_name2=Serum+Chem&payment_fee=&item_name3=Dry+Serum+Chem&shipping_discount=0.00&quantity1=1&insurance_amount=0.00&quantity2=2&receiver_id=HFYGQH8C2YETU&pending_reason=paymentreview&quantity3=2&txn_type=cart&discount=0.00&mc_gross_1=60000.00&mc_currency=PHP&mc_gross_2=14000.00&mc_gross_3=80000.00&residence_country=US&test_ipn=1&shipping_method=Default&transaction_subject=&payment_gross=&ipn_track_id=f831518c96c3a
+
+2023-12-24 12:02:56 - Client ID - 15
+
+2023-12-24 12:02:56 - Product ID - Array
+
+2023-12-24 12:02:56 - Product ID - Array
+
+2023-12-24 12:02:56 - Product ID - Array
+
+2023-12-24 12:04:34 - IPN Request:
+Array
+(
+    [mc_gross] => 154000.00
+    [settle_amount] => 2769.06
+    [protection_eligibility] => Ineligible
+    [address_status] => confirmed
+    [item_number1] => 
+    [item_number2] => 
+    [payer_id] => ZX3VYU72AS23A
+    [item_number3] => 
+    [address_street] => 1 Main St
+    [payment_date] => 03:04:22 Dec 24, 2023 PST
+    [payment_status] => Pending
+    [charset] => UTF-8
+    [address_zip] => 95131
+    [first_name] => Garry
+    [mc_fee] => 5399.60
+    [address_country_code] => US
+    [exchange_rate] => 0.0186342
+    [address_name] => Garry Gajultos
+    [notify_version] => 3.9
+    [settle_currency] => USD
+    [custom] => 15
+    [payer_status] => verified
+    [business] => sb-to8dm28879899@business.example.com
+    [address_country] => United States
+    [num_cart_items] => 3
+    [address_city] => San Jose
+    [verify_sign] => A7xq0763RsMvs.5cMxrR-5I3C8ixAuJtNXHN1A.RFJEkJmZGS2asScPb
+    [payer_email] => sb-h8enp28879896@personal.example.com
+    [txn_id] => 1KH54131LM9360524
+    [payment_type] => instant
+    [last_name] => Gajultos
+    [address_state] => CA
+    [item_name1] => Electronic Analyzer
+    [receiver_email] => sb-to8dm28879899@business.example.com
+    [item_name2] => Serum Chem
+    [payment_fee] => 
+    [item_name3] => Dry Serum Chem
+    [shipping_discount] => 0.00
+    [quantity1] => 1
+    [insurance_amount] => 0.00
+    [quantity2] => 2
+    [receiver_id] => HFYGQH8C2YETU
+    [pending_reason] => paymentreview
+    [quantity3] => 2
+    [txn_type] => cart
+    [discount] => 0.00
+    [mc_gross_1] => 60000.00
+    [mc_currency] => PHP
+    [mc_gross_2] => 14000.00
+    [mc_gross_3] => 80000.00
+    [residence_country] => US
+    [test_ipn] => 1
+    [shipping_method] => Default
+    [transaction_subject] => 
+    [payment_gross] => 
+    [ipn_track_id] => f141278ecd5ce
+)
+
+
+2023-12-24 12:04:34 - IPN Response: cmd=_notify-validate&mc_gross=154000.00&settle_amount=2769.06&protection_eligibility=Ineligible&address_status=confirmed&item_number1=&item_number2=&payer_id=ZX3VYU72AS23A&item_number3=&address_street=1+Main+St&payment_date=03%3A04%3A22+Dec+24%2C+2023+PST&payment_status=Pending&charset=UTF-8&address_zip=95131&first_name=Garry&mc_fee=5399.60&address_country_code=US&exchange_rate=0.0186342&address_name=Garry+Gajultos&notify_version=3.9&settle_currency=USD&custom=15&payer_status=verified&business=sb-to8dm28879899%40business.example.com&address_country=United+States&num_cart_items=3&address_city=San+Jose&verify_sign=A7xq0763RsMvs.5cMxrR-5I3C8ixAuJtNXHN1A.RFJEkJmZGS2asScPb&payer_email=sb-h8enp28879896%40personal.example.com&txn_id=1KH54131LM9360524&payment_type=instant&last_name=Gajultos&address_state=CA&item_name1=Electronic+Analyzer&receiver_email=sb-to8dm28879899%40business.example.com&item_name2=Serum+Chem&payment_fee=&item_name3=Dry+Serum+Chem&shipping_discount=0.00&quantity1=1&insurance_amount=0.00&quantity2=2&receiver_id=HFYGQH8C2YETU&pending_reason=paymentreview&quantity3=2&txn_type=cart&discount=0.00&mc_gross_1=60000.00&mc_currency=PHP&mc_gross_2=14000.00&mc_gross_3=80000.00&residence_country=US&test_ipn=1&shipping_method=Default&transaction_subject=&payment_gross=&ipn_track_id=f141278ecd5ce
+
+2023-12-24 12:04:35 - Client ID - 15
+
+2023-12-24 12:04:35 - Product ID - item_number1
+
+2023-12-24 12:04:35 - Product ID - item_number2
+
+2023-12-24 12:04:35 - Product ID - item_number3
+
+2023-12-24 12:06:08 - IPN Request:
+Array
+(
+    [mc_gross] => 154000.00
+    [settle_amount] => 2769.06
+    [protection_eligibility] => Ineligible
+    [address_status] => confirmed
+    [item_number1] => 
+    [item_number2] => 
+    [payer_id] => ZX3VYU72AS23A
+    [item_number3] => 
+    [address_street] => 1 Main St
+    [payment_date] => 03:06:00 Dec 24, 2023 PST
+    [payment_status] => Pending
+    [charset] => UTF-8
+    [address_zip] => 95131
+    [first_name] => Garry
+    [mc_fee] => 5399.60
+    [address_country_code] => US
+    [exchange_rate] => 0.0186342
+    [address_name] => Garry Gajultos
+    [notify_version] => 3.9
+    [settle_currency] => USD
+    [custom] => 15
+    [payer_status] => verified
+    [business] => sb-to8dm28879899@business.example.com
+    [address_country] => United States
+    [num_cart_items] => 3
+    [address_city] => San Jose
+    [verify_sign] => A5n3Fg0SgQIMFf0B5FtWcj2bD8NTAy0s879dTgT.j-xDXXy0zADSIkeQ
+    [payer_email] => sb-h8enp28879896@personal.example.com
+    [txn_id] => 5RT3606164407594G
+    [payment_type] => instant
+    [last_name] => Gajultos
+    [address_state] => CA
+    [item_name1] => Electronic Analyzer
+    [receiver_email] => sb-to8dm28879899@business.example.com
+    [item_name2] => Serum Chem
+    [payment_fee] => 
+    [item_name3] => Dry Serum Chem
+    [shipping_discount] => 0.00
+    [quantity1] => 1
+    [insurance_amount] => 0.00
+    [quantity2] => 2
+    [receiver_id] => HFYGQH8C2YETU
+    [pending_reason] => paymentreview
+    [quantity3] => 2
+    [txn_type] => cart
+    [discount] => 0.00
+    [mc_gross_1] => 60000.00
+    [mc_currency] => PHP
+    [mc_gross_2] => 14000.00
+    [mc_gross_3] => 80000.00
+    [residence_country] => US
+    [test_ipn] => 1
+    [shipping_method] => Default
+    [transaction_subject] => 
+    [payment_gross] => 
+    [ipn_track_id] => f6080981af5a1
+)
+
+
+2023-12-24 12:06:08 - IPN Response: cmd=_notify-validate&mc_gross=154000.00&settle_amount=2769.06&protection_eligibility=Ineligible&address_status=confirmed&item_number1=&item_number2=&payer_id=ZX3VYU72AS23A&item_number3=&address_street=1+Main+St&payment_date=03%3A06%3A00+Dec+24%2C+2023+PST&payment_status=Pending&charset=UTF-8&address_zip=95131&first_name=Garry&mc_fee=5399.60&address_country_code=US&exchange_rate=0.0186342&address_name=Garry+Gajultos&notify_version=3.9&settle_currency=USD&custom=15&payer_status=verified&business=sb-to8dm28879899%40business.example.com&address_country=United+States&num_cart_items=3&address_city=San+Jose&verify_sign=A5n3Fg0SgQIMFf0B5FtWcj2bD8NTAy0s879dTgT.j-xDXXy0zADSIkeQ&payer_email=sb-h8enp28879896%40personal.example.com&txn_id=5RT3606164407594G&payment_type=instant&last_name=Gajultos&address_state=CA&item_name1=Electronic+Analyzer&receiver_email=sb-to8dm28879899%40business.example.com&item_name2=Serum+Chem&payment_fee=&item_name3=Dry+Serum+Chem&shipping_discount=0.00&quantity1=1&insurance_amount=0.00&quantity2=2&receiver_id=HFYGQH8C2YETU&pending_reason=paymentreview&quantity3=2&txn_type=cart&discount=0.00&mc_gross_1=60000.00&mc_currency=PHP&mc_gross_2=14000.00&mc_gross_3=80000.00&residence_country=US&test_ipn=1&shipping_method=Default&transaction_subject=&payment_gross=&ipn_track_id=f6080981af5a1
+
+2023-12-24 12:06:09 - Client ID - 15
+
+2023-12-24 12:06:09 - Product ID - item_number1
+
+2023-12-24 12:06:09 - Product ID - item_number2
+
+2023-12-24 12:06:09 - Product ID - item_number3
+
+2023-12-24 12:09:44 - IPN Request:
+Array
+(
+    [mc_gross] => 154000.00
+    [settle_amount] => 2769.06
+    [protection_eligibility] => Ineligible
+    [address_status] => confirmed
+    [item_number1] => 
+    [item_number2] => 
+    [payer_id] => ZX3VYU72AS23A
+    [item_number3] => 
+    [address_street] => 1 Main St
+    [payment_date] => 03:09:32 Dec 24, 2023 PST
+    [payment_status] => Pending
+    [charset] => UTF-8
+    [address_zip] => 95131
+    [first_name] => Garry
+    [mc_fee] => 5399.60
+    [address_country_code] => US
+    [exchange_rate] => 0.0186342
+    [address_name] => Garry Gajultos
+    [notify_version] => 3.9
+    [settle_currency] => USD
+    [custom] => 15
+    [payer_status] => verified
+    [business] => sb-to8dm28879899@business.example.com
+    [address_country] => United States
+    [num_cart_items] => 3
+    [address_city] => San Jose
+    [verify_sign] => APjYRGTft-Zave2L6GS9hkPGljs3ARfdxA8.VdV2ouuUD3m-EIBuuwzM
+    [payer_email] => sb-h8enp28879896@personal.example.com
+    [txn_id] => 5DX627094D881381Y
+    [payment_type] => instant
+    [last_name] => Gajultos
+    [address_state] => CA
+    [item_name1] => Electronic Analyzer
+    [receiver_email] => sb-to8dm28879899@business.example.com
+    [item_name2] => Serum Chem
+    [payment_fee] => 
+    [item_name3] => Dry Serum Chem
+    [shipping_discount] => 0.00
+    [quantity1] => 1
+    [insurance_amount] => 0.00
+    [quantity2] => 2
+    [receiver_id] => HFYGQH8C2YETU
+    [pending_reason] => paymentreview
+    [quantity3] => 2
+    [txn_type] => cart
+    [discount] => 0.00
+    [mc_gross_1] => 60000.00
+    [mc_currency] => PHP
+    [mc_gross_2] => 14000.00
+    [mc_gross_3] => 80000.00
+    [residence_country] => US
+    [test_ipn] => 1
+    [shipping_method] => Default
+    [transaction_subject] => 
+    [payment_gross] => 
+    [ipn_track_id] => f847621bf3f3a
+)
+
+
+2023-12-24 12:09:44 - IPN Response: cmd=_notify-validate&mc_gross=154000.00&settle_amount=2769.06&protection_eligibility=Ineligible&address_status=confirmed&item_number1=&item_number2=&payer_id=ZX3VYU72AS23A&item_number3=&address_street=1+Main+St&payment_date=03%3A09%3A32+Dec+24%2C+2023+PST&payment_status=Pending&charset=UTF-8&address_zip=95131&first_name=Garry&mc_fee=5399.60&address_country_code=US&exchange_rate=0.0186342&address_name=Garry+Gajultos&notify_version=3.9&settle_currency=USD&custom=15&payer_status=verified&business=sb-to8dm28879899%40business.example.com&address_country=United+States&num_cart_items=3&address_city=San+Jose&verify_sign=APjYRGTft-Zave2L6GS9hkPGljs3ARfdxA8.VdV2ouuUD3m-EIBuuwzM&payer_email=sb-h8enp28879896%40personal.example.com&txn_id=5DX627094D881381Y&payment_type=instant&last_name=Gajultos&address_state=CA&item_name1=Electronic+Analyzer&receiver_email=sb-to8dm28879899%40business.example.com&item_name2=Serum+Chem&payment_fee=&item_name3=Dry+Serum+Chem&shipping_discount=0.00&quantity1=1&insurance_amount=0.00&quantity2=2&receiver_id=HFYGQH8C2YETU&pending_reason=paymentreview&quantity3=2&txn_type=cart&discount=0.00&mc_gross_1=60000.00&mc_currency=PHP&mc_gross_2=14000.00&mc_gross_3=80000.00&residence_country=US&test_ipn=1&shipping_method=Default&transaction_subject=&payment_gross=&ipn_track_id=f847621bf3f3a
+
+2023-12-24 12:09:45 - Client ID - 15
+
+2023-12-24 12:09:45 - Product ID - item_number1
+
+2023-12-24 12:09:45 - Product ID - item_number2
+
+2023-12-24 12:09:45 - Product ID - item_number3
+

@@ -1,7 +1,6 @@
 <?php
 include "../../connection/connect.php";
 include "../../controllers/admin/admin_orders_process.php";
-include "../../controllers/customer/customer_add_to_cart_process.php";
 
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
@@ -79,6 +78,7 @@ if (!isset($_SESSION['client_id'])) {
                 </thead>
                 <tbody>
                   <?php
+                  $totalAmount = 0; // Initialize total amount variable
                   foreach ($_SESSION['cartItems'] as $item) { ?>
                     <tr>
                       <td class="product-name">
@@ -104,10 +104,13 @@ if (!isset($_SESSION['client_id'])) {
                   <?php } ?>
                   <!-- Add a row for the total -->
                   <tr>
+                  <tr>
                     <td></td>
                     <td><strong>Total</strong></td>
                     <td>
-                      <strong class="text-black" id="totalAmount">₱0.00</strong>
+                      <strong class="text-black" id="totalAmount">₱
+                        <?php echo number_format($totalAmount, 2); ?>
+                      </strong>
                     </td>
                   </tr>
                 </tbody>
@@ -130,35 +133,47 @@ if (!isset($_SESSION['client_id'])) {
           <!-- SANDBOX -->
           <form name="_xclick" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 
-            <img src="https://www.paypalobjects.com/webstatic/mktg/logo/PP_AcceptanceMarkTray-NoDiscover_243x40.png"
-              alt="Buy now with PayPal" />
+            <!-- PayPal form details -->
+            <input type="hidden" name="cmd" value="_cart">
+            <input type="hidden" name="upload" value="1">
+            <input type="hidden" name="business" value="sb-to8dm28879899@business.example.com">
+            <input type="hidden" name="currency_code" value="PHP">
 
-            <br />
-            <div class="form-group">
-              <input type="hidden" name="cmd" value="_xclick" />
+            <?php
+            $itemCount = 0; // Counter for items
+            
+            foreach ($_SESSION['cartItems'] as $item) {
+              $itemCount++;
+              ?>
+              <!-- Product details for PayPal -->
+              <input type="hidden" name="item_name_<?php echo $itemCount; ?>"
+                value="<?php echo $item['product_name']; ?>">
+              <input type="hidden" name="quantity_<?php echo $itemCount; ?>" value="<?php echo $item['quantity']; ?>">
+              <input type="hidden" name="amount_<?php echo $itemCount; ?>" value="<?php echo $item['product_price']; ?>">
 
-              <!-- LIVE -->
-              <input type="hidden" name="business" value="gajultos.garry123@gmail.com" />
+              <!-- Display product ID for each item -->
+              <input type="text" name="product_id[]" value="<?php echo $item['product_id']; ?>">
+            <?php } ?>
 
-              <!-- FOR SANDBOX -->
-              <input type="hidden" name="business" value="sb-to8dm28879899@business.example.com" />
-              <input type="hidden" name="currency_code" value="PHP" />
-              <input type="hidden" name="item_name" value="Billing" />
+            <!-- Additional PayPal form fields -->
+            <input type="hidden" name="notify_url"
+              value="https://ba7b-120-29-87-209.ngrok-free.app/blut_medical/controllers/paypal_ipn.php">
+            <input type="hidden" name="return"
+              value="https://ba7b-120-29-87-209.ngrok-free.app/blut_medical/controllers/paypal_ipn.php">
+            <input type="hidden" name="cancel_return" value="http://localhost/blut_medical/cancel.php">
 
-              <label> Your total amount is:
-                <?php $totalCheckout ?>
-              </label>
-              <br />
-              <!---the amount to pay is hidden-->
-              <input type="hidden" name="amount" id="amount" value="1" />
-              <input type="hidden" name="return"
-                value="http://localhost/blut_medical/views/customer/customer_checkout_success.php">
+            <input type="hidden" name="custom" value="<?php echo $_SESSION['client_id']; ?>">
 
-              <input type="image" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png"
-                border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" />
-            </div>
+            <input type="text" name="status" value="<?php echo $item['status']; ?>">
 
+            <!-- Total amount for PayPal -->
+            <input type="hidden" name="amount" value="<?php echo $totalAmount; ?>">
+
+            <input type="image" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png"
+              border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" />
           </form>
+
+
         </div>
       </div>
   </main>
