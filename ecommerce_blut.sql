@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2023 at 02:18 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Dec 27, 2023 at 03:35 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -64,12 +64,8 @@ CREATE TABLE `client_registration` (
 --
 
 INSERT INTO `client_registration` (`client_id`, `first_name`, `last_name`, `username`, `address`, `email`, `mobile`, `password`, `confirm_password`, `date_created`) VALUES
-(8, 'Garry', 'Gajultos', 'garreeh', '1 Blk 3 Lot 21', 'gajultos.garry123@gmail.com', 2147483647, '$2y$10$6d9J8VNfQBEd/wLk.V2/R.17tuIfTuWIWmEDoeIdbgknZMTmhEarC', '1234', '2023-11-22 03:49:29'),
-(9, 'Test', 'Sample', 'test', 'Sample address', 'test@sample.com', 2147483647, '$2y$10$TQ6v/JASaeaKWNF.qWl7cuwbsbR2eIUetghwmpkHgHC/MkZtvlGGC', 'test123', '2023-11-22 09:07:12'),
-(10, 'Test', 'Sample', 'test', 'test address', 'test@gmail.com', 2147483647, '$2y$10$AhZyFCChYHwf8xUtxYVFr.IwLI0lgMADPJssBJ6RrHGZkdPoZeqpe', 'test123', '2023-11-24 08:46:26'),
-(11, 'Garryyyy', 'Gajultos', 'gaaars', '1 Blk 3 Lot 21', 'gajultos.garry123@gmail.com', 2147483647, '$2y$10$.Nwgf4.nGSujbX.R945AI.xf70ARPcMxGpBRVHHBz7iuR9RQRgFgu', '123', '2023-12-05 09:00:33'),
-(12, 'Garry', 'Gajultos', 'admin', '1 Blk 3 Lot 21', 'gajultos.garry123@gmail.com', 2147483647, '$2y$10$8/gs.UXx3BeEsRglpyzvIubCYU5uN13qoUs6fSphDcwntnQd3spl.', '123', '2023-12-01 19:34:42'),
-(13, 'dec2', 'dec2', 'december', '1 Blk 3 Lot 21', 'gajultos.garry123@gmail.com', 2147483647, '$2y$10$iM3m896nE86VOOIgY6gO0.PmglqAgNCBVrMPfuzLw6MUgud/MskyG', '123', '2023-12-01 19:43:41');
+(14, 'Garry', 'Gajultos', 'garreeh', '1 Blk 3 Lot 21', 'gajultos.garry123@gmail.com', 2147483647, '$2y$10$qwxBuBwrPzmyaoEyyfEljusgA3AiX0aWSYSOa5zD58eKDoqTuW0E6', 'ZNQXnhO7D6', '2023-12-22 04:26:14'),
+(15, 'Garry', 'Gajultos', 'admin', '1 Blk 3 Lot 21', 'pogiako21301@yahoo.com', 2147483647, '$2y$10$FYwAPzIvTvWAhwK39JbTzOZ1ZE/RFxjBYw3ROUxSPUszCkhIlSAr.', '1', '2023-12-22 02:33:18');
 
 -- --------------------------------------------------------
 
@@ -82,7 +78,7 @@ CREATE TABLE `orders` (
   `client_id` int(11) DEFAULT NULL,
   `product_id` int(11) DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
-  `status` enum('on_cart','on_checkout','on_deliver') NOT NULL,
+  `status` enum('Cart','To Ship','To Deliver','Completed','Cancelled','Return') NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -91,8 +87,10 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `client_id`, `product_id`, `quantity`, `status`, `created_at`) VALUES
-(56, 8, 44, 7, 'on_cart', '2023-12-05 13:16:55'),
-(57, 8, 47, 1, 'on_cart', '2023-12-05 12:38:59');
+(88, 14, 45, 1, 'Cart', '2023-12-24 05:04:38'),
+(95, 15, 46, 2, 'Cart', '2023-12-24 11:09:55'),
+(96, 15, 47, 2, 'Cart', '2023-12-24 11:09:56'),
+(98, 15, 45, 1, 'Cart', '2023-12-24 11:09:59');
 
 -- --------------------------------------------------------
 
@@ -115,10 +113,24 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_code`, `product_name`, `product_description`, `product_price`, `product_qty`, `product_image_path`) VALUES
-(44, '1', 'Hematology', 'Great Product', 50000.00, 98, './../../assets/img/products/d95c4hematology.png'),
-(45, '2', 'Electronic Analyzer', 'Great Product Second', 60000.00, 11, './../../assets/img/products/f7668electronicanalyzer.png'),
-(46, '3', 'Dry Serum Chem', 'Great', 40000.00, 5, './../../assets/img/products/d5672dryserumchem.png'),
-(47, '4', 'Serum Chem', 'Just a Sample Product', 7000.00, 5, './../../assets/img/products/4c1d8serumchem.png');
+(44, '1', 'Hematology', 'Great Product', '0.00', 98, './../../assets/img/products/d95c4hematology.png'),
+(45, '2', 'Electronic Analyzer', 'Great Product Second', '60000.00', 11, './../../assets/img/products/f7668electronicanalyzer.png'),
+(46, '3', 'Dry Serum Chem', 'Great', '40000.00', 5, './../../assets/img/products/d5672dryserumchem.png'),
+(47, '4', 'Serum Chem', 'Just a Sample Product', '7000.00', 5, './../../assets/img/products/4c1d8serumchem.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transactions`
+--
+
+CREATE TABLE `transactions` (
+  `transaction_id` int(11) NOT NULL,
+  `client_id` int(11) DEFAULT NULL,
+  `payment_total` decimal(10,2) NOT NULL,
+  `payment_status` enum('COD','Gcash','Paypal') NOT NULL,
+  `date_created` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -145,6 +157,13 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`product_id`);
 
 --
+-- Indexes for table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD PRIMARY KEY (`transaction_id`),
+  ADD KEY `client_id` (`client_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -152,19 +171,25 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `client_registration`
 --
 ALTER TABLE `client_registration`
-  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+--
+-- AUTO_INCREMENT for table `transactions`
+--
+ALTER TABLE `transactions`
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -177,6 +202,12 @@ ALTER TABLE `orders`
   ADD CONSTRAINT `fk_product_quantity` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `client_registration` (`client_id`),
   ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
+
+--
+-- Constraints for table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `client_registration` (`client_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
