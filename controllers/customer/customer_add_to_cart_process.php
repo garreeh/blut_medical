@@ -75,6 +75,14 @@ foreach ($cartItems as $item) {
 
 // Return the total and cart items only if it's not a POST request
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    echo json_encode(['total' => $total]);
+    $response = ['total' => $total];
+    $jsonResponse = json_encode($response);
+
+    // Optionally, store $jsonResponse for later use, but don't echo it here.
+    // $storedJsonResponse = $jsonResponse;
+
+    // You can decide to echo it later or use it in other ways based on your requirements.
+    if (!defined('SUPPRESS_JSON_ECHO') || !SUPPRESS_JSON_ECHO) {
+        echo $jsonResponse;
+    }
 }
-?>

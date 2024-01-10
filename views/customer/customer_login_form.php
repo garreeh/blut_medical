@@ -40,30 +40,6 @@ if (isset($_SESSION['client_id'])) {
 
 <body class="bg-gradient-primary">
 
-  <!-- Toast container -->
-  <div class="toast" id="userNotFound" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false"
-    data-delay="5000">
-    <div class="toast-header">
-      <strong class="me-auto">Error Message</strong>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      The entered username or email was not found.
-    </div>
-  </div>
-
-  <!-- Toast container -->
-  <div class="toast" id="wrongPassword" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false"
-    data-delay="5000">
-    <div class="toast-header">
-      <strong class="me-auto">Error Message</strong>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      The entered password is incorrect.
-    </div>
-  </div>
-
   <div class="container">
 
     <!-- Outer Row -->

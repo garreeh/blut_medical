@@ -1,6 +1,5 @@
 <?php
 include "../../connection/connect.php";
-include "../../controllers/customer/customer_add_to_cart_process.php";
 
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
@@ -34,9 +33,7 @@ if (!isset($_SESSION['client_id'])) {
 </head>
 
 <!-- Google Fonts -->
-<link
-  href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-  rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
 <!-- Vendor CSS Files -->
 <link href="./../../assets/vendor/aos/aos.css" rel="stylesheet">
@@ -79,7 +76,11 @@ if (!isset($_SESSION['client_id'])) {
                 </thead>
                 <tbody>
 
-                  <?php foreach ($_SESSION['cartItems'] as $item) { ?>
+                  <?php
+                  define('SUPPRESS_JSON_ECHO', true);
+                  include "../../controllers/customer/customer_add_to_cart_process.php";
+
+                  foreach ($_SESSION['cartItems'] as $item) { ?>
                     <tr>
                       <td class="product-thumbnail">
                         <img src="<?php echo $item['product_image_path']; ?>" alt="Product Image" class="img-fluid" />
@@ -97,19 +98,13 @@ if (!isset($_SESSION['client_id'])) {
 
                       </td>
                       <td>
-                        <div class="input-group mb-3 d-flex align-items-center quantity-container"
-                          style="max-width: 120px">
+                        <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px">
                           <div class="input-group-prepend">
-                            <button class="btn btn-outline-black decrease" type="button" id="cartDecrease"
-                              onclick="decrementQuantityCart(<?php echo $item['product_id']; ?>, document.getElementById('quantity-<?php echo $item['product_id']; ?>'), document.getElementById('price-<?php echo $item['product_id']; ?>'))">−</button>
+                            <button class="btn btn-outline-black decrease" type="button" id="cartDecrease" onclick="decrementQuantityCart(<?php echo $item['product_id']; ?>, document.getElementById('quantity-<?php echo $item['product_id']; ?>'), document.getElementById('price-<?php echo $item['product_id']; ?>'))">−</button>
                           </div>
-                          <input type="text" class="form-control text-center quantity-amount"
-                            id="quantity-<?php echo $item['product_id']; ?>" value="<?php echo $item['quantity']; ?>"
-                            placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"
-                            disabled />
+                          <input type="text" class="form-control text-center quantity-amount" id="quantity-<?php echo $item['product_id']; ?>" value="<?php echo $item['quantity']; ?>" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" disabled />
                           <div class="input-group-append">
-                            <button class="btn btn-outline-black increase" type="button" id="cartIncrease"
-                              onclick="incrementQuantityCart(<?php echo $item['product_id']; ?>, document.getElementById('quantity-<?php echo $item['product_id']; ?>'), document.getElementById('price-<?php echo $item['product_id']; ?>'))">+</button>
+                            <button class="btn btn-outline-black increase" type="button" id="cartIncrease" onclick="incrementQuantityCart(<?php echo $item['product_id']; ?>, document.getElementById('quantity-<?php echo $item['product_id']; ?>'), document.getElementById('price-<?php echo $item['product_id']; ?>'))">+</button>
                           </div>
                         </div>
                       </td>
@@ -126,8 +121,7 @@ if (!isset($_SESSION['client_id'])) {
                           <input type="hidden" name="product_id" value="<?php echo $item['product_id']; ?>">
                           <input type="hidden" name="quantity" value="<?php echo $item['quantity']; ?>">
 
-                          <a href="./../../controllers/customer/customer_delete_cart_process.php?order_id=<?php echo $item['order_id']; ?>"
-                            type="submit" class="btn btn-sm btn-danger shadow-sm">Remove Product</a>
+                          <a href="./../../controllers/customer/customer_delete_cart_process.php?order_id=<?php echo $item['order_id']; ?>" type="submit" class="btn btn-sm btn-danger shadow-sm">Remove Product</a>
                         </form>
                       </td>
                     </tr>
@@ -181,8 +175,7 @@ if (!isset($_SESSION['client_id'])) {
 
                 <div class="row">
                   <div class="col-md-12">
-                    <button class="btn btn-dark btn-lg py-3 btn-block"
-                      onclick="window.location='customer_checkout.php'">
+                    <button class="btn btn-dark btn-lg py-3 btn-block" onclick="window.location='customer_checkout.php'">
                       Proceed To Checkout
                     </button>
                   </div>
@@ -200,8 +193,7 @@ if (!isset($_SESSION['client_id'])) {
   <?php include "./../../includes/footer.php" ?>
 
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="./../../assets/vendor/aos/aos.js"></script>
@@ -285,21 +277,23 @@ if (!isset($_SESSION['client_id'])) {
     var newQuantity = parseInt(quantityInput.value, 10);
 
     fetch('./../../controllers/customer/customer_add_to_cart_process.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        productId: productId,
-        newQuantity: newQuantity,
-      }),
-    })
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          productId: productId,
+          newQuantity: newQuantity,
+        }),
+      })
       .then(response => response.json())
       .then(data => {
         if (data.newTotal !== undefined) {
           // Update both quantity and price in the UI
           quantityInput.value = newQuantity;
-          priceCell.textContent = '₱ ' + data.newTotal.toLocaleString('en-US', { minimumFractionDigits: 2 });
+          priceCell.textContent = '₱ ' + data.newTotal.toLocaleString('en-US', {
+            minimumFractionDigits: 2
+          });
 
           updateTotal();
         } else {
@@ -330,7 +324,6 @@ if (!isset($_SESSION['client_id'])) {
     }
     updateTotalLive();
   }
-
 </script>
 
 <style>
